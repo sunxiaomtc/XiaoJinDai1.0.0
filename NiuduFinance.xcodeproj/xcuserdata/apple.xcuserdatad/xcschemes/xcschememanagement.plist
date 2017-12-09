@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>NiuduFinance.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2D719DFF1C7D500C008AE30C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D719E181C7D500D008AE30C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D719E231C7D500D008AE30C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="77" id="KGk-i7-Jjw" customClass="NewsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="319" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="319" height="76.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-67-d5z">
+                        <rect key="frame" x="8" y="33.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRx-k0-WPY">
+                        <rect key="frame" x="311" y="33.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.61940914390000001" green="0.6234382987" blue="0.63166064020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14V-Ed-WXb">
+                        <rect key="frame" x="8" y="44" width="282" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdW-X8-Pbc">
+                        <rect key="frame" x="311" y="43.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="14V-Ed-WXb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="4aO-gr-DEG"/>
+                    <constraint firstItem="Zan-67-d5z" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-5" id="Izi-WK-5mH"/>
+                    <constraint firstAttribute="trailing" secondItem="lRx-k0-WPY" secondAttribute="trailing" constant="8" id="Mw4-WP-Oeg"/>
+                    <constraint firstItem="wdW-X8-Pbc" firstAttribute="leading" secondItem="14V-Ed-WXb" secondAttribute="trailing" constant="21" id="OD7-l2-T6S"/>
+                    <constraint firstAttribute="trailing" secondItem="wdW-X8-Pbc" secondAttribute="trailing" constant="8" id="UHK-MJ-k7K"/>
+                    <constraint firstItem="lRx-k0-WPY" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-5" id="bgf-Ow-fua"/>
+                    <constraint firstItem="14V-Ed-WXb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jxu-sr-8b2"/>
+                    <constraint firstItem="wdW-X8-Pbc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="klr-ep-MV0"/>
+                    <constraint firstItem="Zan-67-d5z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rI5-I7-jnQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="newsContentLabel" destination="14V-Ed-WXb" id="2Be-xR-Hjs"/>
+                <outlet property="newsNameLabel" destination="Zan-67-d5z" id="JDa-Kz-ykV"/>
+                <outlet property="newsTimeLabel" destination="lRx-k0-WPY" id="71J-Ow-ObI"/>
+                <outlet property="newsTypeLabel" destination="wdW-X8-Pbc" id="qAP-5g-4og"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="70.5"/>
+        </tableViewCell>
+    </objects>
+</document>

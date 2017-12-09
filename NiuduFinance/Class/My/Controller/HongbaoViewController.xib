@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HongbaoViewController">
+            <connections>
+                <outlet property="tableview" destination="fkS-mT-Qa8" id="F56-bw-nod"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="StateButtonsArray" destination="D9I-fI-dhn" id="2pB-nM-bRJ"/>
+                <outletCollection property="StateButtonsArray" destination="B9f-up-WQK" id="AVX-mp-yD7"/>
+                <outletCollection property="StateButtonsArray" destination="sSd-RS-KHj" id="Plz-yE-nkW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOo-xC-hDN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="center" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSd-RS-KHj" userLabel="1">
+                            <rect key="frame" x="15" y="10" width="115" height="33"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" backgroundImage="keshione.png"/>
+                            <state key="selected" backgroundImage="keshitwo.png"/>
+                            <connections>
+                                <action selector="optionStateAction:" destination="-1" eventType="touchUpInside" id="SZd-pW-Pnv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9f-up-WQK" userLabel="2">
+                            <rect key="frame" x="130" y="10" width="115" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="es0-61-5dq"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="yishione.png">
+                                <color key="titleColor" red="0.59857112169265747" green="0.59857112169265747" blue="0.59857112169265747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected" backgroundImage="yishitwo.png"/>
+                            <connections>
+                                <action selector="optionStateAction:" destination="-1" eventType="touchUpInside" id="gh2-tc-MUf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9I-fI-dhn" userLabel="3">
+                            <rect key="frame" x="245" y="10" width="115" height="33"/>
+                            <state key="normal" backgroundImage="yiguoone.png">
+                                <color key="titleColor" red="0.59901142120361328" green="0.59901142120361328" blue="0.59901142120361328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected" backgroundImage="yiguotuo.png"/>
+                            <connections>
+                                <action selector="optionStateAction:" destination="-1" eventType="touchUpInside" id="yvx-F7-zOx"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="D9I-fI-dhn" secondAttribute="trailing" constant="15" id="3gI-ou-V4k"/>
+                        <constraint firstItem="sSd-RS-KHj" firstAttribute="leading" secondItem="ZOo-xC-hDN" secondAttribute="leading" constant="15" id="4qE-Nv-Wa6"/>
+                        <constraint firstItem="B9f-up-WQK" firstAttribute="centerX" secondItem="ZOo-xC-hDN" secondAttribute="centerX" id="7HE-kO-r5B"/>
+                        <constraint firstItem="D9I-fI-dhn" firstAttribute="top" secondItem="B9f-up-WQK" secondAttribute="top" id="AoH-kJ-RMK"/>
+                        <constraint firstItem="B9f-up-WQK" firstAttribute="top" secondItem="sSd-RS-KHj" secondAttribute="top" id="Cqy-Ao-ki8"/>
+                        <constraint firstItem="sSd-RS-KHj" firstAttribute="width" secondItem="B9f-up-WQK" secondAttribute="width" id="HYD-oS-d41"/>
+                        <constraint firstItem="D9I-fI-dhn" firstAttribute="leading" secondItem="B9f-up-WQK" secondAttribute="trailing" id="PFR-f2-eKa"/>
+                        <constraint firstItem="B9f-up-WQK" firstAttribute="centerY" secondItem="sSd-RS-KHj" secondAttribute="centerY" id="XDD-Vj-Naw"/>
+                        <constraint firstItem="D9I-fI-dhn" firstAttribute="centerY" secondItem="sSd-RS-KHj" secondAttribute="centerY" id="Y53-JB-sH2"/>
+                        <constraint firstItem="B9f-up-WQK" firstAttribute="leading" secondItem="sSd-RS-KHj" secondAttribute="trailing" id="aHH-d9-0p2"/>
+                        <constraint firstAttribute="height" constant="53" id="gun-8M-568"/>
+                        <constraint firstItem="D9I-fI-dhn" firstAttribute="width" secondItem="B9f-up-WQK" secondAttribute="width" id="kon-yg-gYy"/>
+                        <constraint firstItem="sSd-RS-KHj" firstAttribute="top" secondItem="ZOo-xC-hDN" secondAttribute="top" constant="10" id="usH-bH-MCf"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fkS-mT-Qa8">
+                    <rect key="frame" x="0.0" y="53" width="375" height="614"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fkS-mT-Qa8" secondAttribute="trailing" id="33f-ZV-rpO"/>
+                <constraint firstItem="ZOo-xC-hDN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="47m-aA-UW5"/>
+                <constraint firstAttribute="bottom" secondItem="fkS-mT-Qa8" secondAttribute="bottom" id="KE3-cI-vXT"/>
+                <constraint firstItem="fkS-mT-Qa8" firstAttribute="top" secondItem="ZOo-xC-hDN" secondAttribute="bottom" id="R7R-3p-e4G"/>
+                <constraint firstItem="fkS-mT-Qa8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z2u-ep-hSx"/>
+                <constraint firstItem="ZOo-xC-hDN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eWt-Hf-RbJ"/>
+                <constraint firstAttribute="trailing" secondItem="ZOo-xC-hDN" secondAttribute="trailing" id="vtD-bL-3am"/>
+            </constraints>
+            <point key="canvasLocation" x="323.5" y="345.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="keshione.png" width="230" height="64"/>
+        <image name="keshitwo.png" width="230" height="64"/>
+        <image name="yiguoone.png" width="230" height="64"/>
+        <image name="yiguotuo.png" width="230" height="64"/>
+        <image name="yishione.png" width="230" height="64"/>
+        <image name="yishitwo.png" width="230" height="64"/>
+    </resources>
+</document>

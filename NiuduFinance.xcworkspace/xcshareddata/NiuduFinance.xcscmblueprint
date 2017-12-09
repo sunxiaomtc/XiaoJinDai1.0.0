@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2c0994ea-b79a-41a7-88e8-3a26b8d4bce5++1075",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "2c0994ea-b79a-41a7-88e8-3a26b8d4bce5++1075" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2c0994ea-b79a-41a7-88e8-3a26b8d4bce5++1075" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "578DE2EF-5E55-4550-991E-E68822E5FF8C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2c0994ea-b79a-41a7-88e8-3a26b8d4bce5++1075" : "v1.0.0\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NiuduFinance",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "nbb\/v1.0.0\/NiuduFinance.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/139.224.54.40",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2c0994ea-b79a-41a7-88e8-3a26b8d4bce5++1075"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MyTailViewCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="89"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="166" height="89"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hxe-N4-ekJ">
+                        <rect key="frame" x="0.0" y="0.0" width="166" height="89"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KX-bh-bfD">
+                        <rect key="frame" x="52.5" y="23" width="61.5" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="G0O-Z5-XrB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456,优惠享不停" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAY-Ya-axC">
+                        <rect key="frame" x="21" y="52" width="124.5" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="22J-ny-nid"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0KX-bh-bfD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="23" id="3Z2-Cx-Vlm"/>
+                <constraint firstItem="0KX-bh-bfD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="DEq-R7-LwN"/>
+                <constraint firstAttribute="bottom" secondItem="Hxe-N4-ekJ" secondAttribute="bottom" id="GXU-FI-fe7"/>
+                <constraint firstItem="PAY-Ya-axC" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="T6Z-PZ-mUO"/>
+                <constraint firstAttribute="trailing" secondItem="Hxe-N4-ekJ" secondAttribute="trailing" id="XPE-RU-Qhg"/>
+                <constraint firstItem="Hxe-N4-ekJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gcz-1y-XD6"/>
+                <constraint firstItem="Hxe-N4-ekJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qcG-Zj-sbr"/>
+                <constraint firstItem="PAY-Ya-axC" firstAttribute="top" secondItem="0KX-bh-bfD" secondAttribute="bottom" constant="10" id="xK4-ac-eZu"/>
+            </constraints>
+            <size key="customSize" width="115" height="134"/>
+            <connections>
+                <outlet property="imageview" destination="Hxe-N4-ekJ" id="RjA-sP-d6V"/>
+                <outlet property="textLabel" destination="0KX-bh-bfD" id="y0C-8d-tCl"/>
+                <outlet property="titLabel" destination="PAY-Ya-axC" id="685-Yz-PuW"/>
+            </connections>
+            <point key="canvasLocation" x="57.5" y="94"/>
+        </collectionViewCell>
+    </objects>
+</document>
