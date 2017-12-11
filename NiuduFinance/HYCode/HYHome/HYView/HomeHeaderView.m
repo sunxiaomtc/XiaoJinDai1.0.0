@@ -27,6 +27,10 @@ const CGFloat kMenuButtonHeight = 90.0;
 @property (nonatomic, copy) NSArray *menuImages;
 @property (nonatomic, copy) NSArray *menuTitles;
 
+@property (nonatomic, weak) UIView *btnView1;
+
+@property (nonatomic, weak) UIView *btnView2;
+
 @end
 
 @implementation HomeHeaderView
@@ -95,7 +99,7 @@ const CGFloat kMenuButtonHeight = 90.0;
         make.left.mas_equalTo(self).mas_offset(12);
         make.centerY.mas_equalTo(radioView).mas_offset(0);
     }];
-    [radioImagView setImage:[UIImage imageNamed:@"bugle"]];
+    [radioImagView setImage:[UIImage imageNamed:@"home-lb"]];
     
     UIButton *machButton = [[UIButton alloc]init];
     [radioView addSubview:machButton];
@@ -126,20 +130,79 @@ const CGFloat kMenuButtonHeight = 90.0;
     }];
     buttonView.backgroundColor = [UIColor whiteColor];
     
+    for(int i = 0; i < 2; i++)
+    {
+        UIView *view = [[UIView alloc] init];
+        view.frame = CGRectMake((SCREEN_WIDTH / 2) * i, 0, SCREEN_WIDTH / 2, SCREEN_WIDTH/375 * 90);
+        view.backgroundColor = [UIColor whiteColor];
+        if(i == 0)
+        {
+            self.btnView1 = view;
+        }else
+        {
+            self.btnView2 = view;
+        }
+        [buttonView addSubview:view];
+        
+        UIImageView *iv = [[UIImageView alloc] init];
+        iv.frame = CGRectMake(0.6 * (SCREEN_WIDTH / 2), (view.frame.size.height - 43) / 2, 43, 43);
+        [view addSubview:iv];
+        
+        UILabel *lable = [[UILabel alloc] init];
+        lable.frame = CGRectMake(0.15 * (SCREEN_WIDTH / 2), ((SCREEN_WIDTH/375 * 90) - 40) / 2, 68, 40);
+        if(i == 0)
+        {
+            lable.text = @"新人福利注册即送";
+            iv.image = [UIImage imageNamed:@"home-lw"];
+        }else
+        {
+            lable.text = @"邀请有奖高额返现";
+            iv.image = [UIImage imageNamed:@"home-yqhy"];
+        }
+        lable.numberOfLines = 0;
+        lable.textColor = qianhui71Color;
+        lable.font = [UIFont systemFontOfSize:14.0f];
+        [view addSubview:lable];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, SCREEN_WIDTH / 2, SCREEN_WIDTH/375 * 90);
+        btn.backgroundColor = [UIColor clearColor];
+        [btn addTarget:self action:@selector(btnCLick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = 1000 + i;
+        [view addSubview:btn];
+    }
     
-    [self.menuImages enumerateObjectsUsingBlock:^(id  _Nonnull obj,
-                                                  NSUInteger idx,
-                                                  BOOL * _Nonnull stop) {
-        VerticalButton *button = [VerticalButton buttonWithType:UIButtonTypeCustom];
-        button.tag = idx;
-        button.origin = CGPointMake(idx*(SCREEN_WIDTH - 30)/_menuImages.count, 0);
-        button.size = CGSizeMake((SCREEN_WIDTH - 30)/_menuImages.count, SCREEN_WIDTH/375 *90);
-        button.titleLabel.font = [UIFont systemFontOfSize:12];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:_menuImages[idx]] title:self.menuTitles[idx] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
-        [buttonView addSubview:button];
+    UILabel *line = [[UILabel alloc] init];
+    line.backgroundColor = qianhui220Color;
+    [buttonView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(buttonView.top).offset(((SCREEN_WIDTH/375 * 90) - 54) / 2);
+        make.centerX.mas_equalTo(buttonView.centerX);
+        make.size.mas_equalTo(CGSizeMake(1, 54));
     }];
+    
+    
+//    [self.menuImages enumerateObjectsUsingBlock:^(id  _Nonnull obj,
+//                                                  NSUInteger idx,
+//                                                  BOOL * _Nonnull stop) {
+//        VerticalButton *button = [VerticalButton buttonWithType:UIButtonTypeCustom];
+//        button.tag = idx;
+//        button.origin = CGPointMake(idx*(SCREEN_WIDTH - 30)/_menuImages.count, 0);
+//        button.size = CGSizeMake((SCREEN_WIDTH - 30)/_menuImages.count, SCREEN_WIDTH/375 *90);
+//        button.titleLabel.font = [UIFont systemFontOfSize:12];
+//        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [button setImage:[UIImage imageNamed:_menuImages[idx]] title:self.menuTitles[idx] forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(selectItem:) forControlEvents:UIControlEventTouchUpInside];
+//        [buttonView addSubview:button];
+//    }];
+}
+
+-(void)btnCLick:(UIButton *)btn
+{
+    if(_btnClickBlock)
+    {
+        self.btnClickBlock(btn.tag - 1000);
+    }
 }
 
 #pragma marl - 按钮的点击事件

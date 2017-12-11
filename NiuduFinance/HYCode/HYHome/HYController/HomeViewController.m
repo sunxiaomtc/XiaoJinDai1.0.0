@@ -24,6 +24,8 @@
 #import "newInvestNTableViewCell.h"
 #import "welfareNTableViewCell.h"
 #import "AboutNViewController.h"
+#import "HYHomeOneCell.h"
+#import "HYHomeTwoCell.h"
 
 static NSString *HomeNewExclusiveCellID = @"HomeNewExclusiveCell";
 static NSString *homeBullSharingCellID = @"homeBullSharingCell";
@@ -198,6 +200,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 #pragma mark - 创建头部和尾部试图
 - (void)createHeaderAndFooter {
+    
+    __weak __typeof(self) weakSelf = self;
     HomeHeaderView *headerView = [[HomeHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [HomeHeaderView homeHeaderHight])];
 //    首页的三个按钮的点击事件
     [headerView setHomeButtonBlock:^(NSInteger buttonTag){
@@ -250,6 +254,18 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             self.hidesBottomBarWhenPushed = NO;
         }
     }];
+    headerView.btnClickBlock = ^(NSInteger tags) {
+        if(tags == 0)
+        {
+        }else
+        {
+            InvitationFriendsController * invitationVC = [InvitationFriendsController new];
+            weakSelf.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:invitationVC animated:YES];
+            weakSelf.hidesBottomBarWhenPushed = NO;
+        }
+    };
+    
 //    文字轮播点击
     [headerView setHomeTitleBlock:^(NSString *titleID){
         PageWebViewController *pageWebVC = [PageWebViewController new];
@@ -318,24 +334,29 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-         static NSString *newInvest = @"newInvest";
-        newInvestNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                                 newInvest];
-        if (cell == nil) {
-            cell = [[newInvestNTableViewCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:newInvest];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        cell.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
-        [cell backgroundNView];
-        [cell titleBackGroundView];
-        [cell investBtn];
-        cell.titleImage.image = [UIImage imageNamed:@"index_xinshou"];
-        cell.titleLab.text = @"预期年化";
-        cell.percentLab.text = [[NSString stringWithFormat:@"%@",self.rateStr] stringByAppendingString:@"%"];
-        cell.addPercentLab.text = [[NSString stringWithFormat:@"+%@",self.addRate] stringByAppendingString:@"%"];
-        
+//         static NSString *newInvest = @"newInvest";
+//        newInvestNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+//                                 newInvest];
+//        if (cell == nil) {
+//            cell = [[newInvestNTableViewCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:newInvest];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        }
+//        cell.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
+//        [cell backgroundNView];
+//        [cell titleBackGroundView];
+//        [cell investBtn];
+//        cell.titleImage.image = [UIImage imageNamed:@"index_xinshou"];
+//        cell.titleLab.text = @"预期年化";
+//        cell.percentLab.text = [[NSString stringWithFormat:@"%@",self.rateStr] stringByAppendingString:@"%"];
+//        cell.addPercentLab.text = [[NSString stringWithFormat:@"+%@",self.addRate] stringByAppendingString:@"%"];
+//        
+//        return cell;
+        HYHomeOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeOneCell" forIndexPath:indexPath];
+        __weak __typeof(self) weakSelf = self;
+        cell.buyBlock = ^{
+            [weakSelf xinshoubiao:indexPath];
+        };
         return cell;
-        
  //------------------------------
 //        HomeNewExclusiveCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeNewExclusiveCellID];
 //        if (!cell) {
@@ -348,26 +369,28 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
       
     }
     
-    static NSString *welfare = @"welfare";
-    welfareNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                                     welfare];
-    if (cell == nil) {
-        cell = [[welfareNTableViewCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:welfare];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    cell.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
-    [cell backgroundNView];
-    [cell titleBackGroundView];
-    [cell layer];
-    cell.titleImage.image = [UIImage imageNamed:@"index_fulibiao"];
-    cell.titleLab.text = @"标题";
-    
-    cell.percentLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"rate"] ? nil : @"0"] stringByAppendingString:@"%"];
-    cell.startInvestingLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"minbidamount"] ? nil : @"0"] stringByAppendingString:@"元"];
-    cell.cycleLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"loanperiod"] ? nil : @"0"] stringByAppendingString:@"天"];
-    [cell investBtn];
-
-
+//    static NSString *welfare = @"welfare";
+//    welfareNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+//                                     welfare];
+//    if (cell == nil) {
+//        cell = [[welfareNTableViewCell alloc]initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:welfare];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//    cell.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
+//    [cell backgroundNView];
+//    [cell titleBackGroundView];
+//    [cell layer];
+//    cell.titleImage.image = [UIImage imageNamed:@"index_fulibiao"];
+//    cell.titleLab.text = @"标题";
+//
+//    cell.percentLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"rate"] ? nil : @"0"] stringByAppendingString:@"%"];
+//    cell.startInvestingLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"minbidamount"] ? nil : @"0"] stringByAppendingString:@"元"];
+//    cell.cycleLab.text = [[NSString stringWithFormat:@"%@",self.experienceDic[@"loanperiod"] ? nil : @"0"] stringByAppendingString:@"天"];
+//    [cell investBtn];
+//
+//
+//    return cell;
+    HYHomeTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeTwoCell" forIndexPath:indexPath];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -377,28 +400,33 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             [MBProgressHUD showMessag:@"未登录" toView:self.view];
             return;
         }
-        self.hidesBottomBarWhenPushed = YES;
-        XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
-         projectDetailsVC.addrate = self.addRate;
-        if (_recProductArr.count > 0) {
-            SNProjectListItem * projectItem = _recProductArr[indexPath.section];
-            projectDetailsVC.projectId = [projectItem.projectId intValue];
-            projectDetailsVC.projectItem = projectItem;
-            projectDetailsVC.resultsRate = [self.rateStr floatValue];
-        }
-        [self.navigationController pushViewController:projectDetailsVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self xinshoubiao:indexPath];
     }
     else if (indexPath.section == 1) {//点击牛气分享标
-        if (![AppDelegate checkLogin]) {
-            //[MBProgressHUD showMessag:@"未登录" toView:self.view];
-            return;
-        }
-        WelfareViewController *vc = [WelfareViewController new];
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+//        if (![AppDelegate checkLogin]) {
+//            //[MBProgressHUD showMessag:@"未登录" toView:self.view];
+//            return;
+//        }
+//        WelfareViewController *vc = [WelfareViewController new];
+//        self.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//        self.hidesBottomBarWhenPushed = NO;
     }
+}
+
+-(void)xinshoubiao:(NSIndexPath *)indexPath
+{
+    self.hidesBottomBarWhenPushed = YES;
+    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+    projectDetailsVC.addrate = self.addRate;
+    if (_recProductArr.count > 0) {
+        SNProjectListItem * projectItem = _recProductArr[indexPath.section];
+        projectDetailsVC.projectId = [projectItem.projectId intValue];
+        projectDetailsVC.projectItem = projectItem;
+        projectDetailsVC.resultsRate = [self.rateStr floatValue];
+    }
+    [self.navigationController pushViewController:projectDetailsVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -431,7 +459,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        UIView *sharingView = [[UIView alloc]init];
+        //UIView *sharingView = [[UIView alloc]init];
 //        UIImageView *imageView = [[UIImageView alloc]init];
 //        [sharingView addSubview:imageView];
 //        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -440,35 +468,35 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //        }];
 //        [imageView setImage:[UIImage imageNamed:@"platform"]];
         
-        UILabel *sharLabel = [[UILabel alloc]init];
-        [sharingView addSubview:sharLabel];
-        [sharLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(0);
-            make.left.mas_equalTo(0);
-            make.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(0);
-        }];
-        sharLabel.text = @"账户资金由汇付天下保障";
-        sharLabel.textColor = [UIColor lightGrayColor];
-        sharLabel.textAlignment = NSTextAlignmentCenter;
-        sharLabel.font = [UIFont systemFontOfSize:12];
-        return sharingView;
+//        UILabel *sharLabel = [[UILabel alloc]init];
+//        [sharingView addSubview:sharLabel];
+//        [sharLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(0);
+//            make.left.mas_equalTo(0);
+//            make.right.mas_equalTo(0);
+//            make.bottom.mas_equalTo(0);
+//        }];
+//        sharLabel.text = @"账户资金由汇付天下保障";
+//        sharLabel.textColor = [UIColor lightGrayColor];
+//        sharLabel.textAlignment = NSTextAlignmentCenter;
+//        sharLabel.font = [UIFont systemFontOfSize:12];
+//        return sharingView;
     }
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 140;
+        return 172;
     }
-    return 150;
+    return 90;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 15;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        return 30;
+        return 0.001;
     }
     return 0.00001;
 }
@@ -482,6 +510,9 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         _homeTableView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
         _homeTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _homeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        [_homeTableView registerNib:[UINib nibWithNibName:@"HYHomeOneCell" bundle:nil] forCellReuseIdentifier:@"HYHomeOneCell"];
+        [_homeTableView registerNib:[UINib nibWithNibName:@"HYHomeTwoCell" bundle:nil] forCellReuseIdentifier:@"HYHomeTwoCell"];
     }
     return _homeTableView;
 }

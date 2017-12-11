@@ -30,4 +30,6 @@
 /**广播文字数据数组
  */
 @property (nonatomic, copy) NSArray *titleArray;
+
+@property (nonatomic, copy) void(^btnClickBlock)(NSInteger tags);
 @end

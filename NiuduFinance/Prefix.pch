@@ -64,6 +64,28 @@
 
 #define UIcolors [UIColor colorWithRed:0.99 green:0.67 blue:0.19 alpha:1.00]
 
+#define qianhui187Color   [UIColor colorWithRed:187.0 / 255.0f green:187.0 / 255.0f blue:187.0 / 255.0f alpha:1]
+
+#define qianhui118Color   [UIColor colorWithRed:118.0 / 255.0f green:118.0 / 255.0f blue:118.0 / 255.0f alpha:1]
+
+#define qianhui244Color   [UIColor colorWithRed:244.0 / 255.0f green:244.0 / 255.0f blue:244.0 / 255.0f alpha:1]
+
+#define qianhui240Color   [UIColor colorWithRed:240.0 / 255.0f green:240.0 / 255.0f blue:240.0 / 255.0f alpha:1]
+
+#define qianhui71Color   [UIColor colorWithRed:71.0 / 255.0f green:71.0 / 255.0f blue:71.0 / 255.0f alpha:1]
+
+#define qianhui220Color   [UIColor colorWithRed:220.0 / 255.0f green:220.0 / 255.0f blue:220.0 / 255.0f alpha:1]
+
+#define qianhui51Color   [UIColor colorWithRed:51.0 / 255.0f green:51.0 / 255.0f blue:51.0 / 255.0f alpha:1]
+
+#define qianhui140Color   [UIColor colorWithRed:140.0 / 255.0f green:140.0 / 255.0f blue:140.0 / 255.0f alpha:1]
+
+#define qianhui34Color   [UIColor colorWithRed:34.0 / 255.0f green:34.0 / 255.0f blue:34.0 / 255.0f alpha:1]
+
+#define qianhui(r,g,b) [UIColor colorWithRed:(r) / 255.0f green:(g) / 255.0f blue:(b) / 255.0f alpha:1]
+
+#import "UILabel+ShuLabel.h"
+
 #pragma mark ----------------------------- Config
 
 
