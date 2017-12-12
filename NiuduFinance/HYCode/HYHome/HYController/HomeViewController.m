@@ -26,6 +26,7 @@
 #import "AboutNViewController.h"
 #import "HYHomeOneCell.h"
 #import "HYHomeTwoCell.h"
+#import "HYWebViewController.h"
 
 static NSString *HomeNewExclusiveCellID = @"HomeNewExclusiveCell";
 static NSString *homeBullSharingCellID = @"homeBullSharingCell";
@@ -141,6 +142,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                             @"limit":@(1),
                             @"isNewLender":@(1)
                             };
+    __weak __typeof(self) weakSelf = self;
     [NSObject POST:url parameters:xsDic progress:^(NSProgress *downloadProgress) {
         
     } completionHandler:^(id responseObject, NSError *error) {
@@ -152,11 +154,11 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 NSDictionary *dic = array[0];
                NSString *str = [self formatFloat:([dic[@"rate"]floatValue]-([dic[@"addRate"]floatValue]))];
 //                self.rateStr = [NSString stringWithFormat:@"%.2f",([dic[@"rate"]floatValue]-([dic[@"addRate"]floatValue]))];
-                self.rateStr = str;
-                self.addRate = [NSString stringWithFormat:@"%@",dic[@"addRate"]];
+                weakSelf.rateStr = str;
+                weakSelf.addRate = [NSString stringWithFormat:@"%@",dic[@"addRate"]];
             }
         }
-        [self.homeTableView reloadData];
+        [weakSelf.homeTableView reloadData];
     }];
 //    牛气分享标
     NSString *nqUrl = [__API_HEADER__ stringByAppendingString:@"v2/open/project/welfareFind"];
@@ -259,10 +261,15 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         {
         }else
         {
-            InvitationFriendsController * invitationVC = [InvitationFriendsController new];
-            weakSelf.hidesBottomBarWhenPushed = YES;
-            [weakSelf.navigationController pushViewController:invitationVC animated:YES];
-            weakSelf.hidesBottomBarWhenPushed = NO;
+            HYWebViewController *web = [[HYWebViewController alloc] init];
+            web.urlStr = @"http://118.190.211.131/mapi/index.php?act=myecv";
+            web.hidesBottomBarWhenPushed = YES;
+            web.title = @"邀请有奖";
+            [weakSelf.navigationController pushViewController:web animated:YES];
+//            InvitationFriendsController * invitationVC = [InvitationFriendsController new];
+//            weakSelf.hidesBottomBarWhenPushed = YES;
+//            [weakSelf.navigationController pushViewController:invitationVC animated:YES];
+//            weakSelf.hidesBottomBarWhenPushed = NO;
         }
     };
     
@@ -352,6 +359,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //        
 //        return cell;
         HYHomeOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeOneCell" forIndexPath:indexPath];
+        cell.bfbStr = self.rateStr;
+        cell.addBFBStr = self.addRate;
         __weak __typeof(self) weakSelf = self;
         cell.buyBlock = ^{
             [weakSelf xinshoubiao:indexPath];

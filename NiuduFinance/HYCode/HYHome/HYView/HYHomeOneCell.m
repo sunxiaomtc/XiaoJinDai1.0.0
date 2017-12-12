@@ -34,6 +34,30 @@
     }
 }
 
+-(void)setBfbStr:(NSString *)bfbStr
+{
+    _bfbStr = bfbStr;
+//    NSString *str = [NSString stringWithFormat:@"%@%%",bfbStr];
+//    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
+//    [attrString addAttribute:NSFontAttributeName
+//                    value:[UIFont systemFontOfSize:40.0f]
+//                    range:NSMakeRange(0, bfbStr.length)];
+//    [attrString addAttribute:NSFontAttributeName
+//                       value:[UIFont systemFontOfSize:20.0f]
+//                       range:NSMakeRange(str.length - 1, 1)];
+//    [attrString addAttribute:NSForegroundColorAttributeName
+//                    value:qianhui(241, 62, 52)
+//                    range:NSMakeRange(0, attrString.length)];
+//    self.bfbLabel.attributedText = attrString;
+    self.bfbLabel.text = [NSString stringWithFormat:@"%@",bfbStr];
+}
+
+-(void)setAddBFBStr:(NSString *)addBFBStr
+{
+    _addBFBStr = addBFBStr;
+    self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+}
+
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     

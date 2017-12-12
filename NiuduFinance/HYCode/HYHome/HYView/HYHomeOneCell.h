@@ -13,6 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UILabel *bfbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addBFBLabel;
+
+@property (nonatomic, copy) NSString *bfbStr;
+
+@property (nonatomic, copy) NSString *addBFBStr;
 
 @property (nonatomic, copy) void(^buyBlock)();
 

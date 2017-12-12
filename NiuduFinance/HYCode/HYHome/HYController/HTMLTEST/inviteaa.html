@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	  body,html{
+        width: 100%;
+        height: 100%;
+        overflow:hidden;overflow-y:auto;
+      }
+      body{
+        background: #ffbb02;
+      }
+      img{
+        width: 100%;
+        display: block;
+        border: 0px;
+      }
+      .boxall{
+        display: block;
+        margin: auto;
+        width: 750px;
+        position: relative;
+      }
+		.downa311{
+        z-index: 9;
+        position: absolute;
+        left: 37%;
+        top: 41%;
+        display: block;
+      } 
+      button{
+      	list-style: none;
+      	border: 0;
+      	/*background: #fff622;*/
+        background: red;
+      	outline: none;
+      }
+	</style>
+</head>
+<body onselectstart="return false">
+<div class="boxall">
+    <div class="u_u1">
+      <img src="9999_054.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_055.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_056.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_051.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_058.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_059.png">
+    </div>
+    <div class="u_u1">
+      <img src="9999_0510.png">
+    </div>
+    <div class="u_u2">
+    <button class="downa311" onClick="gotoactivity"><img src="9999_053.png"></button>
+</div>
+<script type="text/javascript">
+function gotoActivity
+(activity) {
+nativeMethod.toActivity(activity); //H5端调用的方法
+window.webkit.messageHandlers.activity.postMessage();
+}
+</script>
+</body>
+</html>
