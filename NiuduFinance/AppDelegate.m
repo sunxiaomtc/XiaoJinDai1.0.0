@@ -234,7 +234,7 @@
     
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     TabBarController *tabbarController = [[TabBarController alloc] init];
-    tabbarController.selectedIndex = 2;
+    tabbarController.selectedIndex = 3;
     app.window.rootViewController = tabbarController;
     return YES;
 }

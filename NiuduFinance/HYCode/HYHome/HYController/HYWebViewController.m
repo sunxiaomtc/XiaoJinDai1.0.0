@@ -11,13 +11,14 @@
 #import "PSBarButtonItem.h"
 #import "WKDelegateController.h"
 #import "InvitationFriendsController.h"
-@interface HYWebViewController ()<WKNavigationDelegate,WKScriptMessageHandler,WKUIDelegate,WKDelegate>
-{
-    WKUserContentController *userContentController;
-}
+#import <WebViewJavascriptBridge.h>
+#import <WKWebViewJavascriptBridge.h>
+@interface HYWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, weak) WKWebView *webView;
 
 @property (nonatomic, strong) UIProgressView *progressView;
+
+@property WKWebViewJavascriptBridge * bridge;
 
 @end
 
@@ -25,32 +26,111 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-    userContentController = [[WKUserContentController alloc]init];
-    config.userContentController = userContentController;
     // 根据需要去设置对应的属性
     WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) configuration:config];
-//    WKDelegateController * delegateController = [[WKDelegateController alloc]init];
-//    delegateController.delegate = self;
-    
-    [userContentController addScriptMessageHandler:self name:@"activity"];
     
     webView.UIDelegate = self;
     webView.navigationDelegate = self;
     self.webView = webView;
     [self.view addSubview:webView];
     
-    //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]]];
-    NSError *error;
-    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"inviteaa"
-                                                         ofType:@"html"];
-    NSString *html = [NSString stringWithContentsOfFile:filePath
-                                               encoding:NSUTF8StringEncoding
-                                                  error:&error];
-    [webView loadHTMLString:html baseURL:baseURL];
+    [self setupjindutiao];
     
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]]];
+//    NSError *error;
+//    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"bannerpppp1"
+//                                                         ofType:@"html"];
+//    NSString *html = [NSString stringWithContentsOfFile:filePath
+//                                               encoding:NSUTF8StringEncoding
+//                                                  error:&error];
+//    [webView loadHTMLString:html baseURL:baseURL];
+    
+}
+
+//第三方
+-(void)setupDSFKJ
+{
+    // 开启WebViewJavascriptBridge 默认日志显示，例如打印的 “WVJB SEND:” 之类的
+    [WKWebViewJavascriptBridge enableLogging];
+    [_bridge disableJavscriptAlertBoxSafetyTimeout];
+    // 初始化WebViewJavascriptBridge 对象
+    _bridge = [WKWebViewJavascriptBridge bridgeForWebView:self.webView];
+    
+    // 设置WebViewJavascriptBridge 对象的代理
+    [_bridge setWebViewDelegate:self];
+    
+    // 注册 JS端向OC端发送数据的方法  回调 handler:^(id 数据, WVJBResponseCallback 向JS端的回调)   -------------------------------> testObjcCallback 回调的标识符，与JS端保持一致才能通信
+    [_bridge registerHandler:@"activity" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"testObjcCallback called: %@", data);
+        // JS端提供的回调方法
+        responseCallback(@"Response from testObjcCallback");
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
+//    self.navigationItem.leftBarButtonItem = backItem;
+    
+    UIImage *image = [[UIImage imageNamed:@"黑色返回按钮"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain  target:self action:@selector(backAction)];
+}
+
+//开始加载
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    NSLog(@"开始加载网页 :%@",webView.URL);
+    //开始加载网页时展示出progressView
+    self.progressView.hidden = NO;
+    //开始加载网页的时候将progressView的Height恢复为1.5倍
+    self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
+    //防止progressView被网页挡住
+    [self.view bringSubviewToFront:self.progressView];
+    
+    //截取URL 判断
+    if([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"])
+    {
+        InvitationFriendsController *invita = [[InvitationFriendsController alloc] init];
+        invita.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:invita animated:YES];
+        return;
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"])
+    {
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"])
+    {
+    }
+}
+
+
+
+//加载完成
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    NSLog(@"加载完成");
+    //加载完成后隐藏progressView
+    //self.progressView.hidden = YES;
+}
+
+//加载失败
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"加载失败");
+    //加载失败同样需要隐藏progressView
+    //self.progressView.hidden = YES;
+}
+
+- (void)backAction {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)dealloc{
+    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+}
+
+#pragma mark - jindutiao
+-(void)setupjindutiao
+{
     //进度条
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 2)];
     self.progressView.backgroundColor = [UIColor whiteColor];
@@ -58,33 +138,10 @@
     //设置进度条的高度，下面这句代码表示进度条的宽度变为原来的1倍，高度变为原来的1.5倍.
     self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
     [self.view addSubview:self.progressView];
-
+    
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    //隐藏导航栏
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = mine;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self setupBarButtomItemWithImageName:@"黑色返回按钮" highLightImageName:@"nav_back_select.png" selectedImageName:nil target:self action:@selector(backClick) leftOrRight:YES];
-}
-
-- (UIBarButtonItem *)setupBarButtomItemWithImageName:(NSString *)normalImageName highLightImageName:(NSString *)highImageName selectedImageName:(NSString *)selectedImaegName target:(id)target action:(SEL)action leftOrRight:(BOOL)isLeft
-{
-    PSBarButtonItem *item = [PSBarButtonItem itemWithImageName:normalImageName highLightImageName:highImageName selectedImageName:selectedImaegName target:target action:action];
-    if (isLeft)
-    {
-        self.navigationItem.leftBarButtonItem = item;
-    }
-    else
-    {
-        self.navigationItem.rightBarButtonItem = item;
-    }
-    return item;
-}
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         self.progressView.progress = self.webView.estimatedProgress;
@@ -105,61 +162,6 @@
     }else{
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
-}
-
-//开始加载
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-    NSLog(@"开始加载网页");
-    //开始加载网页时展示出progressView
-    self.progressView.hidden = NO;
-    //开始加载网页的时候将progressView的Height恢复为1.5倍
-    self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
-    //防止progressView被网页挡住
-    [self.view bringSubviewToFront:self.progressView];
-}
-
-//加载完成
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"加载完成");
-    //加载完成后隐藏progressView
-    //self.progressView.hidden = YES;
-}
-
-//加载失败
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"加载失败");
-    //加载失败同样需要隐藏progressView
-    //self.progressView.hidden = YES;
-}
-
-- (void)backClick {
-    if([self.webView canGoBack])
-    {
-        [self.webView goBack];
-    }else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-}
-
--(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
-{
-    NSLog(@"H5--------%@",message);
-    if ([message.name isEqualToString:@"activity"]) {
-        //TODO
-        InvitationFriendsController *invita = [[InvitationFriendsController alloc] init];
-        invita.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:invita animated:YES];
-    }
-}
-
-- (void)dealloc{
-    
-    //这里需要注意，前面增加过的方法一定要remove掉。
-    [userContentController removeScriptMessageHandlerForName:@"activity"];
-    
-    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
 

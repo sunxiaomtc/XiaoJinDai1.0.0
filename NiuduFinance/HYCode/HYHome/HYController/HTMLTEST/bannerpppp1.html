@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,
+user-scalable=0,width=device-width,initial-scale=1.0"/>
+<style>
+   *{
+    padding: 0;
+    margin: 0;
+   }
+   body,html{
+        width: 100%;
+        height: 100%;
+        /*overflow:hidden;overflow-y:auto;*/
+      }
+      body{
+        background: #ee541e;
+      }
+      img{
+        width: 100%;
+        display: block;
+        border: 0px;
+      }
+      .boxall{
+        display: block;
+        width: 100%;
+        position: relative;
+      }
+      .u_u2{
+        margin-top: -2px;
+      }
+      .u_u3{
+        margin-top: -2px;
+      }
+
+      .upll{
+        width: 26%;
+        height: 53px;
+        z-index: 9;
+        position: absolute;
+        top: 25%;
+        left: 14%;       
+        
+        display: inline-block;
+              }
+      .uprr{
+        width: 26%;
+        height: 53px;
+        z-index: 9;
+        position: absolute;
+        left: 61%;
+        top: 25%;
+        display: inline-block;
+              }
+      .midllu{
+        width: 26%;
+        height: 258px;
+        z-index: 9;
+        position: absolute;
+        left: 14%;
+        top: 34%;
+        display: block;
+      } 
+      .midrru{
+        width: 26%;
+        height: 258px;
+        z-index: 9;
+        position: absolute;
+        left: 61%;
+        top: 34%;
+        display: inline-block;
+      } 
+      .midrrd{
+        width: 26%;
+        height: 258px;
+        z-index: 9;
+        position: absolute;
+        left: 37%;
+        top: 48%;
+        display: inline-block;
+      } 
+      .downmid{
+        width: 45%;
+        height: 258px;
+        z-index: 9;
+        position: absolute;
+        left: 29%;
+        top: 95%;
+        display: inline-block;
+      } 
+      .downa1{
+        z-index: 9;
+        position: absolute;
+        left: 14%;
+        top: 41%;
+        display: block;
+        width: 28%;
+      } 
+       .downa2{
+        z-index: 9;
+        position: absolute;
+        left: 61%;
+        top: 41%;
+        display: block;
+        width: 28%;
+      } 
+       .downa3{
+        z-index: 9;
+        position: absolute;
+        left: 37%;
+        top: 55%;
+        display: block;
+        width: 28%;
+      } 
+</style>
+</head>
+<body onselectstart="return false">
+<div class="boxall">
+    <div class="u_u1">
+      <img src="h5-APP13.png">
+      <!-- <button class="upll" id="#doreg"  onClick="s()"><img src="dd/hb_ljzc.png"></button>
+      <button class="uprr" id="#dodebt"  onClick="ttt()"><img src="dd/hb_ljtz.png"></button> -->
+      <a class="upll" id="#doreg"  href="http://m.xiaojindai888.com/fffR"><img src="hb_ljzc.png"></a>
+      <a class="uprr" id="#dodebt"  href="http://m.xiaojindai888.com/fffT"><img src="hb_ljtz.png"></a>
+    </div>
+    <div class="u_u2">
+      <img src="h5-APP11.png">
+      <a class="midllu kk"  onclick="changeImg()"><img id="bb1" src="bx_g.png"></a>
+      <a class="midrru KK"  onclick="changeImg1()"><img id="bb2" src="bx_g.png"></a>
+      <a class="midrrd KK"  onclick="changeImg2()"><img id="bb3" src="bx_g.png"></a>
+    </div>
+    <div class="u_u3">
+      <img src="h5-APP12.png">
+      <a class="downmid" id="#doreg"  onclick="s()" ><img src="qfl.png"></a>
+    </div>
+    <a class="downa1" id="#dodebt"  onclick="ttt()"><img src="hb_ljtz.png"></a>
+    <a class="downa2" id="#dodebt"  onclick="ttt()"><img src="hb_ljtz.png"></a>
+    <a class="downa3" id="#dodebt"  onclick="ttt()"><img src="hb_ljtz.png"></a>
+</div>
+<!--   <script type="text/javascript">
+       function changeImg() {
+        var obj = document.getElementById("bb1");
+        if (obj.getAttribute("src") == "dd/bx_g.png") {
+          obj.setAttribute("src", "dd/bx_k_1.png");
+        } else {
+          obj.setAttribute("src", "dd/bx_k_1.png");
+        }
+
+      }
+      function changeImg1() {
+        var obj = document.getElementById("bb2");
+        if (obj.getAttribute("src") == "dd/bx_g.png") {
+          obj.setAttribute("src", "dd/bx_k_2.png");
+        } else {
+          obj.setAttribute("src", "dd/bx_k_2.png");
+        }
+
+      }
+      function changeImg2() {
+        var obj = document.getElementById("bb3");
+        if (obj.getAttribute("src") == "dd/bx_g.png") {
+          obj.setAttribute("src", "dd/bx_k_3.png");
+        } else {
+          obj.setAttribute("src", "dd/bx_k_3.png");
+        }
+
+      }
+  </script> -->
+<script type="text/javascript">
+     function s(){
+     //调用Java的back()方法
+    // var result =
+    window.Android.toRegisterActivity();
+    // document.getElementById("doreg").innerHTML=result;
+    };
+    function ttt(){
+     //调用Java的back()方法
+    // var result =
+    window.Android.toProjectActivity();
+    // document.getElementById("dodebt").innerHTML=result;
+    }
+</script>  
+</body>
+</html>

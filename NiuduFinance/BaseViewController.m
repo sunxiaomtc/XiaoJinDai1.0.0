@@ -78,8 +78,10 @@
 #pragma mark - Public
 - (UIBarButtonItem*)backBarItem
 {
-    PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = backItem;
+//    PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
+//    self.navigationItem.leftBarButtonItem = backItem;
+    UIImage *image = [[UIImage imageNamed:@"黑色返回按钮"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain  target:self action:@selector(backAction)];
     return backItem;
 }
 
@@ -105,7 +107,9 @@
 
 - (UIBarButtonItem *)setupBarButtomItemWithImageName:(NSString *)normalImageName highLightImageName:(NSString *)highImageName selectedImageName:(NSString *)selectedImaegName target:(id)target action:(SEL)action leftOrRight:(BOOL)isLeft
 {
-    PSBarButtonItem *item = [PSBarButtonItem itemWithImageName:normalImageName highLightImageName:highImageName selectedImageName:selectedImaegName target:target action:action];
+//    PSBarButtonItem *item = [PSBarButtonItem itemWithImageName:normalImageName highLightImageName:highImageName selectedImageName:selectedImaegName target:target action:action];
+    UIImage *image = [[UIImage imageNamed:normalImageName]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain  target:target action:action];
     if (isLeft)
     {
         self.navigationItem.leftBarButtonItem = item;

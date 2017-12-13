@@ -32,6 +32,7 @@
 #import "MyTouZiViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "HYWebViewController.h"
 
 @interface MyViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MyCollectionViewCell3Delegate,MyNewHeaderViewDelegate,UIAlertViewDelegate>
 
@@ -285,6 +286,11 @@
             MyFuLiViewController *hongBaoVC = [MyFuLiViewController new];
             hongBaoVC.hidesBottomBarWhenPushed =YES;
             [self.navigationController pushViewController:hongBaoVC animated:YES];
+//            HYWebViewController *web = [[HYWebViewController alloc] init];
+//            web.urlStr = @"http://plus.xiaojindai888.com/mapi/index.php?act=myecv";
+//            web.hidesBottomBarWhenPushed = YES;
+//            web.title = @"优惠券";
+//            [self.navigationController pushViewController:web animated:YES];
         }
         if (indexPath.row == 3) {//福利金
             MyWelfareController *welfareVC = [MyWelfareController new];

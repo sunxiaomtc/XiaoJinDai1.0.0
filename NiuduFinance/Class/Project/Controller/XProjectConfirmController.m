@@ -456,6 +456,8 @@
             } else if ([perStr integerValue] == 3) {
                 _timeLabe.text = [NSString stringWithFormat:@"%@年",[dic objectForKey:@"loanperiod"]];
             }
+            //最小投资额
+            _tzjeTextField.placeholder = [NSString stringWithFormat:@"(投资金额≥%@元)",[dic objectForKey:@"minbidamount"]];
             
             _syktNumb.text = [NSString stringWithFormat:@"%.2f",[[dic objectForKey:@"remainamount"] floatValue]];
         }
@@ -765,6 +767,7 @@
     vc.title = @"充值";
     vc.name = @"recharge";
     [self.navigationController pushViewController:vc animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 

@@ -35,8 +35,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = backItem;
+    UIImage *image = [[UIImage imageNamed:@"黑色返回按钮"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain  target:self action:@selector(backAction)];
     
     self.title = @"验证手势解锁";
     

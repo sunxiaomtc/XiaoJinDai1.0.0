@@ -89,6 +89,19 @@
 		18B802DD1FDE7B3500ED3AD6 /* 9999_055.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802D31FDE7B3500ED3AD6 /* 9999_055.png */; };
 		18B802DE1FDE7B3500ED3AD6 /* 9999_054.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802D41FDE7B3500ED3AD6 /* 9999_054.png */; };
 		18B802E01FDE7CC000ED3AD6 /* inviteaa.html in Resources */ = {isa = PBXBuildFile; fileRef = 18B802DF1FDE7CC000ED3AD6 /* inviteaa.html */; };
+		18B802E21FDFAB6C00ED3AD6 /* bannerpppp1.html in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E11FDFAB6B00ED3AD6 /* bannerpppp1.html */; };
+		18B802F01FDFAC9400ED3AD6 /* h5-APP12.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E41FDFAC9400ED3AD6 /* h5-APP12.png */; };
+		18B802F11FDFAC9400ED3AD6 /* h5-APP13.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E51FDFAC9400ED3AD6 /* h5-APP13.png */; };
+		18B802F21FDFAC9400ED3AD6 /* h5-APP11.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E61FDFAC9400ED3AD6 /* h5-APP11.png */; };
+		18B802F31FDFAC9400ED3AD6 /* bx_k_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E81FDFAC9400ED3AD6 /* bx_k_1.png */; };
+		18B802F41FDFAC9400ED3AD6 /* bx_k_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802E91FDFAC9400ED3AD6 /* bx_k_2.png */; };
+		18B802F51FDFAC9400ED3AD6 /* bx_k_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802EA1FDFAC9400ED3AD6 /* bx_k_3.png */; };
+		18B802F61FDFAC9400ED3AD6 /* bx_ljtz.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802EB1FDFAC9400ED3AD6 /* bx_ljtz.png */; };
+		18B802F71FDFAC9400ED3AD6 /* bx_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802EC1FDFAC9400ED3AD6 /* bx_g.png */; };
+		18B802F81FDFAC9400ED3AD6 /* qfl.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802ED1FDFAC9400ED3AD6 /* qfl.png */; };
+		18B802F91FDFAC9400ED3AD6 /* hb_ljzc.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802EE1FDFAC9400ED3AD6 /* hb_ljzc.png */; };
+		18B802FA1FDFAC9400ED3AD6 /* hb_ljtz.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B802EF1FDFAC9400ED3AD6 /* hb_ljtz.png */; };
+		18B802FD1FDFBF9E00ED3AD6 /* HYHTTPTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B802FC1FDFBF9E00ED3AD6 /* HYHTTPTools.m */; };
 		2D0F6ECE1C9657BF006A36BD /* FundAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F6ECC1C9657BF006A36BD /* FundAccountViewController.m */; };
 		2D0F6ECF1C9657BF006A36BD /* FundAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0F6ECD1C9657BF006A36BD /* FundAccountViewController.xib */; };
 		2D0F6ED41C965814006A36BD /* FundAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F6ED21C965814006A36BD /* FundAccountTableViewCell.m */; };
@@ -929,6 +942,20 @@
 		18B802D31FDE7B3500ED3AD6 /* 9999_055.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9999_055.png; sourceTree = "<group>"; };
 		18B802D41FDE7B3500ED3AD6 /* 9999_054.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9999_054.png; sourceTree = "<group>"; };
 		18B802DF1FDE7CC000ED3AD6 /* inviteaa.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = inviteaa.html; sourceTree = "<group>"; };
+		18B802E11FDFAB6B00ED3AD6 /* bannerpppp1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bannerpppp1.html; sourceTree = "<group>"; };
+		18B802E41FDFAC9400ED3AD6 /* h5-APP12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "h5-APP12.png"; sourceTree = "<group>"; };
+		18B802E51FDFAC9400ED3AD6 /* h5-APP13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "h5-APP13.png"; sourceTree = "<group>"; };
+		18B802E61FDFAC9400ED3AD6 /* h5-APP11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "h5-APP11.png"; sourceTree = "<group>"; };
+		18B802E81FDFAC9400ED3AD6 /* bx_k_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bx_k_1.png; sourceTree = "<group>"; };
+		18B802E91FDFAC9400ED3AD6 /* bx_k_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bx_k_2.png; sourceTree = "<group>"; };
+		18B802EA1FDFAC9400ED3AD6 /* bx_k_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bx_k_3.png; sourceTree = "<group>"; };
+		18B802EB1FDFAC9400ED3AD6 /* bx_ljtz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bx_ljtz.png; sourceTree = "<group>"; };
+		18B802EC1FDFAC9400ED3AD6 /* bx_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bx_g.png; sourceTree = "<group>"; };
+		18B802ED1FDFAC9400ED3AD6 /* qfl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qfl.png; sourceTree = "<group>"; };
+		18B802EE1FDFAC9400ED3AD6 /* hb_ljzc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hb_ljzc.png; sourceTree = "<group>"; };
+		18B802EF1FDFAC9400ED3AD6 /* hb_ljtz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hb_ljtz.png; sourceTree = "<group>"; };
+		18B802FB1FDFBF9E00ED3AD6 /* HYHTTPTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYHTTPTools.h; sourceTree = "<group>"; };
+		18B802FC1FDFBF9E00ED3AD6 /* HYHTTPTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYHTTPTools.m; sourceTree = "<group>"; };
 		2D0F6ECB1C9657BF006A36BD /* FundAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundAccountViewController.h; sourceTree = "<group>"; };
 		2D0F6ECC1C9657BF006A36BD /* FundAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundAccountViewController.m; sourceTree = "<group>"; };
 		2D0F6ECD1C9657BF006A36BD /* FundAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FundAccountViewController.xib; sourceTree = "<group>"; };
@@ -2593,6 +2620,8 @@
 		18B802CA1FDE7B3500ED3AD6 /* HTMLTEST */ = {
 			isa = PBXGroup;
 			children = (
+				18B802E31FDFAC9400ED3AD6 /* cc */,
+				18B802E71FDFAC9400ED3AD6 /* dd */,
 				18B802CB1FDE7B3500ED3AD6 /* 9999_0510.png */,
 				18B802CC1FDE7B3500ED3AD6 /* 9999_059.png */,
 				18B802CD1FDE7B3500ED3AD6 /* 9999_058.png */,
@@ -2602,9 +2631,35 @@
 				18B802D21FDE7B3500ED3AD6 /* 9999_057.png */,
 				18B802D31FDE7B3500ED3AD6 /* 9999_055.png */,
 				18B802D41FDE7B3500ED3AD6 /* 9999_054.png */,
+				18B802E11FDFAB6B00ED3AD6 /* bannerpppp1.html */,
 				18B802DF1FDE7CC000ED3AD6 /* inviteaa.html */,
 			);
 			path = HTMLTEST;
+			sourceTree = "<group>";
+		};
+		18B802E31FDFAC9400ED3AD6 /* cc */ = {
+			isa = PBXGroup;
+			children = (
+				18B802E41FDFAC9400ED3AD6 /* h5-APP12.png */,
+				18B802E51FDFAC9400ED3AD6 /* h5-APP13.png */,
+				18B802E61FDFAC9400ED3AD6 /* h5-APP11.png */,
+			);
+			path = cc;
+			sourceTree = "<group>";
+		};
+		18B802E71FDFAC9400ED3AD6 /* dd */ = {
+			isa = PBXGroup;
+			children = (
+				18B802E81FDFAC9400ED3AD6 /* bx_k_1.png */,
+				18B802E91FDFAC9400ED3AD6 /* bx_k_2.png */,
+				18B802EA1FDFAC9400ED3AD6 /* bx_k_3.png */,
+				18B802EB1FDFAC9400ED3AD6 /* bx_ljtz.png */,
+				18B802EC1FDFAC9400ED3AD6 /* bx_g.png */,
+				18B802ED1FDFAC9400ED3AD6 /* qfl.png */,
+				18B802EE1FDFAC9400ED3AD6 /* hb_ljzc.png */,
+				18B802EF1FDFAC9400ED3AD6 /* hb_ljtz.png */,
+			);
+			path = dd;
 			sourceTree = "<group>";
 		};
 		241A1D71F0AE40F346290B04 /* Frameworks */ = {
@@ -3094,6 +3149,8 @@
 			children = (
 				2D4CBC781C8D7BA2000FDE4B /* User.h */,
 				2D4CBC791C8D7BA2000FDE4B /* User.m */,
+				18B802FB1FDFBF9E00ED3AD6 /* HYHTTPTools.h */,
+				18B802FC1FDFBF9E00ED3AD6 /* HYHTTPTools.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4763,7 +4820,9 @@
 				9D9F43B01E49E3CB0056F777 /* WebAnnouncementViewController.xib in Resources */,
 				9D51B7471F330B6400734C59 /* cju@3x.png in Resources */,
 				9D09E0D51E3489310008ACA2 /* hongbao.png in Resources */,
+				18B802F81FDFAC9400ED3AD6 /* qfl.png in Resources */,
 				DF5511FD1D8F6B6F000B21BD /* CodeDetailTableViewCell.xib in Resources */,
+				18B802F41FDFAC9400ED3AD6 /* bx_k_2.png in Resources */,
 				2DF52EBD1C9BFE6100544A00 /* CheckLoginViewController.xib in Resources */,
 				9D52C66B1F26D5F100A329FF /* ggo@3x.png in Resources */,
 				9D34E8EC1F5F9C4200634C19 /* 2_0000_up.png in Resources */,
@@ -4772,6 +4831,7 @@
 				9D09E0D91E349A790008ACA2 /* yishitwo.png in Resources */,
 				9DA89EF71F20A5470060BA59 /* huix@2x.png in Resources */,
 				DF1F6AAE1D8D7FEC001495C6 /* AddressViewController.xib in Resources */,
+				18B802F11FDFAC9400ED3AD6 /* h5-APP13.png in Resources */,
 				9D06A7191F15F5F8001260EF /* bx@1x.png in Resources */,
 				2D4126F31C7FEC6800EFC755 /* ProjectDetailsViewController.xib in Resources */,
 				9D06A7291F15F5F8001260EF /* qd@2x.png in Resources */,
@@ -4783,11 +4843,13 @@
 				9D06A72E1F15F5F8001260EF /* wz@1x.png in Resources */,
 				0E3F755C1C900434008C9F0E /* MyIoanCell.xib in Resources */,
 				DF057BE61DC2DFDB005E0DE3 /* welcome52.png in Resources */,
+				18B802F01FDFAC9400ED3AD6 /* h5-APP12.png in Resources */,
 				9D4FF7BB1E456628008ED767 /* MyTailViewCollectionViewCell.xib in Resources */,
 				9D14E7A11E55BB9C004EA96D /* CumulativeController.xib in Resources */,
 				9D018B6A1F1F511A00BF17AD /* jd3@2x.png in Resources */,
 				DFDF14131D87A4E500CEE491 /* youhuiquan1@3x.png in Resources */,
 				2D2CE4891C98F404009CADE6 /* ReturnDetailsViewController.xib in Resources */,
+				18B802F51FDFAC9400ED3AD6 /* bx_k_3.png in Resources */,
 				9DB3BEB71E238F530097E600 /* 0.4.png in Resources */,
 				9DEC6A091E57F9A000A66933 /* allone@3x.png in Resources */,
 				9DEC6A151E57FA4B00A66933 /* kezhuanone@3x.png in Resources */,
@@ -4827,6 +4889,8 @@
 				9D064BBC1E31DFA600310140 /* MyDisperseInvestViewCell.xib in Resources */,
 				DFDF14411D8D642E00CEE491 /* key@3x.png in Resources */,
 				9D2405F31E820D1700241ABC /* ApplyrRewardMiddleCell.xib in Resources */,
+				18B802F31FDFAC9400ED3AD6 /* bx_k_1.png in Resources */,
+				18B802F71FDFAC9400ED3AD6 /* bx_g.png in Resources */,
 				9DEC6A2A1E57FB1200A66933 /* yishitwo@3x.png in Resources */,
 				9D064BB71E31B29900310140 /* zhi.png in Resources */,
 				9D27B0891E8B474C002B4AEF /* ExperiencCell.xib in Resources */,
@@ -4850,6 +4914,7 @@
 				9D52C68E1F2719FD00A329FF /* kf@2x.png in Resources */,
 				2D90D0481C85998C00B754F5 /* RegisterSecondViewController.xib in Resources */,
 				9D09E0E01E349A890008ACA2 /* keshione.png in Resources */,
+				18B802F91FDFAC9400ED3AD6 /* hb_ljzc.png in Resources */,
 				9DEC6A021E57F95000A66933 /* xinshoutwo@3x.png in Resources */,
 				0E75A9281C893319004B833A /* MySectionHeaderCell.xib in Resources */,
 				9D36C80A1F299B1A0022DAE0 /* xj@3x.png in Resources */,
@@ -4986,6 +5051,7 @@
 				0EF7BA251C911FA1008E8FE6 /* MyCreditorViewController.xib in Resources */,
 				9D567F461F3031500069F6F6 /* MyWelfareController.xib in Resources */,
 				9D06A7331F15F5F8001260EF /* zx@3x.png in Resources */,
+				18B802F61FDFAC9400ED3AD6 /* bx_ljtz.png in Resources */,
 				9D06A72F1F15F5F8001260EF /* wz@2x.png in Resources */,
 				9DB3BEB41E2359610097E600 /* 0.3.png in Resources */,
 				9D06A71E1F15F5F8001260EF /* gg@3x.png in Resources */,
@@ -4995,6 +5061,7 @@
 				9D51B7431F330B5C00734C59 /* bju@3x.png in Resources */,
 				9D8965741E2E20DD00A95F81 /* yisuanone.png in Resources */,
 				DF5512221D8FD127000B21BD /* MyCreditorActionViewControllerNext.xib in Resources */,
+				18B802E21FDFAB6C00ED3AD6 /* bannerpppp1.html in Resources */,
 				9D06A7271F15F5F8001260EF /* mx@3x.png in Resources */,
 				9D06A71C1F15F5F8001260EF /* gg@1x.png in Resources */,
 				9DB2BA121E30464F00AC4C9C /* jiaoyi.png in Resources */,
@@ -5117,6 +5184,7 @@
 				2D811E431C803A6A003188F4 /* FinanceBuyTableViewCell.xib in Resources */,
 				9DB3BEB51E2359610097E600 /* 0.2.png in Resources */,
 				DF057BE71DC2DFDB005E0DE3 /* welcome62.png in Resources */,
+				18B802F21FDFAC9400ED3AD6 /* h5-APP11.png in Resources */,
 				9D66B55F1F34070900DC56D8 /* nhi@2x.png in Resources */,
 				9D1FB9A01F54FD4A008161B4 /* niu40.png in Resources */,
 				2DCAA6661C841F7E00FDD6A5 /* WindDescribeTableViewCell.xib in Resources */,
@@ -5130,6 +5198,7 @@
 				9DEC6A011E57F95000A66933 /* xinshou@3x.png in Resources */,
 				9D319AAE1F25EE30002A2E05 /* xax@2x.png in Resources */,
 				9DEC6A0A1E57F9A000A66933 /* alltwo@3x.png in Resources */,
+				18B802FA1FDFAC9400ED3AD6 /* hb_ljtz.png in Resources */,
 				9D52C67B1F26E61C00A329FF /* you@3x.png in Resources */,
 				9DA89EF81F20A5470060BA59 /* huix@3x.png in Resources */,
 				9DF5FA301E46C9F500B8B0B9 /* AccountSafeCell.xib in Resources */,
@@ -5185,7 +5254,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NiuduFinance/Pods-NiuduFinance-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle",
 			);
@@ -5213,7 +5282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A98B5CFAA908F5746145D84D /* [CP] Embed Pods Frameworks */ = {
@@ -5568,6 +5637,7 @@
 				0E31AAB31C9145C200BCAEF2 /* MyCreditorCell.m in Sources */,
 				0E4A0EDA1C8D684E005EF87A /* ModifyPasswordViewController.m in Sources */,
 				DFDF14061D866B6A00CEE491 /* HongbaoViewController.m in Sources */,
+				18B802FD1FDFBF9E00ED3AD6 /* HYHTTPTools.m in Sources */,
 				A34F56EA1E5404D900266C5A /* VZDynamicBlock.m in Sources */,
 				A34F57081E544A2800266C5A /* WKHTTPRequest.m in Sources */,
 				2D51A52E1C7D78E400AF71A2 /* InvestViewController.m in Sources */,

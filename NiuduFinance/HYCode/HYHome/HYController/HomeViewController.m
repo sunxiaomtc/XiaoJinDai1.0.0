@@ -249,7 +249,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     [headerView setHomeScrollViewBlock:^(NSString *bannerID){
         if (![bannerID isEqualToString:@""]) {//如果为空则不进行跳转
             PageWebViewController *pageWebVC = [PageWebViewController new];
-            pageWebVC.urlStr = [NSString stringWithFormat:@"%@%@",__API_HEADER__,bannerID];
+            //pageWebVC.urlStr = [NSString stringWithFormat:@"%@%@",__API_HEADER__,bannerID];
+            pageWebVC.urlStr = bannerID;
             pageWebVC.title = @"小金袋";
             self.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:pageWebVC animated:YES];
@@ -259,17 +260,18 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     headerView.btnClickBlock = ^(NSInteger tags) {
         if(tags == 0)
         {
+            HYWebViewController *web = [[HYWebViewController alloc] init];
+            web.urlStr = @"http://plus.xiaojindai888.com/newdebt.php";
+            web.hidesBottomBarWhenPushed = YES;
+            web.title = @"注册福利";
+            [weakSelf.navigationController pushViewController:web animated:YES];
         }else
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
-            web.urlStr = @"http://118.190.211.131/mapi/index.php?act=myecv";
+            web.urlStr = @"http://plus.xiaojindai888.com/reginv.php";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"邀请有奖";
             [weakSelf.navigationController pushViewController:web animated:YES];
-//            InvitationFriendsController * invitationVC = [InvitationFriendsController new];
-//            weakSelf.hidesBottomBarWhenPushed = YES;
-//            [weakSelf.navigationController pushViewController:invitationVC animated:YES];
-//            weakSelf.hidesBottomBarWhenPushed = NO;
         }
     };
     

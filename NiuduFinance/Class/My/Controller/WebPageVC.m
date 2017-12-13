@@ -170,6 +170,7 @@
     if ([_getWebUrl isEqualToString:@"http://mertest.chinapnr.com/muser/bankcard/addCardTp"]) {
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0f];
     }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)delayMethod

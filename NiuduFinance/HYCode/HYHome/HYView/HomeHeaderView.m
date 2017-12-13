@@ -105,7 +105,7 @@ const CGFloat kMenuButtonHeight = 90.0;
     [radioView addSubview:machButton];
     [machButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self).mas_offset(-5);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/375*50, SCREEN_WIDTH/375 *46));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/375*55, SCREEN_WIDTH/375 *46));
         make.centerY.mas_equalTo(radioView).mas_offset(0);
     }];
     [machButton setTitle:@"更多>>" forState:UIControlStateNormal];
@@ -126,14 +126,14 @@ const CGFloat kMenuButtonHeight = 90.0;
     [buttonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(radioView.mas_bottom).mas_offset(12.0f);
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-30, SCREEN_WIDTH/375 *90));
-        make.centerX.mas_equalTo(0);
+        make.centerX.mas_equalTo(self);
     }];
     buttonView.backgroundColor = [UIColor whiteColor];
     
     for(int i = 0; i < 2; i++)
     {
         UIView *view = [[UIView alloc] init];
-        view.frame = CGRectMake((SCREEN_WIDTH / 2) * i, 0, SCREEN_WIDTH / 2, SCREEN_WIDTH/375 * 90);
+        view.frame = CGRectMake(((SCREEN_WIDTH - 30) / 2) * i, 0, (SCREEN_WIDTH - 30) / 2, SCREEN_WIDTH/375 * 90);
         view.backgroundColor = [UIColor whiteColor];
         if(i == 0)
         {

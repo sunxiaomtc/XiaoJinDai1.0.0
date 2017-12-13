@@ -20,16 +20,12 @@ MJCodingImplementation
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             instance = [[super allocWithZone:NULL] init];
-            
 //            [User mj_setupIgnoredCodingPropertyNames:^NSArray *{
 //                //里面写 不需要归档的 属性名
 //                return @[@"avatar",@"realName",@"token"];
 //            }];
-
         });
     }
-    
-    
     return instance;
 }
 
@@ -68,7 +64,6 @@ MJCodingImplementation
 
 + (instancetype)userFromFile
 {
-    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [userDefaults objectForKey:@"user"];
     
