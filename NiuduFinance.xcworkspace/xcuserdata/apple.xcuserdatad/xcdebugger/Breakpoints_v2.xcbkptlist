@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NiuduFinance/AppDelegate.m"
-            timestampString = "534835757.005972"
+            filePath = "NiuduFinance/Class/My/MyAccountController.m"
+            timestampString = "534849123.748652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-autoLogin"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NiuduFinance/AppDelegate.m"
-            timestampString = "534835757.014079"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-autoLogin"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "-getAccountSaftData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

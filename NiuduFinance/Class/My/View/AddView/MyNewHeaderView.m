@@ -71,7 +71,7 @@
         
         make.right.mas_equalTo(-27);
         make.centerY.mas_equalTo(self.headerImageView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(26, 26));
+        make.size.mas_equalTo(CGSizeMake(50, 26));
     }];
 //    self.messageImageView.backgroundColor = [UIColor redColor];
     
@@ -79,7 +79,7 @@
     self.messageLabel = [[UILabel alloc] init];
     [self addSubview:self.messageLabel];
     [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
+
         make.centerX.mas_equalTo(self.messageImageView.mas_right).offset(0);
         make.centerY.mas_equalTo(self.headerImageView.mas_top).offset(0);
         make.size.mas_equalTo(CGSizeMake(20, 20));
@@ -266,7 +266,11 @@
     }];
     [self.button1 addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //button2
+    //原消息 -》 设置
     self.button2 = [[UIButton alloc] init];
+    [self.button2 setTitle:@"设置" forState:UIControlStateNormal];
+    [self.button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     [self addSubview:self.button2];
     [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.messageImageView.mas_left);
@@ -297,7 +301,7 @@
     [self.button4 addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
     self.headerImageView.image = [UIImage imageNamed:@"user-未登录"];
-    self.messageImageView.image = [UIImage imageNamed:@"消息"];
+    //self.messageImageView.image = [UIImage imageNamed:@"消息"];
     self.chongZhiImageView.image = [UIImage imageNamed:@"充值"];
     self.tiXianImageView.image = [UIImage imageNamed:@"提现"];
     
@@ -306,13 +310,13 @@
 -(void)buttonAction:(UIButton *)button
 {
     if (button == self.button1) {
-        if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
-            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:1];
-        }
+//        if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
+//            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:1];
+//        }
     }
     if (button == self.button2) {
         if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
-            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:2];
+            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:1];
         }
     }
     if (button == self.button3) {

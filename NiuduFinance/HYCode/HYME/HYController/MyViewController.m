@@ -60,6 +60,16 @@
         [self loadDataNewsList];
     }];
     [self.collectionView MJ_beginTriggerPullToRefresh];
+    
+    if(![[User shareUser] checkIsLogin]) //未登录
+    {
+        MyNewModel *model = [MyNewModel new];
+        model.user.mobile = @"";
+        model.income = @"";
+        model.mayUseBalance = @"";
+        model.balance = @"";
+        self.headerView.model = model;
+    }
 }
 
 
@@ -106,7 +116,6 @@
     __weak __typeof(self) weakSelf = self;
     [util requestDic4MethodNam:@"v2/accept/user/getAssetMultipleInfo" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
         NSLog(@"_____%@",dic);
-        
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             [self.collectionView MJ_endPullToRefresh];
@@ -177,27 +186,45 @@
     if (indexPath.section == 0) {
         
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+//        cell.backgroundColor = [UIColor whiteColor];
+//
+//            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bugle"]];
+//            [cell addSubview:imageView];
+//            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.left.mas_equalTo(15);
+//                make.centerY.mas_equalTo(0);
+//            }];
+//
+//            [cell addSubview:self.ccpView];
+//        if (self.titleArray.count >= 1) {
+//            self.ccpView.titleArray = self.titleArray;
+//        }
+//            [self.ccpView clickTitleLabel:^(NSInteger index,NSString *titleString) {
+//                PageWebViewController *pageWebVC = [PageWebViewController new];
+//                pageWebVC.urlStr = [NSString stringWithFormat:@"%@v2/open/appAfficheDetail.jsp?id=%@",__API_HEADER__,self.idArray[index]];
+//                pageWebVC.title = @"最新公告";
+//                self.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:pageWebVC animated:YES];
+//                self.hidesBottomBarWhenPushed = NO;
+//            }];
+        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         cell.backgroundColor = [UIColor whiteColor];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"会员特权"]];
+        [cell addSubview:imageView];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.mas_equalTo(15);
+                        make.centerY.mas_equalTo(0);
+        }];
         
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bugle"]];
-            [cell addSubview:imageView];
-            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(15);
-                make.centerY.mas_equalTo(0);
-            }];
-        
-            [cell addSubview:self.ccpView];
-        if (self.titleArray.count >= 1) {
-            self.ccpView.titleArray = self.titleArray;
-        }
-            [self.ccpView clickTitleLabel:^(NSInteger index,NSString *titleString) {
-                PageWebViewController *pageWebVC = [PageWebViewController new];
-                pageWebVC.urlStr = [NSString stringWithFormat:@"%@v2/open/appAfficheDetail.jsp?id=%@",__API_HEADER__,self.idArray[index]];
-                pageWebVC.title = @"最新公告";
-                self.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:pageWebVC animated:YES];
-                self.hidesBottomBarWhenPushed = NO;
-            }];
+        UILabel *title = [[UILabel alloc] init];
+        title.text = @"消息中心";
+        title.textColor = [UIColor colorWithHexString:@"#282828"];
+        title.font = [UIFont systemFontOfSize:13.0f];
+        [cell addSubview:title];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(imageView.mas_right).offset(10);
+            make.centerY.mas_equalTo(0);
+        }];
         
         return cell;
     }
@@ -269,7 +296,10 @@
 {
     NSLog(@"========cell");
     if (indexPath.section == 0) {
-        
+        NewsViewController *vc = [[NewsViewController alloc]init];
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {//投资记录
@@ -453,6 +483,7 @@
                     moreWebVC.titleStr = @"提现";
                     moreWebVC.webStr =@"v2/accept/account/appcash.jsp";
                     NSLog(@"%@",moreWebVC.webStr);
+                    moreWebVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:moreWebVC animated:YES];
                     //  withdrawalViewController * VC = [withdrawalViewController new];
                     //  [self.navigationController pushViewController:VC animated:YES];

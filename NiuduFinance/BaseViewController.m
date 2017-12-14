@@ -78,10 +78,11 @@
 #pragma mark - Public
 - (UIBarButtonItem*)backBarItem
 {
-//    PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
+    //PSBarButtonItem *backItem = [PSBarButtonItem itemWithTitle:nil barStyle:PSNavItemStyleBack target:self action:@selector(backAction)];
 //    self.navigationItem.leftBarButtonItem = backItem;
     UIImage *image = [[UIImage imageNamed:@"黑色返回按钮"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain  target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = backItem;
     return backItem;
 }
 

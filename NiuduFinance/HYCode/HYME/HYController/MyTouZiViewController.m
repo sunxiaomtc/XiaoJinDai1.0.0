@@ -77,6 +77,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MyZouZiTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyZouZiTableViewCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row ==0) {
         [cell.icon setImage:[UIImage imageNamed:@"jx.png"]];
         cell.title.text =@"精选标";

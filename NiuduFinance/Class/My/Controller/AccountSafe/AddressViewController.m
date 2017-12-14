@@ -38,6 +38,11 @@
     self.codeTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     self.addressTextFiled.userInteractionEnabled = NO;
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * name = [userDefaults objectForKey:@"USERINFOREALName"];
+    NSString * mobeil = [userDefaults objectForKey:@"USERINFOREALPhone"];
+    self.nameTextFiled.text = name;
+    self.phoneTextFiled.text = mobeil;
     
     [self loadAddress];
 }
@@ -53,6 +58,7 @@
         
         if (status == 1 || status == 2) {
             [hud hide:YES];
+            //NSLog(@"%@",dic);
             _addressDic = dic;
            
             provinceid = [[dic objectForKey:@"provinceid"] integerValue];
@@ -69,16 +75,17 @@
         
         
     }];
+    
 }
 //请求返回数据展示
 - (void)setAddressInfo{
 
     
-    self.nameTextFiled.text = [NSString stringWithFormat:@"%@",IsStrEmpty([_addressDic objectForKey:@"contactname"])?@"":[_addressDic objectForKey:@"contactname"]];
+    //self.nameTextFiled.text = [NSString stringWithFormat:@"%@",IsStrEmpty([_addressDic objectForKey:@"contactname"])?@"":[_addressDic objectForKey:@"contactname"]];
     
     NSLog(@"%@",self.nameTextFiled.text);
     
-    self.phoneTextFiled.text = [NSString stringWithFormat:@"%@",IsStrEmpty([_addressDic objectForKey:@"contactphone"])?@"":[_addressDic objectForKey:@"contactphone"]];
+    //self.phoneTextFiled.text = [NSString stringWithFormat:@"%@",IsStrEmpty([_addressDic objectForKey:@"contactphone"])?@"":[_addressDic objectForKey:@"contactphone"]];
     
     NSLog(@"%@",self.phoneTextFiled.text);
     
@@ -102,6 +109,7 @@
 {
     [super viewWillAppear:animated];
     [self updateAddress];
+    
 }
 
 //- (void)setMobileStr:(NSString *)mobileStr

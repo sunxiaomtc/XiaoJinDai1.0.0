@@ -88,4 +88,7 @@
 
 //  记录用户退出
 - (void)saveExit;
+
+//是否登录
+- (BOOL)checkIsLogin;
 @end

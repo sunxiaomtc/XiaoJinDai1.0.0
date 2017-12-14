@@ -213,9 +213,9 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 return;
             }else {
                 IntegralViewController * integralVC = [IntegralViewController new];
-                self.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:integralVC animated:YES];
-                self.hidesBottomBarWhenPushed = NO;
+                weakSelf.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:integralVC animated:YES];
+                weakSelf.hidesBottomBarWhenPushed = NO;
             }
         }
         else if (buttonTag == 1) {//邀请有奖
@@ -224,9 +224,9 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 return;
             }else {
                 InvitationFriendsController * invitationVC = [InvitationFriendsController new];
-                self.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:invitationVC animated:YES];
-                self.hidesBottomBarWhenPushed = NO;
+                weakSelf.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:invitationVC animated:YES];
+                weakSelf.hidesBottomBarWhenPushed = NO;
             }
         }
         else if (buttonTag == 2) {
@@ -237,9 +237,9 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //            [self.navigationController pushViewController:pageWebVC animated:YES];
 //            self.hidesBottomBarWhenPushed = NO;
             AboutNViewController *aboutVC = [AboutNViewController new];
-            self.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:aboutVC animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+            weakSelf.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:aboutVC animated:YES];
+            weakSelf.hidesBottomBarWhenPushed = NO;
             
             
             
@@ -252,16 +252,17 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             //pageWebVC.urlStr = [NSString stringWithFormat:@"%@%@",__API_HEADER__,bannerID];
             pageWebVC.urlStr = bannerID;
             pageWebVC.title = @"小金袋";
-            self.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:pageWebVC animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
+            weakSelf.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:pageWebVC animated:YES];
+            weakSelf.hidesBottomBarWhenPushed = NO;
         }
     }];
     headerView.btnClickBlock = ^(NSInteger tags) {
         if(tags == 0)
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
-            web.urlStr = @"http://plus.xiaojindai888.com/newdebt.php";
+            //web.urlStr = @"http://plus.xiaojindai888.com/newdebt.php";
+            web.urlStr = @"http://192.168.8.109:8080/banner1fu.jsp";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"注册福利";
             [weakSelf.navigationController pushViewController:web animated:YES];
@@ -280,9 +281,9 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         PageWebViewController *pageWebVC = [PageWebViewController new];
         pageWebVC.urlStr = [NSString stringWithFormat:@"%@v2/open/appAfficheDetail.jsp?id=%@",__API_HEADER__,titleID];
         pageWebVC.title = @"最新公告";
-        self.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:pageWebVC animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        weakSelf.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:pageWebVC animated:YES];
+        weakSelf.hidesBottomBarWhenPushed = NO;
     }];
     [self.homeTableView setTableHeaderView:headerView];
     self.headerView = headerView;
@@ -290,7 +291,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     [headerView setHomeMachButtonBlock:^{
         AnnouncementViewController *vc = [[AnnouncementViewController alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     }];
     
     /*********************************** 下面代码不需要 *********************************/

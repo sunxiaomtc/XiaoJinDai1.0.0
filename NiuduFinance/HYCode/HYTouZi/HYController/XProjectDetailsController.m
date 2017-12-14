@@ -120,11 +120,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
+    
     [self getDetail];
     //设置本也的bar隐藏
     //    self.tabBarController.tabBar.hidden=YES;
-    self.navigationItem.title = @"详情页";
+    //self.navigationItem.title = @"详情页";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:17]}];
     UIButton *customView = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -558,7 +560,7 @@
     
     _cell2Label = [[UILabel alloc] init];
     _cell2Label.font = [UIFont systemFontOfSize:14];
-    _cell2Label.text =@"风险保障";
+    _cell2Label.text =@"安全保障";
     [_fourView addSubview:_cell2Label];
     [_cell2Label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_fourView.left).offset(15);
@@ -629,6 +631,8 @@
     //        make.centerX.mas_equalTo(0);
     //        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 72));
     //    }];
+    
+    
 }
 
 - (void)tap1 {
@@ -643,7 +647,7 @@
 - (void)tap2 {
     NSLog(@"第二个点击");
     MoreWebViewController * moreWebVC = [MoreWebViewController new];
-    moreWebVC.titleStr = @"风险保障";
+    moreWebVC.titleStr = @"安全保障";
     moreWebVC.webStr =@"v2/accept/new2";
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:moreWebVC animated:YES];
@@ -740,7 +744,7 @@
             _timeLabel.text = [NSString stringWithFormat:@"募集期至：%@",str];
             
         }
-        [OneTable reloadData];
+        //[OneTable reloadData];
         
     }];
 }
@@ -811,16 +815,17 @@
     _mjzeNumber.text = [NSString stringWithFormat:@"%@元", projectItem.amount];
     NSLog(@"%@",projectItem.process);
 //    _nameLabel.text = [NSString stringWithFormat:@"项目名称：%@",projectItem.title];
-    NSString *repaymentTypeId = [NSString stringWithFormat:@"%@",projectItem.repaymenttypeid];
-    if ([repaymentTypeId isEqualToString:@"1"]) {
-        _nameLabel.text = @"回款方式：按月还款,等额本息";
-    }
-    if ([repaymentTypeId isEqualToString:@"2"]) {
-        _nameLabel.text = @"回款方式：按月付息,到期还本";
-    }
-    if ([repaymentTypeId isEqualToString:@"3"]) {
-        _nameLabel.text = @"回款方式：到期还本付息";
-    }
+//    NSString *repaymentTypeId = [NSString stringWithFormat:@"%@",projectItem.repaymenttypeid];
+//    if ([repaymentTypeId isEqualToString:@"1"]) {
+//        _nameLabel.text = @"还款方式：按月还款,等额本息";
+//    }
+//    if ([repaymentTypeId isEqualToString:@"2"]) {
+//        _nameLabel.text = @"还款方式：按月付息,到期还本";
+//    }
+//    if ([repaymentTypeId isEqualToString:@"3"]) {
+//        _nameLabel.text = @"还款方式：到期还本付息";
+//    }
+    _nameLabel.text = @"还款方式：一次性还款";
     _syktNum.text = [NSString stringWithFormat:@"%@",projectItem.remainamount];
     _syktNumber.text = [NSString stringWithFormat:@"/%@",projectItem.amount];
 }

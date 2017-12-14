@@ -21,9 +21,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *commitButton;
 
-@property (nonatomic,strong)NSString *mobileStr;
+@property (nonatomic,copy) NSString *mobileStr;
 
-@property (nonatomic,strong) NSString *realName;
+@property (nonatomic,copy) NSString *realName;
 
 
 @end

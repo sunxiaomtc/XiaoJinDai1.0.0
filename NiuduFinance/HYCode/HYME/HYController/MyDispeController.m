@@ -45,6 +45,7 @@
 
 //新未结清
 - (void)getInBiData {
+    [_tableView.mj_header beginRefreshing];
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(0),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
@@ -63,11 +64,13 @@
             [_tableView.mj_footer resetNoMoreData];
         }
         [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
     }];
 }
 
 //新已结清
 - (void)getBakLendData {
+    [_tableView.mj_header beginRefreshing];
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(1),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
         if (status == 0) {
@@ -87,11 +90,13 @@
             [_tableView.mj_footer resetNoMoreData];
         }
         [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
     }];
 }
 
 //新全部
 - (void)getAllBdData {
+    [_tableView.mj_header beginRefreshing];
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(2),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
@@ -107,6 +112,7 @@
             [_tableView.mj_footer resetNoMoreData];
         }
         [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
     }];
 }
 
@@ -133,6 +139,7 @@
     [_touArr removeAllObjects];
     
     if (sender == _optionedStateButton) {
+        sender.selected = YES;
         return;
     }else {
         _optionedStateButton.selected = NO;

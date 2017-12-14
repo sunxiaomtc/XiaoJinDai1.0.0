@@ -82,4 +82,17 @@ MJCodingImplementation
     [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:KHaveLogin];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+-(BOOL)checkIsLogin
+{
+    NSString *isHaveRun = [[NSUserDefaults standardUserDefaults] objectForKey:KHaveLogin];
+    if(!isHaveRun || [isHaveRun isEqualToString:@"NO"])
+    {
+        return NO;
+    }else
+    {
+        return YES;
+    }
+}
+
 @end

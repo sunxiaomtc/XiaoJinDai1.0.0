@@ -417,7 +417,7 @@ static AFHTTPSessionManager *manager;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //NSLog(@"%@",responseObject);
-        NSLog(@"%@",postURL);
+        //NSLog(@"%@",postURL);
         NSString *resultStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSString *resultMsg;
         int statusInt;

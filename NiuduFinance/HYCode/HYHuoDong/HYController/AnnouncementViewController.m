@@ -30,7 +30,7 @@ static NSString *AnnouncementCellID = @"AnnouncementCell";
 
 - (void)createTabView {
 
-    self.announcementTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    self.announcementTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStyleGrouped];
     self.announcementTabView.delegate = self;
     self.announcementTabView.dataSource = self;
     self.announcementTabView.separatorStyle = UITableViewCellSeparatorStyleNone;

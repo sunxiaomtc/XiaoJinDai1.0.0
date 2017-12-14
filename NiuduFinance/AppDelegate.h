@@ -30,6 +30,8 @@
 
 +(BOOL)backToMe;
 
++(BOOL)backToTouZi;
+
 
 @end
 

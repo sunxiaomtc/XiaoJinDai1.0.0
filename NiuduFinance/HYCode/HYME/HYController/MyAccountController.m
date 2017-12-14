@@ -159,8 +159,10 @@
         make.height.mas_equalTo(10);
     }];
     
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = infoDict[@"CFBundleShortVersionString"];
     _versionLabel = [UILabel new];
-    [_versionLabel setText:@"版本V1.0.0"];
+    [_versionLabel setText:[NSString stringWithFormat:@"版本V%@",appVersion]];
     _versionLabel.frame = CGRectMake(0, 0, 50, 10);
     _versionLabel.textAlignment = NSTextAlignmentCenter;
     [_versionLabel setTextColor:UIcolors];
@@ -202,7 +204,8 @@
                 NSLog(@"%@",srtt);
                 [NetWorkingUtil setImage:_imageView2 url:srtt defaultIconName:@"bankInfo" successBlock:nil];
             }
-            if ([[[_myAccountDic objectForKey:@"bankInfo"] objectForKey:@"bankName"] isEqual:[NSNull null]]) {
+            NSString *bankName = _myAccountDic[@"bankInfo"][@"bankName"];
+            if (bankName == nil) {
                 _cardNameLabel.text = [NSString stringWithFormat:@"未设置"];
                 _cardNumLabel.text = [NSString stringWithFormat:@"未设置"];
             }else {
@@ -215,6 +218,9 @@
             NSString * mobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
             NSString * numberString = [mobileStr stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             _mobileStr = numberString;
+            [[NSUserDefaults standardUserDefaults] setObject:_realnameStr forKey:@"USERINFOREALName"];
+            [[NSUserDefaults standardUserDefaults] setObject:_mobileStr forKey:@"USERINFOREALPhone"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
         }
         [self.tableView reloadData];
     }];
@@ -298,7 +304,8 @@
             if (IsStrEmpty(_realnameStr)) {
                 cell.nameLabel.text = @"未设置";
             }else{
-                cell.nameLabel.text = _realnameStr;
+                
+                cell.nameLabel.text = [self yincangName:_realnameStr];
             }
         }else if (indexPath.row == 1)
         {
@@ -334,34 +341,35 @@
             }
         }else if (indexPath.row == 1)
         {
-            cell.titileLabel.text = @"托管账户";
+            cell.titileLabel.text = @"进行实名认证";
             if ([[User userFromFile].isOpenAccount integerValue] == 0)
             {
                 cell.nameLabel.text = @"未设置";
             }else{
-                cell.nameLabel.text = @"进入汇付";
+                cell.nameLabel.text = @"进入汇付>";
             }
         }
     }else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) {
             cell.titileLabel.text = @"联系地址";
-            cell.nameLabel.text = self.addressStr;
+            //cell.nameLabel.text = self.addressStr;
+            cell.nameLabel.text = @"设置>";
         }else if (indexPath.row == 1)
         {
             cell.titileLabel.text = @"电子邮箱";
             if (IsStrEmpty([User userFromFile].email))
             {
-                cell.nameLabel.text = @"未设置";
+                cell.nameLabel.text = @"未设置>";
             }else {
-                cell.nameLabel.text = [NSString stringWithFormat:@"%@",self.emailStr];
+                cell.nameLabel.text = [NSString stringWithFormat:@"%@>",self.emailStr];
             }
         }
     }else if (indexPath.section == 3)
     {
         if (indexPath.row == 0) {
             cell.titileLabel.text = @"登录密码";
-            cell.nameLabel.text = @"修改密码";
+            cell.nameLabel.text = @"修改密码>";
         }
     }else if (indexPath.section == 4)
     {
@@ -387,6 +395,18 @@
     }
     [cell setMyAccountDic:_myAccountDic];
     return cell;
+}
+
+//隐藏名字后面
+-(NSString *)yincangName:(NSString *)name
+{
+    NSString *n1 = [name substringToIndex:1];
+    NSString *n2 = [name substringFromIndex:1];
+    for(int i = 0; i < n2.length; i ++)
+    {
+        n1 = [NSString stringWithFormat:@"%@*",n1];
+    }
+    return n1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -431,8 +451,9 @@
         if (indexPath.row == 0)
         {
             AddressViewController *vc = [[AddressViewController alloc] init];
-            vc.mobileStr = [_myAccountDic objectForKey:@"mobile"];
-            vc.realName = [NSString stringWithFormat:@"%@",[_myAccountDic objectForKey:@"realname"]];
+            //NSLog(@"%@,%@",[[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"],[[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"realname"]);
+            vc.mobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
+            vc.realName = [[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"realname"];
             vc.title = @"地址认证";
             [self.navigationController pushViewController:vc animated:YES];
         }else if (indexPath.row == 1)

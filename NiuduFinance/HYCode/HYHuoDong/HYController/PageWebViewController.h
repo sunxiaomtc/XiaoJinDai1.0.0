@@ -10,5 +10,6 @@
 
 @interface PageWebViewController : BaseViewController
 
-@property (nonatomic, copy) NSString *urlStr;
+@property (nonatomic, strong) NSString *urlStr;
+
 @end

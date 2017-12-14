@@ -501,7 +501,7 @@
     }];
     
     _wayLabel = [UILabel new];
-    [_wayLabel setText:@"回款方式：一次性还本付息"];
+    [_wayLabel setText:@"还款方式：一次性还本付息"];
     [_wayLabel setFont:[UIFont systemFontOfSize:12]];
     [_wayLabel setTextColor:[UIColor colorWithHexString:@"#666565"]];
     [_threeView addSubview:_wayLabel];

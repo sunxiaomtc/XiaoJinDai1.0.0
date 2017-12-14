@@ -239,6 +239,16 @@
     return YES;
 }
 
+
++(BOOL)backToTouZi
+{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    TabBarController *tabbarController = [[TabBarController alloc] init];
+    tabbarController.selectedIndex = 1;
+    app.window.rootViewController = tabbarController;
+    return YES;
+}
+
 + (BOOL)checkTabbarLogin
 {
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
