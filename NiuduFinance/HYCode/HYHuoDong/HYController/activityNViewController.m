@@ -70,7 +70,7 @@
 {
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     // 根据需要去设置对应的属性
-    WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) configuration:config];
+    WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49) configuration:config];
     
     webView.UIDelegate = self;
     webView.navigationDelegate = self;

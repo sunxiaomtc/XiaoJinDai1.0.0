@@ -46,6 +46,8 @@
     [super viewDidLoad];
     [self backBarItem];
     
+    [self setupRefreshWithTableView:self.returnDetailsTableView];
+    
     _returnDetailsArr = [NSMutableArray array];
     
     [self setTableViewInfo];
@@ -53,6 +55,7 @@
 
 - (void)getReturnDetailsData
 {
+    [self.returnDetailsTableView.mj_header beginRefreshing];
     [self.httpUtil requestArr4MethodNam:@"v2/accept/project/repaymentdetail" parameters:@{@"projectId":@(_projectId),@"projectbidid":@(_projectbidid),@"projectType":@(1)} result:^(NSArray *arr, int status, NSString *msg) {
         if (status == 0) {
         }else{
@@ -64,6 +67,7 @@
             }
         }
         [_returnDetailsTableView reloadData];
+        [self.returnDetailsTableView.mj_header endRefreshing];
     } convertClassName:nil key:nil];
 
 }

@@ -36,6 +36,7 @@
 @property (nonatomic, strong)NSString * realnameStr;
 @property (nonatomic, strong)NSString * idnumberStr;
 @property (nonatomic, strong)NSString * mobileStr;
+@property (nonatomic, strong)NSString * realMobileStr;
 @property (nonatomic,strong)UIButton * tndBtn;
 @property (nonatomic,strong)UILabel * versionLabel;
 
@@ -216,10 +217,11 @@
             _realnameStr = [[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"realname"];
             _idnumberStr = [[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"idnumber"];
             NSString * mobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
+            _realMobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
             NSString * numberString = [mobileStr stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             _mobileStr = numberString;
             [[NSUserDefaults standardUserDefaults] setObject:_realnameStr forKey:@"USERINFOREALName"];
-            [[NSUserDefaults standardUserDefaults] setObject:_mobileStr forKey:@"USERINFOREALPhone"];
+            [[NSUserDefaults standardUserDefaults] setObject:_realMobileStr forKey:@"USERINFOREALPhone"];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
         [self.tableView reloadData];
@@ -452,7 +454,7 @@
         {
             AddressViewController *vc = [[AddressViewController alloc] init];
             //NSLog(@"%@,%@",[[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"],[[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"realname"]);
-            vc.mobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
+            vc.mobileStr = _realMobileStr;
             vc.realName = [[_myAccountDic objectForKey:@"userDetail"] objectForKey:@"realname"];
             vc.title = @"地址认证";
             [self.navigationController pushViewController:vc animated:YES];

@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setFundAccountDic:(NSDictionary *)fundAccountDic
@@ -74,13 +75,13 @@
         make.height.mas_equalTo(15);
     }];
     
-    self.fundAccountLab.numberOfLines = 0;
+    self.fundAccountLab.numberOfLines = 1;
     [self.contentView addSubview:_fundAccountLab];
     [_fundAccountLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_fundAmountLab.mas_bottom).with.offset(0);
         make.left.equalTo(_funImage.mas_right).with.offset(10);
         make.height.mas_equalTo(30);
-        make.right.mas_equalTo(0);
+        make.right.mas_equalTo(_fundDataLab.mas_left).offset(-10);
 
     }];
     

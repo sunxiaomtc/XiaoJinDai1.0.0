@@ -41,12 +41,15 @@
     self.navigationItem.title = @"优惠券";
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:17]}];
-    UIButton *customView = [UIButton buttonWithType:UIButtonTypeCustom];
-    customView.frame = CGRectMake(0, 0, 44, 44);
-    customView.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [customView setImage:[UIImage imageNamed:@"黑色返回按钮"] forState:UIControlStateNormal];
-    [customView addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    self.navigationController.navigationBar.titleTextAttributes = mine;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self setupBarButtomItemWithImageName:@"黑色返回按钮" highLightImageName:@"nav_back_select.png" selectedImageName:nil target:self action:@selector(backClick) leftOrRight:YES];
+}
+
+-(void)backClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad {
@@ -78,6 +81,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(test:) name:@"notifacation" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChuanCan:) name:@"chuanCan" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testTy:) name:@"tyQuan" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(yhqLoading:) name:@"YHQLoading" object:nil];
     
 //    HYXiaLaView *HY = [[HYXiaLaView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
 //    HY.titleArr = @[@"我的优惠券",@"使用"];
@@ -94,21 +98,30 @@
 - (void)test:(NSNotification*) notification {
     _firstAry = [notification object];
     [self.tableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)testChuanCan:(NSNotification*) chuanCan {
     _statusStr = [NSString stringWithFormat:@"%@",chuanCan.object];
     [self.tableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
 }
 
 - (void)testTy:(NSNotification*)testTy {
     _tYStr = [NSString stringWithFormat:@"%@",testTy.object];
     [self.tableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+-(void)yhqLoading:(NSNotification *)yhqLoading
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)backAction {
     //返回（我的）
-    [AppDelegate backToMe];
+    //[AppDelegate backToMe];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -161,7 +174,7 @@
 }
 
 - (void)loadCanHongBaoData {
-    
+    __weak __typeof(self) weakSelf = self;
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",msg);
         if (status == 0) {
@@ -180,10 +193,15 @@
             }
             [_firstAry removeAllObjects];
             [_firstAry addObjectsFromArray:dic];
+            if(_firstAry.count == 0)
+            {
+                [MBProgressHUD showMessag:@"暂无优惠券" toView:weakSelf.view];
+            }
             [_tableView.mj_footer resetNoMoreData];
             
         }
         [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
     }];
 }
 
@@ -241,11 +259,12 @@
 
 - (void)headerRefreshloadData {
     if (_touArr.count < _limit) {
-        [_tableView.mj_header endRefreshing];
-        return;
+        [self loadCanHongBaoData];
+        //return;
     }else {
+        [self loadCanHongBaoData];
     }
-    [_tableView.mj_header endRefreshing];
+    //[_tableView.mj_header endRefreshing];
 }
 
 - (void)footerRefreshloadData {
@@ -268,6 +287,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"notifacation" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"chuanCan" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"tyQuan" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YHQLoading" object:nil];
+    
 }
 
 @end

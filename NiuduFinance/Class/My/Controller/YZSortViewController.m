@@ -96,6 +96,7 @@ static NSString * const ID = @"cell";
 //新未结清/可使用
 - (void)getInBiData
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
@@ -121,6 +122,7 @@ static NSString * const ID = @"cell";
 //新未结清/可使用/特权券
 - (void)getBakLendData
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/commonCouponList" parameters:@{@"statusid":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);

@@ -111,13 +111,12 @@ static NSString * const ID = @"cell";
             [self getAllBdData1];
         }
     }
-    
-    
 }
 
 //新未结清/可使用
 - (void)getInBiData
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
@@ -135,7 +134,6 @@ static NSString * const ID = @"cell";
             [_toArr1 addObjectsFromArray:dic];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"notifacation"object:_toArr1];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"chuanCan"object:0];
-
         }
         [_tableView reloadData];
 
@@ -146,6 +144,7 @@ static NSString * const ID = @"cell";
 //新已结清/已使用
 - (void)getBakLendData
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(1)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
@@ -174,6 +173,7 @@ static NSString * const ID = @"cell";
 //新全部/已过期
 - (void)getAllBdData
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(2)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);

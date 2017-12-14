@@ -15,6 +15,7 @@
 #import <WKWebViewJavascriptBridge.h>
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "XProjectDetailsController.h"
 @interface HYWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, weak) WKWebView *webView;
 
@@ -92,14 +93,17 @@
     //防止progressView被网页挡住
     [self.view bringSubviewToFront:self.progressView];
     //截取URL 判断
-    if([webView.URL.absoluteString isEqualToString:@"http://192.168.8.109:8080/fffReg.html"]) //跳注册
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
     {
         [self gotoRegiset];
         
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"]) //跳投资
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
     {
         [self gotoTouZi];
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR2"]) //跳邀请
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"])//跳投资详情
+    {
+        [self gotoTouZiDetails];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"]) //跳邀请
     {
         if (![[User shareUser] checkIsLogin]) {
             [MBProgressHUD showMessag:@"未登录" toView:self.view];
@@ -118,14 +122,17 @@
     NSLog(@"加载完成");
     //加载完成后隐藏progressView
     //self.progressView.hidden = YES;
-    if([webView.URL.absoluteString isEqualToString:@"http://192.168.8.109:8080/fffReg.html"]) //跳注册
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
     {
         [self.webView goBack];
         
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"]) //跳投资
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
     {
         [self.webView goBack];
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR2"]) //跳邀请
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
     {
         [self.webView goBack];
     }
@@ -136,14 +143,17 @@
     NSLog(@"加载失败");
     //加载失败同样需要隐藏progressView
     //self.progressView.hidden = YES;
-    if([webView.URL.absoluteString isEqualToString:@"http://192.168.8.109:8080/fffReg.html"]) //跳注册
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
     {
         [self.webView goBack];
         
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR"]) //跳投资
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
     {
         [self.webView goBack];
-    }else if ([webView.URL.absoluteString isEqualToString:@"http://m.xiaojindai888.com/fffR2"]) //跳邀请
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
     {
         [self.webView goBack];
     }
@@ -187,6 +197,20 @@
 {
     LoginViewController *login = [LoginViewController new];
     [self presentViewController:login animated:YES completion:nil];
+}
+
+-(void)gotoTouZiDetails
+{
+    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+    projectDetailsVC.addrate = self.addrate;
+    if (self.recProductArr.count > 0) {
+        SNProjectListItem * projectItem = self.recProductArr[0];
+        projectDetailsVC.projectId = [projectItem.projectId intValue];
+        projectDetailsVC.projectItem = projectItem;
+        projectDetailsVC.resultsRate = [self.resultsRatess floatValue];
+    }
+    projectDetailsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:projectDetailsVC animated:YES];
 }
 
 - (void)backAction {

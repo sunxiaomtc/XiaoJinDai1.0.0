@@ -246,27 +246,27 @@
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 1));
     }];
     
-    _nowBtn = [UIButton new];
-    [_nowBtn setTitle:@"马上去投福利标>>" forState:UIControlStateNormal];
-    [_nowBtn setTitleColor:[UIColor colorWithHexString:@"#0096FF"] forState:UIControlStateNormal];
-    _nowBtn.titleLabel.font = [UIFont systemFontOfSize:10];
-    [_nowBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.twoView addSubview:_nowBtn];
-    [_nowBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(0);
-        make.bottom.mas_equalTo(-88);
-        make.height.mas_equalTo(10);
-    }];
-    
-    _imageView2 = [UIImageView new];
-    UIImage * image2 = [UIImage imageNamed:@"nhi.png"];
-    _imageView2.image = image2;
-    [self.twoView addSubview:_imageView2];
-    [_imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_nowBtn.mas_centerY);
-        make.right.equalTo(_nowBtn.mas_left).with.offset(-4);
-        make.size.mas_equalTo(CGSizeMake(10, 13));
-    }];
+//    _nowBtn = [UIButton new];
+//    [_nowBtn setTitle:@"马上去投福利标>>" forState:UIControlStateNormal];
+//    [_nowBtn setTitleColor:[UIColor colorWithHexString:@"#0096FF"] forState:UIControlStateNormal];
+//    _nowBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+//    [_nowBtn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.twoView addSubview:_nowBtn];
+//    [_nowBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.mas_equalTo(0);
+//        make.bottom.mas_equalTo(-88);
+//        make.height.mas_equalTo(10);
+//    }];
+//
+//    _imageView2 = [UIImageView new];
+//    UIImage * image2 = [UIImage imageNamed:@"nhi.png"];
+//    _imageView2.image = image2;
+//    [self.twoView addSubview:_imageView2];
+//    [_imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(_nowBtn.mas_centerY);
+//        make.right.equalTo(_nowBtn.mas_left).with.offset(-4);
+//        make.size.mas_equalTo(CGSizeMake(10, 13));
+//    }];
 }
 
 - (void)btnClick

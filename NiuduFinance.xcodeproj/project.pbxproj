@@ -2626,6 +2626,9 @@
 				9D52C69B1F27434800A329FF /* MyDisperCell.h */,
 				9D52C69C1F27434800A329FF /* MyDisperCell.m */,
 				9D52C69D1F27434800A329FF /* MyDisperCell.xib */,
+				9D36C7EF1F29795C0022DAE0 /* ShareProjectCell.h */,
+				9D36C7F01F29795C0022DAE0 /* ShareProjectCell.m */,
+				9D36C7F11F29795C0022DAE0 /* ShareProjectCell.xib */,
 				9D18C2BD1F319C8100AD769F /* MyAccountCell.h */,
 				9D18C2BE1F319C8100AD769F /* MyAccountCell.m */,
 				9D18C2BF1F319C8100AD769F /* MyAccountCell.xib */,
@@ -3948,9 +3951,6 @@
 			isa = PBXGroup;
 			children = (
 				9D36C7F41F2982940022DAE0 /* 体验回款详情 */,
-				9D36C7EF1F29795C0022DAE0 /* ShareProjectCell.h */,
-				9D36C7F01F29795C0022DAE0 /* ShareProjectCell.m */,
-				9D36C7F11F29795C0022DAE0 /* ShareProjectCell.xib */,
 			);
 			name = "分享cell";
 			sourceTree = "<group>";

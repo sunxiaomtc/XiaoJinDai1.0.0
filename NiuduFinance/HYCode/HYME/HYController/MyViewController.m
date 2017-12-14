@@ -56,8 +56,9 @@
     //    }else{
     //        [self getOpen];
     //    }
+    __weak __typeof(self)weakSelf = self;
     [self.collectionView MJ_addPullToRefreshWithHandler:^{
-        [self loadDataNewsList];
+        [weakSelf loadDataNewsList];
     }];
     [self.collectionView MJ_beginTriggerPullToRefresh];
     
@@ -83,6 +84,8 @@
 {
     [super viewDidLoad];
     [self createCollectionView];
+    
+    
 }
 
 -(void)createCollectionView
@@ -118,16 +121,15 @@
         NSLog(@"_____%@",dic);
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
-            [self.collectionView MJ_endPullToRefresh];
+            [weakSelf.collectionView MJ_endPullToRefresh];
 //            LoginViewController *login = [LoginViewController new];
 //            [weakSelf presentViewController:login animated:YES completion:nil];
         }else{
+            weakSelf.myNewModel = [MyNewModel mj_objectWithKeyValues:dic];
             
-            self.myNewModel = [MyNewModel mj_objectWithKeyValues:dic];
+            weakSelf.headerView.model = weakSelf.myNewModel;
             
-            self.headerView.model = self.myNewModel;
-            
-            [self.collectionView MJ_endPullToRefresh];
+            [weakSelf.collectionView MJ_endPullToRefresh];
         }
     }];
 
@@ -142,16 +144,16 @@
         
     } completionHandler:^(id responseObject, NSError *error) {
         if (error) {
-            [self.collectionView MJ_endPullToRefresh];
+            [weakSelf.collectionView MJ_endPullToRefresh];
         }else {
             NSArray *array = responseObject[@"data"];
             for (NSDictionary *dic in array) {
                 
-                [self.titleArray addObject:dic[@"title"]];
-                [self.idArray addObject:dic[@"newsinformationid"]];
+                [weakSelf.titleArray addObject:dic[@"title"]];
+                [weakSelf.idArray addObject:dic[@"newsinformationid"]];
             }
-            [self.collectionView reloadData];
-            [self.collectionView MJ_endPullToRefresh];
+            [weakSelf.collectionView reloadData];
+            [weakSelf.collectionView MJ_endPullToRefresh];
         }
     }];
 }

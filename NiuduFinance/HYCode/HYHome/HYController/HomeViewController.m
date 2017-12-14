@@ -262,14 +262,20 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
             //web.urlStr = @"http://plus.xiaojindai888.com/newdebt.php";
-            web.urlStr = @"http://192.168.8.109:8080/banner1fu.jsp";
+            web.urlStr = @"http://www.xiaojindai888.com/fff/banner1fu.jsp";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"注册福利";
+            web.addrate = self.addRate;
+            if (_recProductArr.count > 0) {
+                web.recProductArr = [_recProductArr copy];
+                web.resultsRatess = self.rateStr;
+            }
             [weakSelf.navigationController pushViewController:web animated:YES];
         }else
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
-            web.urlStr = @"http://plus.xiaojindai888.com/reginv.php";
+            //web.urlStr = @"http://plus.xiaojindai888.com/reginv.php";
+            web.urlStr = @"http://www.xiaojindai888.com/fff/inviteaa.html";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"邀请有奖";
             [weakSelf.navigationController pushViewController:web animated:YES];

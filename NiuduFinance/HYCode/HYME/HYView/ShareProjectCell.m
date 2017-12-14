@@ -76,42 +76,42 @@
         case ShareProjectStatBidding:
             _nameLabel.text = [modeIDic objectForKey:@"title"] ;
             if ([rateStr rangeOfString:@"."].location != NSNotFound) {
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"]floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"]floatValue]];
             }else{
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"] floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"] floatValue]];
                 
             }
             _xieYiBtn.titleLabel.text=@"协议";
-            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"interest"] floatValue]];
-            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"repayamount"] floatValue]];
+            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"interest"] floatValue]];
+            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"repayamount"] floatValue]];
             _weiInterestLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"receivableamount"]floatValue]];
-            _benJinLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"principal"] floatValue]];
+            _benJinLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"principal"] floatValue]];
             break;
         case ShareProjectStatRufunding:
             _nameLabel.text = [modeIDic objectForKey:@"title"] ;
             if ([rateStr rangeOfString:@"."].location != NSNotFound) {
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"]floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"]floatValue]];
             }else{
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"]floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"]floatValue]];
             }
             _xieYiBtn.titleLabel.text=@"协议";
-            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"interest"] floatValue]];
-            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"repayamount"]floatValue ]];
+            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"interest"] floatValue]];
+            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"repayamount"]floatValue ]];
             _weiInterestLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"receivableamount"]floatValue]];
-            _benJinLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"principal"]floatValue]];
+            _benJinLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"principal"]floatValue]];
             break;
         case ShareProjectStatHistory:
             _nameLabel.text = [modeIDic objectForKey:@"title"] ;
             if ([rateStr rangeOfString:@"."].location != NSNotFound) {
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"]floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"]floatValue]];
             }else{
-                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"rate"] floatValue]];
+                _shouyiLabel.text = [NSString stringWithFormat:@"%.2f%%",[[modeIDic objectForKey:@"rate"] floatValue]];
             }
             _xieYiBtn.titleLabel.text=@"协议";
-            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"interest"] floatValue]];
-            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"repayamount"] floatValue]];
+            _yuQiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"interest"] floatValue]];
+            _yiBenXiLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"repayamount"] floatValue]];
             _weiInterestLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"receivableamount"]floatValue]];
-            _benJinLabel.text = [NSString stringWithFormat:@"%.2f",[[modeIDic objectForKey:@"principal"] floatValue]];
+            _benJinLabel.text = [NSString stringWithFormat:@"%.2f元",[[modeIDic objectForKey:@"principal"] floatValue]];
             break;
     }
     
