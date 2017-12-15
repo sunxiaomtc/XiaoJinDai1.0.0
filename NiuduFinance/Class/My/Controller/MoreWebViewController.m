@@ -64,6 +64,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"%@",webView.request.URL);
     _hud = [MBProgressHUD showStatus:nil toView:self.view ];
     [_hud hide:YES afterDelay:1.0];
 }

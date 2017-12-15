@@ -214,8 +214,11 @@
         return;
     }else {
         ReturnDetailsViewController *returnDetailsVC = [ReturnDetailsViewController new];
-        returnDetailsVC.projectId = [[_touArr[indexPath.row] objectForKey:@"projectId"] intValue];
-        [self.navigationController pushViewController:returnDetailsVC animated:YES];
+        if(_touArr.count > indexPath.row)
+        {
+            returnDetailsVC.projectId = [[_touArr[indexPath.row] objectForKey:@"projectId"] intValue];
+            [self.navigationController pushViewController:returnDetailsVC animated:YES];
+        }
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
 }

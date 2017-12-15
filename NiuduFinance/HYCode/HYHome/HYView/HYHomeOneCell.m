@@ -49,13 +49,22 @@
 //                    value:qianhui(241, 62, 52)
 //                    range:NSMakeRange(0, attrString.length)];
 //    self.bfbLabel.attributedText = attrString;
-    self.bfbLabel.text = [NSString stringWithFormat:@"%@",bfbStr];
+    if(![bfbStr isKindOfClass:[NSNull class]] && ![bfbStr isEqualToString:@"(null)"] && bfbStr.length > 0)
+    {
+        NSLog(@"%@",bfbStr);
+        self.bfbLabel.text = [NSString stringWithFormat:@"%@",bfbStr];
+    }
+    
 }
 
 -(void)setAddBFBStr:(NSString *)addBFBStr
 {
     _addBFBStr = addBFBStr;
-    self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+    if(![addBFBStr isKindOfClass:[NSNull class]] && ![addBFBStr isEqualToString:@"(null)"] && addBFBStr.length > 0)
+    {
+        self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+    }
+    
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
