@@ -172,7 +172,7 @@
     }];
     
     _titleLab = [UILabel new];
-    [_titleLab setText:@"合法见多识广哈迪斯发个"];
+    [_titleLab setText:@""];
     [_titleLab setFont:[UIFont systemFontOfSize:15]];
     [_titleLab setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_titleLab];
@@ -182,7 +182,7 @@
     }];
 
     _rateLabe = [UILabel new];
-    _rateLabe.text = @"17%";
+    _rateLabe.text = @"%";
     [_rateLabe setFont:[UIFont systemFontOfSize:46]];
     [_rateLabe setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_rateLabe];
@@ -191,7 +191,7 @@
         make.centerX.mas_equalTo(self.firstView).mas_offset(0);
     }];
     _addLab = [UILabel new];
-    _addLab.text = @"+15%";
+    _addLab.text = @"%";
     [_addLab setFont:[UIFont systemFontOfSize:20]];
     [_addLab setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_addLab];
@@ -214,7 +214,7 @@
     
     
     _timeLabe = [UILabel new];
-    [_timeLabe setText:@"1个月"];
+    [_timeLabe setText:@""];
     [_timeLabe setFont:[UIFont systemFontOfSize:17]];
     [_timeLabe setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_timeLabe];
@@ -234,7 +234,7 @@
     }];
     
     _syktNumb = [UILabel new];
-    [_syktNumb setText:@"0.00"];
+    [_syktNumb setText:@""];
     [_syktNumb setFont:[UIFont systemFontOfSize:17]];
     [_syktNumb setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_syktNumb];
@@ -267,7 +267,7 @@
     }];
     
     _kyyeNumb = [UILabel new];
-    [_kyyeNumb setText:@"0.00元"];
+    [_kyyeNumb setText:@"元"];
     [_kyyeNumb setFont:[UIFont systemFontOfSize:13]];
     [_kyyeNumb setTextColor:[UIColor blackColor]];
     [self.tableView addSubview:_kyyeNumb];

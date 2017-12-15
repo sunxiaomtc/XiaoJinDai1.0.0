@@ -218,7 +218,7 @@ const CGFloat kMenuButtonHeight = 90.0;
         [marray addObject:dic[@"url"]];
     }
     if (_HomeScrollViewBlock) {
-        _HomeScrollViewBlock (marray[index]);
+        _HomeScrollViewBlock (marray[index],index);
     }
 }
 #pragma mark - 广播文字数据数组以及点击事件

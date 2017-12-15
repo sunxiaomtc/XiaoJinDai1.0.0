@@ -8,6 +8,9 @@
 
 #import "PageWebViewController.h"
 #import <WebKit/WebKit.h>
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "XProjectDetailsController.h"
 
 @interface PageWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -66,6 +69,19 @@
     self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
     //防止progressView被网页挡住
     [self.view bringSubviewToFront:self.progressView];
+    
+    //截取URL 判断
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self gotoRegiset];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self gotoTouZi];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"])//跳投资详情
+    {
+        [self gotoTouZiDetails];
+    }
 }
 
 //加载完成
@@ -73,6 +89,17 @@
     NSLog(@"加载完成");
     //加载完成后隐藏progressView
     //self.progressView.hidden = YES;
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self.webView goBack];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }
 }
 
 //加载失败
@@ -80,6 +107,71 @@
     NSLog(@"加载失败");
     //加载失败同样需要隐藏progressView
     //self.progressView.hidden = YES;
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self.webView goBack];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }
+}
+
+#pragma mark - GOTO
+-(void)gotoRegiset
+{
+    if (![[User shareUser] checkIsLogin]) {
+        [self loginMethod];
+    }else
+    {
+        //跳投资页
+        [MBProgressHUD showMessag:@"已注册，即将前往投资" toView:self.view];
+        //[NSThread sleepForTimeInterval:2.0];
+        [self touziMethod];
+        //[self performSelector:@selector(touziMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+    }
+}
+
+-(void)touziMethod
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [AppDelegate backToTouZi];
+}
+
+-(void)gotoTouZi
+{
+    if (![[User shareUser] checkIsLogin]) {
+        
+        [MBProgressHUD showMessag:@"未登录" toView:self.view];
+        [self loginMethod];
+        //[self performSelector:@selector(loginMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+    }else
+    {
+        [self touziMethod];
+    }
+}
+
+-(void)loginMethod
+{
+    LoginViewController *login = [LoginViewController new];
+    [self presentViewController:login animated:YES completion:nil];
+}
+
+-(void)gotoTouZiDetails
+{
+    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+    projectDetailsVC.addrate = self.addrate;
+    if (self.recProductArr.count > 0) {
+        SNProjectListItem * projectItem = self.recProductArr[0];
+        projectDetailsVC.projectId = [projectItem.projectId intValue];
+        projectDetailsVC.projectItem = projectItem;
+        projectDetailsVC.resultsRate = [self.resultsRatess floatValue];
+    }
+    projectDetailsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:projectDetailsVC animated:YES];
 }
 
 - (void)dealloc{

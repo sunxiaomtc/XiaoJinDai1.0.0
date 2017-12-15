@@ -161,15 +161,17 @@ typedef NS_ENUM(int , ENCODE_TYPE)
     
 }
 
-- (NSDictionary* )toDictionary
-{
-    return [self dictionaryWithValuesForKeys:self.class.propertyNames.allObjects];
-}
+//- (NSDictionary* )toDictionary
+//{
+//    //NSLog(@"%@,%@",self.class,self.class.propertyNames.allObjects);
+//    return [self dictionaryWithValuesForKeys:self.class.propertyNames.allObjects];
+//
+//}
 
-- (NSString* )description
-{
-    return [NSString stringWithFormat:@"<%@: %p> %@", self.class, self, self.toDictionary];
-}
+//- (NSString* )description
+//{
+//    return [NSString stringWithFormat:@"<%@: %p> %@", self.class, self, self.toDictionary];
+//}
 
 
 

@@ -124,26 +124,28 @@
     
     _prizeLabel = [UILabel new];
     [_prizeLabel setText:@"邀请有奖"];
-    [_prizeLabel setFont:[UIFont systemFontOfSize:13]];
+    [_prizeLabel setFont:[UIFont systemFontOfSize:15]];
+    _prizeLabel.textAlignment = NSTextAlignmentCenter;
     [self.twoView addSubview:_prizeLabel];
     [_prizeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(20);
         make.left.mas_equalTo(15);
         make.height.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
     }];
     
-    _rulesBtn = [UIButton new];
-    [_rulesBtn setTitle:@"邀请规则>" forState:UIControlStateNormal];
-    _rulesBtn.tintColor = [UIColor blackColor];
-    [_rulesBtn setTitleColor:[UIColor colorWithHexString:@"#808080"] forState:UIControlStateNormal];
-    [_rulesBtn addTarget:self action:@selector(rulesBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    _rulesBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    [self.twoView addSubview:_rulesBtn];
-    [_rulesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(21);
-        make.right.mas_equalTo(-8);
-        make.size.mas_equalTo(CGSizeMake(60, 16));
-    }];
+//    _rulesBtn = [UIButton new];
+//    [_rulesBtn setTitle:@"邀请规则>" forState:UIControlStateNormal];
+//    _rulesBtn.tintColor = [UIColor blackColor];
+//    [_rulesBtn setTitleColor:[UIColor colorWithHexString:@"#808080"] forState:UIControlStateNormal];
+//    [_rulesBtn addTarget:self action:@selector(rulesBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    _rulesBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+//    [self.twoView addSubview:_rulesBtn];
+//    [_rulesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(21);
+//        make.right.mas_equalTo(-8);
+//        make.size.mas_equalTo(CGSizeMake(60, 16));
+//    }];
     
     _imageView1 = [UIImageView new];
     UIImage * image1 = [UIImage imageNamed:@"fx.png"];
@@ -172,7 +174,8 @@
     _imageView2.image = image2;
     [_twoView addSubview:_imageView2];
     [_imageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_imageView1.mas_right).with.offset(86);
+        //make.left.equalTo(_imageView1.mas_right).with.offset(86);
+        make.centerX.mas_equalTo(_twoView.mas_centerX);
         make.top.mas_equalTo(63);
         make.size.mas_equalTo(CGSizeMake(45, 45));
     }];
@@ -209,78 +212,78 @@
         make.width.mas_equalTo(46);
     }];
     
-    _threeView = [UIView new];
-    [_threeView setBackgroundColor:[UIColor whiteColor]];
-    [self.tableView addSubview:_threeView];
-    [_threeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_twoView.mas_bottom).with.offset(5);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 91));
-    }];
-    
-    _myReward = [UILabel new];
-    [_myReward setText:@"邀请奖励"];
-    [_myReward setFont:[UIFont systemFontOfSize:13]];
-    [self.threeView addSubview:_myReward];
-    [_myReward mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(20);
-        make.left.mas_equalTo(15);
-        make.height.mas_equalTo(13);
-    }];
-    
-    
-    _phoneLabel = [UILabel new];
-    [_phoneLabel setText:@"手机号"];
-    [_phoneLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
-    _phoneLabel.textAlignment = NSTextAlignmentCenter;
-    [_phoneLabel setFont:[UIFont systemFontOfSize:13]];
-    [self.threeView addSubview:_phoneLabel];
-    [_phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_myReward.mas_bottom).with.offset(0);
-        make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7);
-        
-    }];
-    
-    _timeLabel = [UILabel new];
-    [_timeLabel setText:@"注册时间"];
-    [_timeLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
-    _timeLabel.textAlignment = NSTextAlignmentCenter;
-    [_timeLabel setFont:[UIFont systemFontOfSize:13]];
-    [self.threeView addSubview:_timeLabel];
-    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_phoneLabel.mas_top);
-        make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7*3);
-    }];
-    
-    _amountLabel = [UILabel new];
-    [_amountLabel setText:@"投资金额"];
-    [_amountLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
-    _amountLabel.textAlignment = NSTextAlignmentCenter;
-    [_amountLabel setFont:[UIFont systemFontOfSize:13]];
-    [self.threeView addSubview:_amountLabel];
-    [_amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_phoneLabel.mas_top);
-        make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/6*4);
-        
-    }];
-    
-    _rewardLabel = [UILabel new];
-    [_rewardLabel setText:@"奖励"];
-    [_rewardLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
-    _rewardLabel.textAlignment = NSTextAlignmentCenter;
-    [_rewardLabel setFont:[UIFont systemFontOfSize:13]];
-    [self.threeView addSubview:_rewardLabel];
-    [_rewardLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_phoneLabel.mas_top);
-        make.bottom.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7*6);
-    }];
+//    _threeView = [UIView new];
+//    [_threeView setBackgroundColor:[UIColor whiteColor]];
+//    [self.tableView addSubview:_threeView];
+//    [_threeView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_twoView.mas_bottom).with.offset(5);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 91));
+//    }];
+//
+//    _myReward = [UILabel new];
+//    [_myReward setText:@"邀请奖励"];
+//    [_myReward setFont:[UIFont systemFontOfSize:13]];
+//    [self.threeView addSubview:_myReward];
+//    [_myReward mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(20);
+//        make.left.mas_equalTo(15);
+//        make.height.mas_equalTo(13);
+//    }];
+//
+//
+//    _phoneLabel = [UILabel new];
+//    [_phoneLabel setText:@"手机号"];
+//    [_phoneLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
+//    _phoneLabel.textAlignment = NSTextAlignmentCenter;
+//    [_phoneLabel setFont:[UIFont systemFontOfSize:13]];
+//    [self.threeView addSubview:_phoneLabel];
+//    [_phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_myReward.mas_bottom).with.offset(0);
+//        make.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7);
+//
+//    }];
+//
+//    _timeLabel = [UILabel new];
+//    [_timeLabel setText:@"注册时间"];
+//    [_timeLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
+//    _timeLabel.textAlignment = NSTextAlignmentCenter;
+//    [_timeLabel setFont:[UIFont systemFontOfSize:13]];
+//    [self.threeView addSubview:_timeLabel];
+//    [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_phoneLabel.mas_top);
+//        make.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7*3);
+//    }];
+//
+//    _amountLabel = [UILabel new];
+//    [_amountLabel setText:@"投资金额"];
+//    [_amountLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
+//    _amountLabel.textAlignment = NSTextAlignmentCenter;
+//    [_amountLabel setFont:[UIFont systemFontOfSize:13]];
+//    [self.threeView addSubview:_amountLabel];
+//    [_amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_phoneLabel.mas_top);
+//        make.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/6*4);
+//
+//    }];
+//
+//    _rewardLabel = [UILabel new];
+//    [_rewardLabel setText:@"奖励"];
+//    [_rewardLabel setTextColor:[UIColor colorWithHexString:@"#666666"]];
+//    _rewardLabel.textAlignment = NSTextAlignmentCenter;
+//    [_rewardLabel setFont:[UIFont systemFontOfSize:13]];
+//    [self.threeView addSubview:_rewardLabel];
+//    [_rewardLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_phoneLabel.mas_top);
+//        make.bottom.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//        make.centerX.equalTo(self.threeView.mas_left).with.offset(SCREEN_WIDTH/7*6);
+//    }];
     [self getImage];
     [self getAccountSaftData];
     [self getCustomerList];
@@ -419,16 +422,16 @@
 }
 
 - (void)getCustomerList {
-    [self.httpUtil requestDic4MethodNam:@"v2/accept/user/inviteUserList" parameters:@{@"limit":@(_limit),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
-        if (status == 0) {
-            if (_customerArr.count == 0) {
-            }
-        }else {
-            [_customerArr addObjectsFromArray:dic];
-            [_tableView.mj_footer resetNoMoreData];
-        }
-        [_tableView reloadData];
-    }];
+//    [self.httpUtil requestDic4MethodNam:@"v2/accept/user/inviteUserList" parameters:@{@"limit":@(_limit),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
+//        if (status == 0) {
+//            if (_customerArr.count == 0) {
+//            }
+//        }else {
+//            [_customerArr addObjectsFromArray:dic];
+//            [_tableView.mj_footer resetNoMoreData];
+//        }
+//        [_tableView reloadData];
+//    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

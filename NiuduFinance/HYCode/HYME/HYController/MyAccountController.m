@@ -159,16 +159,6 @@
         make.bottom.mas_equalTo(-23);
         make.height.mas_equalTo(10);
     }];
-    
-    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = infoDict[@"CFBundleShortVersionString"];
-    _versionLabel = [UILabel new];
-    [_versionLabel setText:[NSString stringWithFormat:@"版本V%@",appVersion]];
-    _versionLabel.frame = CGRectMake(0, 0, 50, 10);
-    _versionLabel.textAlignment = NSTextAlignmentCenter;
-    [_versionLabel setTextColor:UIcolors];
-    [_versionLabel setFont:[UIFont systemFontOfSize:13]];
-    self.tableView.tableFooterView = _versionLabel;
 
 }
 - (void)labelClick
@@ -220,9 +210,17 @@
             _realMobileStr = [[_myAccountDic objectForKey:@"user"] objectForKey:@"mobile"];
             NSString * numberString = [mobileStr stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
             _mobileStr = numberString;
-            [[NSUserDefaults standardUserDefaults] setObject:_realnameStr forKey:@"USERINFOREALName"];
-            [[NSUserDefaults standardUserDefaults] setObject:_realMobileStr forKey:@"USERINFOREALPhone"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
+            if(![_realnameStr isKindOfClass:[NSNull class]])
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:_realnameStr forKey:@"USERINFOREALName"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+            if(![_realMobileStr isKindOfClass:[NSNull class]])
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:_realMobileStr forKey:@"USERINFOREALPhone"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+            
         }
         [self.tableView reloadData];
     }];
@@ -230,8 +228,20 @@
 
 - (void)setTableViewInfo
 {
-    _tableView.tableFooterView.height = 30;
+    //_tableView.tableFooterView.height = 50;
     [_tableView registerNib:[UINib nibWithNibName:@"MyAccountCell" bundle:nil] forCellReuseIdentifier:@"MyAccountCell"];
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = infoDict[@"CFBundleShortVersionString"];
+    UIView *footView = [[UIView alloc] init];
+    footView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 40);
+    _versionLabel = [UILabel new];
+    [_versionLabel setText:[NSString stringWithFormat:@"版本V%@",appVersion]];
+    _versionLabel.frame = CGRectMake(0, 10, SCREEN_WIDTH, 10);
+    _versionLabel.textAlignment = NSTextAlignmentCenter;
+    [_versionLabel setTextColor:UIcolors];
+    [_versionLabel setFont:[UIFont systemFontOfSize:13]];
+    [footView addSubview:_versionLabel];
+    self.tableView.tableFooterView = footView;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -346,7 +356,7 @@
             cell.titileLabel.text = @"进行实名认证";
             if ([[User userFromFile].isOpenAccount integerValue] == 0)
             {
-                cell.nameLabel.text = @"未设置";
+                cell.nameLabel.text = @"未设置>";
             }else{
                 cell.nameLabel.text = @"进入汇付>";
             }

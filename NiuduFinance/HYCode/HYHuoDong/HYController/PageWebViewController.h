@@ -7,9 +7,18 @@
 //
 
 #import "BaseViewController.h"
+#import "SNProjectListItem.h"
 
 @interface PageWebViewController : BaseViewController
 
 @property (nonatomic, strong) NSString *urlStr;
+
+/******************************/
+@property (nonatomic, strong) SNProjectListItem * projectItem;
+@property (nonatomic,assign)int projectId;
+@property (nonatomic,strong)NSString *type;
+@property (nonatomic,copy) NSString *addrate;
+@property (nonatomic,copy) NSString *resultsRatess;
+@property (nonatomic, strong) NSArray *recProductArr;
 
 @end

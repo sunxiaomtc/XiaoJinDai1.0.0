@@ -110,9 +110,8 @@
             [self performSelector:@selector(loginMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
         }else {
             InvitationFriendsController * invitationVC = [InvitationFriendsController new];
-            self.hidesBottomBarWhenPushed = YES;
+            invitationVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:invitationVC animated:YES];
-            self.hidesBottomBarWhenPushed = NO;
         }
     }
 }

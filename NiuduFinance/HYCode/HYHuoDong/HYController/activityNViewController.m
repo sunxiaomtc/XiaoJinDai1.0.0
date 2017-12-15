@@ -10,6 +10,13 @@
 #import "PageWebViewController.h"
 #import "AnnouncementViewController.h"
 #import <WebKit/WebKit.h>
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "XProjectDetailsController.h"
+#import "InvitationFriendsController.h"
+
+#import "SNProjectListItem.h"
+#import "SNProjectListModel.h"
 
 @interface activityNViewController ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic ,strong) UIView *firstView;
@@ -23,9 +30,42 @@
 
 @property (nonatomic, strong) UIProgressView *progressView;
 
+@property (nonatomic, strong) NSMutableArray *recProductArr;
+
+@property (nonatomic, strong) SNProjectListModel *lenderProjectModel;
+
 @end
 
 @implementation activityNViewController
+
+-(SNProjectListModel *)lenderProjectModel
+{
+    if(!_lenderProjectModel)
+    {
+        _lenderProjectModel = [SNProjectListModel new];
+        _lenderProjectModel.key = @"__SNProjectListModel__";
+        _lenderProjectModel.requestType = VZModelCustom;
+        _lenderProjectModel.isHome = YES;
+        _lenderProjectModel.isNewLender = YES;
+    }
+    return _lenderProjectModel;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _recProductArr = [NSMutableArray array];
+    if (_lenderProjectModel.objects.count) {
+        [self.recProductArr addObject:self.lenderProjectModel.objects[0]];
+    }else {
+        WS
+        [self.lenderProjectModel loadWithCompletion:^(VZModel *model, NSError *error) {
+            if (!error && weakSelf.lenderProjectModel.objects.count) {
+                [weakSelf.recProductArr addObject:weakSelf.lenderProjectModel.objects[0]];
+            }else {
+            }
+        }];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,6 +131,37 @@
     self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
     //防止progressView被网页挡住
     [self.view bringSubviewToFront:self.progressView];
+    if([webView.URL.absoluteString isEqualToString:@"http://plus.xiaojindai888.com/reginv.php"])
+    {
+        [webView stopLoading];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://plus.xiaojindai888.com/inviteaa.php"]]];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://plus.xiaojindai888.com/newdebt.php"])
+    {
+        [webView stopLoading];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://plus.xiaojindai888.com/banner1fu.php"]]];
+    }
+    
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self gotoRegiset];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self gotoTouZi];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"])//跳投资详情
+    {
+        [self gotoTouZiDetails];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"]) //跳邀请
+    {
+        if (![[User shareUser] checkIsLogin]) {
+            [MBProgressHUD showMessag:@"未登录" toView:self.view];
+            [self performSelector:@selector(loginMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+        }else {
+            InvitationFriendsController * invitationVC = [InvitationFriendsController new];
+            invitationVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:invitationVC animated:YES];
+        }
+    }
 }
 
 //加载完成
@@ -105,6 +176,21 @@
     }else
     {
         self.navigationItem.leftBarButtonItem = nil;
+    }
+    
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self.webView goBack];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
+    {
+        [self.webView goBack];
     }
 }
 
@@ -126,6 +212,73 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
     
+    if([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffReg.html"]) //跳注册
+    {
+        [self.webView goBack];
+        
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVesL.html"]) //跳投资
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
+    {
+        [self.webView goBack];
+    }
+    
+}
+
+#pragma mark - GOTO
+-(void)gotoRegiset
+{
+    if (![[User shareUser] checkIsLogin]) {
+        [self loginMethod];
+    }else
+    {
+        //跳投资页
+        [MBProgressHUD showMessag:@"已注册，即将前往投资" toView:self.view];
+        //[NSThread sleepForTimeInterval:2.0];
+        [self touziMethod];
+        //[self performSelector:@selector(touziMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+    }
+}
+
+-(void)touziMethod
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [AppDelegate backToTouZi];
+}
+
+-(void)gotoTouZi
+{
+    if (![[User shareUser] checkIsLogin]) {
+        
+        [MBProgressHUD showMessag:@"未登录" toView:self.view];
+        [self loginMethod];
+        //[self performSelector:@selector(loginMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+    }else
+    {
+        [self touziMethod];
+    }
+}
+
+-(void)loginMethod
+{
+    LoginViewController *login = [LoginViewController new];
+    [self presentViewController:login animated:YES completion:nil];
+}
+
+-(void)gotoTouZiDetails
+{
+    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+    if (self.recProductArr.count > 0) {
+        SNProjectListItem * projectItem = self.recProductArr[0];
+        projectDetailsVC.projectId = [projectItem.projectId intValue];
+        projectDetailsVC.projectItem = projectItem;
+    }
+    projectDetailsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:projectDetailsVC animated:YES];
 }
 
 -(void)backAction

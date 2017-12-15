@@ -110,7 +110,6 @@
 - (void)setProjectId:(int)projectId
 {
     _projectId = projectId;
-    NSLog(@"====%d",_projectId);
 }
 
 - (void)setType:(NSString *)type
@@ -762,6 +761,7 @@
 }
 
 - (void)setProjectItem:(SNProjectListItem *)projectItem {
+    NSLog(@"%@",projectItem);
     _projectItem = projectItem;
     //    SNProjectDetailIFooterView * footerView = [[SNProjectDetailIFooterView alloc] init];
     //    footerView.tableView = self.tableView;
@@ -803,7 +803,7 @@
      NSString *str = [self formatFloat:([projectItem.rate floatValue]-([projectItem.addRate floatValue]))];
     _nhsylNumber.text = str;
     _addLab.text = [[NSString stringWithFormat:@"+%@",projectItem.addRate] stringByAppendingString:@"%"];
-    self.addrate = projectItem.addRate;
+    self.addrate = [NSString stringWithFormat:@"%@",projectItem.addRate];
     if ([projectItem.periodtypeid integerValue] == 1) {
         _xmqxNumber.text = [NSString stringWithFormat:@"%@天", projectItem.loanperiod];
     } else if ([projectItem.periodtypeid integerValue] == 2) {

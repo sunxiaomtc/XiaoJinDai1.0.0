@@ -18,7 +18,7 @@
 @property (nonatomic, copy) void (^HomeButtonBlock)(NSInteger buttonTag);
 /**轮播图的点击
  */
-@property (nonatomic, copy) void (^HomeScrollViewBlock)(NSString *scrollViewID);
+@property (nonatomic, copy) void (^HomeScrollViewBlock)(NSString *scrollViewID,NSInteger index);
 
 @property (nonatomic, copy) void (^HomeTitleBlock)(NSString *titltID);
 

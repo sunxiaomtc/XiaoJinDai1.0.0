@@ -86,7 +86,17 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT - 49+20) style:UITableViewStyleGrouped];
+    self.homeTableView.delegate = self;
+    self.homeTableView.dataSource = self;
+    self.homeTableView.showsVerticalScrollIndicator = NO;
+    self.homeTableView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
+    self.homeTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.homeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.homeTableView];
+    
+//    [self.homeTableView registerClass:[HYHomeOneCell class] forCellReuseIdentifier:@"HYHomeOneCell"];
+//    [self.homeTableView registerClass:[HYHomeTwoCell class] forCellReuseIdentifier:@"HYHomeTwoCell"];
     [self setupRefreshWithTableView:_homeTableView];//首页下拉刷新
     [self.homeTableView reloadData];
     [self createHeaderAndFooter];
@@ -102,6 +112,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     NSLog(@"2___%@",self.str);
     self.mutabStr = @"3";
     NSLog(@"3___%@ ___%@  ___%p___%p",self.str,self.mutabStr,self.str,self.mutabStr);
+    
+    
     
 }
 
@@ -246,12 +258,24 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }
     }];
     //轮播图的点击事件
-    [headerView setHomeScrollViewBlock:^(NSString *bannerID){
-        if (![bannerID isEqualToString:@""]) {//如果为空则不进行跳转
+    [headerView setHomeScrollViewBlock:^(NSString *scrollViewID, NSInteger index) {
+        if (![scrollViewID isEqualToString:@""]) {//如果为空则不进行跳转
             PageWebViewController *pageWebVC = [PageWebViewController new];
             //pageWebVC.urlStr = [NSString stringWithFormat:@"%@%@",__API_HEADER__,bannerID];
-            pageWebVC.urlStr = bannerID;
+            if([scrollViewID isEqualToString:@"http://plus.xiaojindai888.com/newdebt.php"] || index == 0)
+            {
+                pageWebVC.urlStr = @"http://plus.xiaojindai888.com/banner1fu.php";
+            }else
+            {
+                pageWebVC.urlStr = scrollViewID;
+            }
+            
             pageWebVC.title = @"小金袋";
+            pageWebVC.addrate = self.addRate;
+            if (_recProductArr.count > 0) {
+                pageWebVC.recProductArr = [_recProductArr copy];
+                pageWebVC.resultsRatess = self.rateStr;
+            }
             weakSelf.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:pageWebVC animated:YES];
             weakSelf.hidesBottomBarWhenPushed = NO;
@@ -261,8 +285,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         if(tags == 0)
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
-            //web.urlStr = @"http://plus.xiaojindai888.com/newdebt.php";
-            web.urlStr = @"http://www.xiaojindai888.com/fff/banner1fu.jsp";
+            web.urlStr = @"http://plus.xiaojindai888.com/banner1fu.php";
+            //web.urlStr = @"http://www.xiaojindai888.com/fff/banner1fu.jsp";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"注册福利";
             web.addrate = self.addRate;
@@ -274,8 +298,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }else
         {
             HYWebViewController *web = [[HYWebViewController alloc] init];
-            //web.urlStr = @"http://plus.xiaojindai888.com/reginv.php";
-            web.urlStr = @"http://www.xiaojindai888.com/fff/inviteaa.html";
+            web.urlStr = @"http://plus.xiaojindai888.com/inviteaa.php";
+            //web.urlStr = @"http://www.xiaojindai888.com/fff/inviteaa.html";
             web.hidesBottomBarWhenPushed = YES;
             web.title = @"邀请有奖";
             [weakSelf.navigationController pushViewController:web animated:YES];
@@ -349,6 +373,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section == 0) {
 //         static NSString *newInvest = @"newInvest";
 //        newInvestNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
@@ -367,7 +392,10 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //        cell.addPercentLab.text = [[NSString stringWithFormat:@"+%@",self.addRate] stringByAppendingString:@"%"];
 //        
 //        return cell;
-        HYHomeOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeOneCell" forIndexPath:indexPath];
+        [self.homeTableView registerNib:[UINib nibWithNibName:@"HYHomeOneCell" bundle:nil] forCellReuseIdentifier:@"HYHomeOneCells"];
+        
+        HYHomeOneCell *cell = [self.homeTableView dequeueReusableCellWithIdentifier:@"HYHomeOneCells" forIndexPath:indexPath];
+        //HYHomeOneCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeOneCell"];
         cell.bfbStr = self.rateStr;
         cell.addBFBStr = self.addRate;
         __weak __typeof(self) weakSelf = self;
@@ -408,17 +436,14 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //
 //
 //    return cell;
-    HYHomeTwoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HYHomeTwoCell" forIndexPath:indexPath];
+    [self.homeTableView registerNib:[UINib nibWithNibName:@"HYHomeTwoCell" bundle:nil] forCellReuseIdentifier:@"HYHomeTwoCells"];
+    HYHomeTwoCell *cell = [self.homeTableView dequeueReusableCellWithIdentifier:@"HYHomeTwoCells" forIndexPath:indexPath];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {//123点击新手标
-        if (![AppDelegate checkLogin]) {
-            [MBProgressHUD showMessag:@"未登录" toView:self.view];
-            return;
-        }
-        [self xinshoubiao:indexPath];
+        //[self xinshoubiao:indexPath];
     }
     else if (indexPath.section == 1) {//点击牛气分享标
 //        if (![AppDelegate checkLogin]) {
@@ -434,17 +459,21 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 -(void)xinshoubiao:(NSIndexPath *)indexPath
 {
-    self.hidesBottomBarWhenPushed = YES;
+    if (![AppDelegate checkLogin]) {
+        [MBProgressHUD showMessag:@"未登录" toView:self.view];
+        return;
+    }
     XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
     projectDetailsVC.addrate = self.addRate;
     if (_recProductArr.count > 0) {
+        //NSLog(@"%@",_recProductArr);
         SNProjectListItem * projectItem = _recProductArr[indexPath.section];
         projectDetailsVC.projectId = [projectItem.projectId intValue];
         projectDetailsVC.projectItem = projectItem;
         projectDetailsVC.resultsRate = [self.rateStr floatValue];
     }
+    projectDetailsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:projectDetailsVC animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -519,21 +548,14 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     return 0.00001;
 }
 
-- (UITableView *)homeTableView {
-    if (!_homeTableView) {
-        _homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT - 49+20) style:UITableViewStyleGrouped];
-        _homeTableView.delegate = self;
-        _homeTableView.dataSource = self;
-        _homeTableView.showsVerticalScrollIndicator = NO;
-        _homeTableView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
-        _homeTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        _homeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        [_homeTableView registerNib:[UINib nibWithNibName:@"HYHomeOneCell" bundle:nil] forCellReuseIdentifier:@"HYHomeOneCell"];
-        [_homeTableView registerNib:[UINib nibWithNibName:@"HYHomeTwoCell" bundle:nil] forCellReuseIdentifier:@"HYHomeTwoCell"];
-    }
-    return _homeTableView;
-}
+//- (UITableView *)homeTableView {
+//    if (!_homeTableView) {
+//
+//
+//
+//    }
+//    return _homeTableView;
+//}
 
 - (void)headerRefreshloadData {
     [_homeTableView.mj_header endRefreshing];
