@@ -515,7 +515,13 @@ static AFHTTPSessionManager *manager;
             
         }
         if (statusInt==0) {
-            resultMsg = resultArray;
+            if([resultArray isKindOfClass:[NSString class]])
+            {
+                resultMsg = resultArray;
+            }else
+            {
+                resultMsg = @"";
+            }
         }
         
         NSLog(@"%@",postURL);

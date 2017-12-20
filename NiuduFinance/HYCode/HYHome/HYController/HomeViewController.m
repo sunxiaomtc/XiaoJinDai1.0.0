@@ -27,6 +27,7 @@
 #import "HYHomeOneCell.h"
 #import "HYHomeTwoCell.h"
 #import "HYWebViewController.h"
+#import "GestureVerifyViewController.h"
 
 static NSString *HomeNewExclusiveCellID = @"HomeNewExclusiveCell";
 static NSString *homeBullSharingCellID = @"homeBullSharingCell";
@@ -104,16 +105,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     [self loadDataHomeList];
     [self shareAppVersionAlert];
     
-    self.str = @"1";
-    NSLog(@"1___%@",self.str);
-    self.mutabStr = @"2";
-    self.str = self.mutabStr;
-    NSLog(@"%p___%p",self.str,self.mutabStr);
-    NSLog(@"2___%@",self.str);
-    self.mutabStr = @"3";
-    NSLog(@"3___%@ ___%@  ___%p___%p",self.str,self.mutabStr,self.str,self.mutabStr);
-    
-    
+    [self laoSunTest];
     
 }
 
@@ -196,6 +188,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }
         [self.homeTableView reloadData];
     }];
+    
+    
 }
 
 //小数点问题
@@ -474,6 +468,14 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     }
     projectDetailsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:projectDetailsVC animated:YES];
+    
+//    HYWebViewController *web = [HYWebViewController new];
+//    web.urlStr = @"http://www.xiaojindai888.com/fff/safeapp.jsp";
+//    web.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:web animated:YES];
+    
+//    GestureVerifyViewController *gest = [GestureVerifyViewController new];
+//    [self presentViewController:gest animated:YES completion:nil];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -636,6 +638,44 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }
     }
     return NO;
+}
+
+//Test
+-(void)laoSunTest
+{
+    dispatch_queue_t queue = dispatch_queue_create("TEST.queue", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t queue2 = dispatch_queue_create("bx.queue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue2, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@",[NSThread currentThread]);
+        }
+    });
+    //栅栏
+    dispatch_barrier_async(queue, ^{
+        
+    });
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@",[NSThread currentThread]);
+        }
+    });
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+
+    });
+    
+    NSLog(@"SSSSS");
+    //延迟执行
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"DDDDDD");
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning {

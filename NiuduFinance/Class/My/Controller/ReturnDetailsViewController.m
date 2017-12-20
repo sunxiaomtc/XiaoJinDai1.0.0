@@ -115,13 +115,15 @@
         cell = [[ReturnDetailsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.returnDetailsDic = _returnDetailsArr[indexPath.row];
+    if(_returnDetailsArr.count > indexPath.row)
+    {
+        cell.returnDetailsDic = _returnDetailsArr[indexPath.row];
+    }
     return cell;
 }
 
 - (void)headerRefreshloadData
 {
-    
     [_returnDetailsTableView.mj_header endRefreshing];
 }
 

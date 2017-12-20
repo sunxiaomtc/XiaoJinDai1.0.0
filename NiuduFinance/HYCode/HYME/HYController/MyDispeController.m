@@ -213,9 +213,10 @@
     if ([[NSString stringWithFormat:@"%@",[_touArr[indexPath.row] objectForKey:@"statusid"]] isEqualToString:@"2"]) {
         return;
     }else {
-        ReturnDetailsViewController *returnDetailsVC = [ReturnDetailsViewController new];
+        
         if(_touArr.count > indexPath.row)
         {
+            ReturnDetailsViewController *returnDetailsVC = [ReturnDetailsViewController new];
             returnDetailsVC.projectId = [[_touArr[indexPath.row] objectForKey:@"projectId"] intValue];
             [self.navigationController pushViewController:returnDetailsVC animated:YES];
         }

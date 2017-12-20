@@ -27,6 +27,8 @@
 
 + (BOOL)dismissHUDForView:(UIView *)view withsuccess:(NSString *)success;
 
++(void)showMessageForWindow:(NSString *)text;
+
 - (void)dismissSuccessStatusString:(NSString *)statusString hideAfterDelay:(NSTimeInterval)delay;
 
 - (void)dismissErrorStatusString:(NSString*)statusString hideAfterDelay:(NSTimeInterval)delay;

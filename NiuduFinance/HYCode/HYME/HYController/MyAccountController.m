@@ -523,6 +523,8 @@
     [[User shareUser] saveExit];
     [[User shareUser] removeUser];
     [User shareUser].userId = 0;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"USEREXIT"object:0];
+    //[NSNotificationCenter defaultCenter] 
     //    [PCCircleViewConst removeGesture:gestureFinalSaveKey];
     //安全退出   退出登录按钮
 //    LoginViewController * loginVC = [[LoginViewController alloc] init];

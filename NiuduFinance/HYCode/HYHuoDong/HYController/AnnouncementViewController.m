@@ -26,6 +26,8 @@ static NSString *AnnouncementCellID = @"AnnouncementCell";
     self.dataArray = [NSMutableArray array];
     [self createTabView];
     [self loadData];
+    
+    
 }
 
 - (void)createTabView {
@@ -35,6 +37,12 @@ static NSString *AnnouncementCellID = @"AnnouncementCell";
     self.announcementTabView.dataSource = self;
     self.announcementTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.announcementTabView];
+    
+    self.announcementTabView.estimatedRowHeight = 0;
+    
+    self.announcementTabView.estimatedSectionHeaderHeight = 0;
+    
+    self.announcementTabView.estimatedSectionFooterHeight = 0;
     
     [self setupBarButtomItemWithImageName:@"黑色返回按钮" highLightImageName:@"黑色返回按钮" selectedImageName:nil target:self action:@selector(backClick) leftOrRight:YES];
 }
@@ -94,14 +102,20 @@ static NSString *AnnouncementCellID = @"AnnouncementCell";
     [self.navigationController pushViewController:pageWebVC animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 60;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 5;
+    return 8;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 5;
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 5;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

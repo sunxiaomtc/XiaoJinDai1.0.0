@@ -72,6 +72,10 @@
 		13F2E9494C98A2C166FDF7B0 /* libPods-NiuduFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349B4DE5AAC6E624588B55C2 /* libPods-NiuduFinance.a */; };
 		171AD84E1DE80A060009F9FE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 171AD84C1DE80A060009F9FE /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18581D371FD5133F003A1FAD /* HYXiaLaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18581D361FD5133F003A1FAD /* HYXiaLaView.m */; };
+		188E7E621FE8B15300A0C586 /* HYNewActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */; };
+		188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */; };
+		188E7E671FE8B44700A0C586 /* HYNewActivtyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E651FE8B44700A0C586 /* HYNewActivtyCell.xib */; };
+		188E7E6B1FE8EC9300A0C586 /* HYLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E6A1FE8EC9300A0C586 /* HYLoading.m */; };
 		18B802B91FDE355D00ED3AD6 /* HYHomeTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */; };
 		18B802BA1FDE355D00ED3AD6 /* HYHomeOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */; };
 		18B802BB1FDE355D00ED3AD6 /* HYHomeTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B41FDE355D00ED3AD6 /* HYHomeTwoCell.xib */; };
@@ -920,6 +924,13 @@
 		171AD84C1DE80A060009F9FE /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		18581D351FD5133F003A1FAD /* HYXiaLaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYXiaLaView.h; sourceTree = "<group>"; };
 		18581D361FD5133F003A1FAD /* HYXiaLaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXiaLaView.m; sourceTree = "<group>"; };
+		188E7E601FE8B15300A0C586 /* HYNewActivtyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNewActivtyViewController.h; sourceTree = "<group>"; };
+		188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNewActivtyViewController.m; sourceTree = "<group>"; };
+		188E7E631FE8B44700A0C586 /* HYNewActivtyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNewActivtyCell.h; sourceTree = "<group>"; };
+		188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNewActivtyCell.m; sourceTree = "<group>"; };
+		188E7E651FE8B44700A0C586 /* HYNewActivtyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYNewActivtyCell.xib; sourceTree = "<group>"; };
+		188E7E691FE8EC9300A0C586 /* HYLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLoading.h; sourceTree = "<group>"; };
+		188E7E6A1FE8EC9300A0C586 /* HYLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLoading.m; sourceTree = "<group>"; };
 		18B802B11FDE355C00ED3AD6 /* HYHomeOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHomeOneCell.h; sourceTree = "<group>"; };
 		18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHomeTwoCell.m; sourceTree = "<group>"; };
 		18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHomeOneCell.xib; sourceTree = "<group>"; };
@@ -2387,6 +2398,7 @@
 		18581D231FD4F4F5003A1FAD /* HYCode */ = {
 			isa = PBXGroup;
 			children = (
+				188E7E681FE8EC5400A0C586 /* HYTools */,
 				18581D281FD4F527003A1FAD /* HYLogin */,
 				18581D271FD4F500003A1FAD /* HYHome */,
 				18581D261FD4F500003A1FAD /* HYTouZi */,
@@ -2557,6 +2569,8 @@
 			children = (
 				ABBEACDB1F9D89DF0084CDFF /* activityNViewController.h */,
 				ABBEACDC1F9D89DF0084CDFF /* activityNViewController.m */,
+				188E7E601FE8B15300A0C586 /* HYNewActivtyViewController.h */,
+				188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */,
 				B02D16EE1F99DEF300A7E044 /* AnnouncementViewController.h */,
 				B02D16EF1F99DEF300A7E044 /* AnnouncementViewController.m */,
 				2D936DFE1DC8976F0058A901 /* PageWebViewController.h */,
@@ -2575,6 +2589,9 @@
 		18581D311FD4F5BA003A1FAD /* HYView */ = {
 			isa = PBXGroup;
 			children = (
+				188E7E631FE8B44700A0C586 /* HYNewActivtyCell.h */,
+				188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */,
+				188E7E651FE8B44700A0C586 /* HYNewActivtyCell.xib */,
 			);
 			path = HYView;
 			sourceTree = "<group>";
@@ -2602,9 +2619,18 @@
 				9D18C2C31F31D1B000AD769F /* MyFuLiViewController.h */,
 				9D18C2C41F31D1B000AD769F /* MyFuLiViewController.m */,
 				9D18C2C51F31D1B000AD769F /* MyFuLiViewController.xib */,
+				9D0F21B21E9B240D00C2C8FF /* YZSortViewController.h */,
+				9D0F21B31E9B240D00C2C8FF /* YZSortViewController.m */,
+				9D0F21A21E9B236E00C2C8FF /* YZMoreMenuViewController.h */,
+				9D0F21A31E9B236E00C2C8FF /* YZMoreMenuViewController.m */,
+				9D0F21A41E9B236E00C2C8FF /* YZMoreMenuViewController.xib */,
 				9D18C2AB1F3168B100AD769F /* MyAccountController.h */,
 				9D18C2AC1F3168B100AD769F /* MyAccountController.m */,
 				9D18C2AD1F3168B100AD769F /* MyAccountController.xib */,
+				B090D2B11F7CE51E008DA53C /* NewsViewController.h */,
+				B090D2B21F7CE51E008DA53C /* NewsViewController.m */,
+				B08912B91F94845000E4EB14 /* NewsDetailViewController.h */,
+				B08912BA1F94845000E4EB14 /* NewsDetailViewController.m */,
 			);
 			path = HYController;
 			sourceTree = "<group>";
@@ -2623,6 +2649,11 @@
 		18581D341FD4F5C2003A1FAD /* HYView */ = {
 			isa = PBXGroup;
 			children = (
+				9D0F21B51E9B241400C2C8FF /* YZSortCell.h */,
+				9D0F21B61E9B241400C2C8FF /* YZSortCell.m */,
+				9D0F21B71E9B241400C2C8FF /* YZSortCell.xib */,
+				9D0F21A71E9B237800C2C8FF /* YZMoreMenuCell.h */,
+				9D0F21A81E9B237800C2C8FF /* YZMoreMenuCell.m */,
 				9D52C69B1F27434800A329FF /* MyDisperCell.h */,
 				9D52C69C1F27434800A329FF /* MyDisperCell.m */,
 				9D52C69D1F27434800A329FF /* MyDisperCell.xib */,
@@ -2648,6 +2679,15 @@
 				18581D361FD5133F003A1FAD /* HYXiaLaView.m */,
 			);
 			path = HYView;
+			sourceTree = "<group>";
+		};
+		188E7E681FE8EC5400A0C586 /* HYTools */ = {
+			isa = PBXGroup;
+			children = (
+				188E7E691FE8EC9300A0C586 /* HYLoading.h */,
+				188E7E6A1FE8EC9300A0C586 /* HYLoading.m */,
+			);
+			path = HYTools;
 			sourceTree = "<group>";
 		};
 		18B802CA1FDE7B3500ED3AD6 /* HTMLTEST */ = {
@@ -3818,11 +3858,6 @@
 		9D0F21A11E9B233B00C2C8FF /* YZMoreMenu */ = {
 			isa = PBXGroup;
 			children = (
-				9D0F21A21E9B236E00C2C8FF /* YZMoreMenuViewController.h */,
-				9D0F21A31E9B236E00C2C8FF /* YZMoreMenuViewController.m */,
-				9D0F21A41E9B236E00C2C8FF /* YZMoreMenuViewController.xib */,
-				9D0F21A71E9B237800C2C8FF /* YZMoreMenuCell.h */,
-				9D0F21A81E9B237800C2C8FF /* YZMoreMenuCell.m */,
 			);
 			name = YZMoreMenu;
 			sourceTree = "<group>";
@@ -3841,11 +3876,6 @@
 		9D0F21B11E9B240000C2C8FF /* Sort */ = {
 			isa = PBXGroup;
 			children = (
-				9D0F21B21E9B240D00C2C8FF /* YZSortViewController.h */,
-				9D0F21B31E9B240D00C2C8FF /* YZSortViewController.m */,
-				9D0F21B51E9B241400C2C8FF /* YZSortCell.h */,
-				9D0F21B61E9B241400C2C8FF /* YZSortCell.m */,
-				9D0F21B71E9B241400C2C8FF /* YZSortCell.xib */,
 			);
 			name = Sort;
 			sourceTree = "<group>";
@@ -4449,10 +4479,6 @@
 		B090D2AF1F7CE48D008DA53C /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				B090D2B11F7CE51E008DA53C /* NewsViewController.h */,
-				B090D2B21F7CE51E008DA53C /* NewsViewController.m */,
-				B08912B91F94845000E4EB14 /* NewsDetailViewController.h */,
-				B08912BA1F94845000E4EB14 /* NewsDetailViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -4829,6 +4855,7 @@
 				9D36C7F91F2982E20022DAE0 /* ShareReturnDetailsCell.xib in Resources */,
 				0E75A9371C895FAC004B833A /* FundManagerController.xib in Resources */,
 				9D09E0D91E349A790008ACA2 /* yishitwo.png in Resources */,
+				188E7E671FE8B44700A0C586 /* HYNewActivtyCell.xib in Resources */,
 				9DA89EF71F20A5470060BA59 /* huix@2x.png in Resources */,
 				DF1F6AAE1D8D7FEC001495C6 /* AddressViewController.xib in Resources */,
 				18B802F11FDFAC9400ED3AD6 /* h5-APP13.png in Resources */,
@@ -5354,6 +5381,7 @@
 				9DF9359D1F1CAFC900D26528 /* XProjectViewController.m in Sources */,
 				2D90D0611C85A20200B754F5 /* PCCircleViewConst.m in Sources */,
 				2D3B747E1C97D1E5007A5DDC /* DebtCommitViewController.m in Sources */,
+				188E7E621FE8B15300A0C586 /* HYNewActivtyViewController.m in Sources */,
 				A34F56DE1E5404D900266C5A /* VZListViewController.m in Sources */,
 				CF2546D11F7D144D006F92B3 /* MyNewHeaderView.m in Sources */,
 				DF38D37B1DAF974600492DEE /* ShowBigImage.m in Sources */,
@@ -5408,6 +5436,7 @@
 				9DD7D7051E3445ED004F5C2D /* MyCreditoCell.m in Sources */,
 				2D719E081C7D500C008AE30C /* AppDelegate.m in Sources */,
 				DF6B14DE1D992748008605A0 /* MyViewTableViewCell.m in Sources */,
+				188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */,
 				A34F57051E543F6000266C5A /* SNProjectListModel.m in Sources */,
 				9D36C7FD1F2987240022DAE0 /* XReturnDetailsController.m in Sources */,
 				2D936DF71DC893C30058A901 /* TAAbstractDotView.m in Sources */,
@@ -5629,6 +5658,7 @@
 				0EF7BA241C911FA1008E8FE6 /* MyCreditorViewController.m in Sources */,
 				2D51A4D71C7D58E400AF71A2 /* ReflectUtil.m in Sources */,
 				DF5512261D8FE2A7000B21BD /* DXPopover.m in Sources */,
+				188E7E6B1FE8EC9300A0C586 /* HYLoading.m in Sources */,
 				2D92360C1CB509E30048CFB5 /* BankCardTableViewCell.m in Sources */,
 				B090D2A51F7CC4DD008DA53C /* ZHMeHeader.m in Sources */,
 				2D0F6EE41C968165006A36BD /* DistrictViewController.m in Sources */,

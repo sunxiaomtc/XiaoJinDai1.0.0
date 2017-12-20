@@ -145,6 +145,15 @@
     [self show:message icon:nil view:view];
 }
 
++(void)showMessageForWindow:(NSString *)text
+{
+//    MBProgressHUD *HUD = [[self alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
+//    HUD.mode = MBProgressHUDModeText;
+//    HUD.labelText = text;
+//    [HUD show:YES];
+//    [HUD hide:YES afterDelay:2.0f];
+}
+
 // custem
 + (MB_INSTANCETYPE)mb_ProgressHUDStatusToView:(UIView*)view statusString:(NSString*)statusString
 {

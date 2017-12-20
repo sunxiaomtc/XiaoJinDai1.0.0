@@ -79,29 +79,29 @@
 //    return 75*SINGLE_LINE_WIDTH;
 //}
 //section头部显示的内容
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *header;
-    if (section==0) {
-        header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10*SINGLE_LINE_WIDTH)];
-        header.backgroundColor = [UIColor whiteColor];
-    }else{
-        header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 18*SINGLE_LINE_WIDTH)];
-        header.backgroundColor = [UIColor whiteColor];
-        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 8*SINGLE_LINE_WIDTH, SCREEN_WIDTH, 18*SINGLE_LINE_WIDTH)];
-        line.backgroundColor = RGB(250, 250, 250);
-        [header addSubview:line];
-    }
-    
-    
-    return header;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *header;
+//    if (section==0) {
+//        header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10*SINGLE_LINE_WIDTH)];
+//        header.backgroundColor = [UIColor whiteColor];
+//    }else{
+//        header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 18*SINGLE_LINE_WIDTH)];
+//        header.backgroundColor = [UIColor whiteColor];
+//        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 8*SINGLE_LINE_WIDTH, SCREEN_WIDTH, 18*SINGLE_LINE_WIDTH)];
+//        line.backgroundColor = RGB(250, 250, 250);
+//        [header addSubview:line];
+//    }
+//
+//
+//    return header;
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 {
     if (section==0) {
         return 10;
     }
-    return 18;
+    return 5;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

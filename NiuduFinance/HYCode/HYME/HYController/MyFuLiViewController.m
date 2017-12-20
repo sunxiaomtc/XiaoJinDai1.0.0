@@ -82,6 +82,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testChuanCan:) name:@"chuanCan" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testTy:) name:@"tyQuan" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(yhqLoading:) name:@"YHQLoading" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideHUDS:) name:@"HIDEHUD" object:nil];
     
 //    HYXiaLaView *HY = [[HYXiaLaView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
 //    HY.titleArr = @[@"我的优惠券",@"使用"];
@@ -95,28 +96,35 @@
     
 }
 
-- (void)test:(NSNotification*) notification {
+- (void)test:(NSNotification*)notification {
+    [_firstAry removeAllObjects];
     _firstAry = [notification object];
     [self.tableView reloadData];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
 }
 
-- (void)testChuanCan:(NSNotification*) chuanCan {
+- (void)testChuanCan:(NSNotification*)chuanCan {
     _statusStr = [NSString stringWithFormat:@"%@",chuanCan.object];
     [self.tableView reloadData];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
 }
 
 - (void)testTy:(NSNotification*)testTy {
     _tYStr = [NSString stringWithFormat:@"%@",testTy.object];
     [self.tableView reloadData];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 -(void)yhqLoading:(NSNotification *)yhqLoading
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+-(void)hideHUDS:(NSNotification *)hide
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)backAction {
@@ -128,7 +136,7 @@
 #pragma mark - 添加子控制器
 - (void)setupAllChildViewController {
     YZSortViewController *sort = [[YZSortViewController alloc] init];
-    YZMoreMenuViewController *moreMenu = [[YZMoreMenuViewController alloc] init];
+    YZMoreMenuViewController *moreMenu  = [[YZMoreMenuViewController alloc] init];
     [self addChildViewController:sort];
     [self addChildViewController:moreMenu];
 }
@@ -176,7 +184,7 @@
 - (void)loadCanHongBaoData {
     __weak __typeof(self) weakSelf = self;
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
-        NSLog(@"%@",msg);
+        NSLog(@"%@\n%@",msg,dic);
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
             if (_firstAry.count == 0) {
@@ -203,6 +211,49 @@
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];
     }];
+}
+
+//筛选加载
+-(void)sendServerForRequest:(NSInteger )sort URL:(BOOL)isLeft
+{
+    NSString *url = @"";
+    if(isLeft)
+    {
+        url = @"v2/accept/account/findAllCoupon";
+    }else
+    {
+        url = @"v2/accept/account/commonCouponList";
+    }
+    WS
+    NSDictionary *dicse = @{@"status":@(sort)};
+    [self.httpUtil requestDic4MethodNam:url parameters:dicse result:^(id  dic, int status, NSString *msg) {
+        NSLog(@"%@\n%@",msg,dic);
+        if (status == 0) {
+            //            [MBProgressHUD showMessag:msg toView:self.view];
+            if (_firstAry.count == 0) {
+                //                self.hideNoNetWork = NO;
+                //                self.noNetWorkView.top = 53;
+                //                self.noNetWorkView.height = SCREEN_HEIGHT - 53;
+                //                self.noNetWorkView.width = SCREEN_WIDTH;
+            }
+        }else {
+            weakSelf.hideNoNetWork = YES;
+            NSLog(@"%@",dic);
+            if (_start == 0) {
+                _firstAry = [NSMutableArray array];
+            }
+            [_firstAry removeAllObjects];
+            [_firstAry addObjectsFromArray:dic];
+            if(_firstAry.count == 0)
+            {
+            }
+            [_tableView.mj_footer resetNoMoreData];
+            
+        }
+        [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
+    }];
+    
 }
 
 - (void)setupTableView {
@@ -259,11 +310,20 @@
 
 - (void)headerRefreshloadData {
     if (_touArr.count < _limit) {
-        [self loadCanHongBaoData];
+        //[self loadCanHongBaoData];
         //return;
     }else {
-        [self loadCanHongBaoData];
+        //[self loadCanHongBaoData];
     }
+//    id selected = [[NSUserDefaults standardUserDefaults]objectForKey:@"selectedCo"];
+//    NSInteger C  = [selected integerValue];
+    if ([_tYStr integerValue] == 5) {
+        [self sendServerForRequest:[_statusStr integerValue] URL:YES];
+    }else
+    {
+        [self sendServerForRequest:[_statusStr integerValue] URL:NO];
+    }
+    
     //[_tableView.mj_header endRefreshing];
 }
 
@@ -288,6 +348,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"chuanCan" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"tyQuan" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"YHQLoading" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HIDEHUD" object:nil];
     
 }
 

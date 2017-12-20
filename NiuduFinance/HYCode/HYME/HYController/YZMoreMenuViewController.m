@@ -120,6 +120,7 @@ static NSString * const ID = @"cell";
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr1.count == 0) {
@@ -148,6 +149,7 @@ static NSString * const ID = @"cell";
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(1)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr2.count == 0) {
@@ -177,6 +179,7 @@ static NSString * const ID = @"cell";
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(2)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr3.count == 0) {
@@ -201,9 +204,11 @@ static NSString * const ID = @"cell";
 //新未结清
 - (void)getInBiData1
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/commonCouponList" parameters:@{@"statusid":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr1.count == 0) {
@@ -229,9 +234,11 @@ static NSString * const ID = @"cell";
 //新已结清
 - (void)getBakLendData1
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/commonCouponList" parameters:@{@"statusid":@(1)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr2.count == 0) {
@@ -258,9 +265,11 @@ static NSString * const ID = @"cell";
 //新全部
 - (void)getAllBdData1
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"YHQLoading"object:0];
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/commonCouponList" parameters:@{@"statusid":@(2)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:0];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr3.count == 0) {

@@ -64,13 +64,9 @@
     
     if(![[User shareUser] checkIsLogin]) //未登录
     {
-        MyNewModel *model = [MyNewModel new];
-        model.user.mobile = @"";
-        model.income = @"";
-        model.mayUseBalance = @"";
-        model.balance = @"";
-        self.headerView.model = model;
+        [self UserExits:nil];
     }
+    
 }
 
 
@@ -85,7 +81,18 @@
     [super viewDidLoad];
     [self createCollectionView];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UserExits:) name:@"USEREXIT" object:nil];
+}
+
+-(void)UserExits:(NSNotification *)exit
+{
+    MyNewModel *model = [MyNewModel new];
+    model.user.mobile = @"";
+    model.income = @"";
+    model.mayUseBalance = @"";
+    model.balance = @"";
+    self.headerView.model = model;
+    self.myNewModel = model;
 }
 
 -(void)createCollectionView
@@ -117,21 +124,24 @@
 {
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     __weak __typeof(self) weakSelf = self;
-    [util requestDic4MethodNam:@"v2/accept/user/getAssetMultipleInfo" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
-        NSLog(@"_____%@",dic);
-        if (status == 0) {
-            [MBProgressHUD showMessag:msg toView:self.view];
-            [weakSelf.collectionView MJ_endPullToRefresh];
-//            LoginViewController *login = [LoginViewController new];
-//            [weakSelf presentViewController:login animated:YES completion:nil];
-        }else{
-            weakSelf.myNewModel = [MyNewModel mj_objectWithKeyValues:dic];
-            
-            weakSelf.headerView.model = weakSelf.myNewModel;
-            
-            [weakSelf.collectionView MJ_endPullToRefresh];
-        }
-    }];
+    if([[User shareUser] checkIsLogin])
+    {
+        [util requestDic4MethodNam:@"v2/accept/user/getAssetMultipleInfo" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+            NSLog(@"_____%@",dic);
+            if (status == 0) {
+                [MBProgressHUD showMessag:msg toView:self.view];
+                [weakSelf.collectionView MJ_endPullToRefresh];
+                //            LoginViewController *login = [LoginViewController new];
+                //            [weakSelf presentViewController:login animated:YES completion:nil];
+            }else{
+                weakSelf.myNewModel = [MyNewModel mj_objectWithKeyValues:dic];
+                
+                weakSelf.headerView.model = weakSelf.myNewModel;
+                
+                [weakSelf.collectionView MJ_endPullToRefresh];
+            }
+        }];
+    }
 
     self.idArray = [NSMutableArray array];
     self.titleArray = [NSMutableArray array];

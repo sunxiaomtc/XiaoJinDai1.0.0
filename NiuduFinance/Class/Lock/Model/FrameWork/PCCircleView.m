@@ -127,6 +127,9 @@
         
         subview.frame = frame;
     }];
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+    }];
 }
 
 #pragma mark - touch began - moved - end
@@ -527,7 +530,7 @@
     //倒数第二个
     PCCircle *lastTwo = [self.circleSet objectAtIndex:(self.circleSet.count -2)];
     
-    //计算倒数第二个的位置
+    //计算倒数第一个和倒数第二个的位置
     CGFloat last_1_x = lastOne.center.x;
     CGFloat last_1_y = lastOne.center.y;
     CGFloat last_2_x = lastTwo.center.x;

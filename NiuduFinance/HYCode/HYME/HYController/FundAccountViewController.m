@@ -9,6 +9,7 @@
 #import "FundAccountViewController.h"
 #import "FundAccountTableViewCell.h"
 #import "FundCollectionViewCell.h"
+#import "NoMsgView.h"
 
 static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
 
@@ -159,7 +160,7 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
 }
 
 - (void)getFundAccountData {
-
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllFundSerials" parameters:@{@"type":@(_sortIndex),@"limit":@(_limit),@"start":@(_start)} result:^(id dic, int status, NSString *msg) {
         
         NSLog(@"%d",status);
@@ -170,6 +171,13 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
         if (status == 0) {
             if (![dic isKindOfClass:[NSNull class]]) {
                 [_fundAccountArr addObjectsFromArray:dic];
+                if(_fundAccountArr.count == 0)
+                {
+                    [weakSelf.view addSubview:weakSelf.noMsgView];
+                }else
+                {
+                    [weakSelf.noMsgView removeFromSuperview];
+                }
             }
         }else {
             [_fundAccountArr addObjectsFromArray:dic];

@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "HYNewActivtyViewController.h"
 
 
 @interface TabBarController ()
@@ -122,7 +123,8 @@
 //    BaseNavigationController *messageNavController = [[BaseNavigationController alloc] initWithRootViewController:investController];
 //    messageNavController.tabBarItem = item3;
     
-    activityNViewController *activityVC = [[activityNViewController alloc]init];
+    activityNViewController *activityVC = [[activityNViewController alloc] init];
+//    HYNewActivtyViewController *activityVC = [[HYNewActivtyViewController alloc] init];
     BaseNavigationController *activityNav = [[BaseNavigationController alloc] initWithRootViewController:activityVC];
     activityNav.tabBarItem = item3;
     

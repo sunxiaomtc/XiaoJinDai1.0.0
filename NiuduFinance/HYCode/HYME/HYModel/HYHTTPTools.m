@@ -62,6 +62,7 @@ static HYHTTPTools *_instance = nil;
         seccess(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         faild(error);
+        NSLog(@"接口:%@ 请求失败: %@",url,error);
     }];
 }
 

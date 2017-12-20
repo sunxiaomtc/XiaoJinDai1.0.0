@@ -100,6 +100,7 @@ static NSString * const ID = @"cell";
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:nil];
         if (status == 0) {
             [MBProgressHUD showMessag:msg toView:self.view];
             if (_toArr1.count == 0) {
@@ -126,8 +127,12 @@ static NSString * const ID = @"cell";
     NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
     [util requestDic4MethodNam:@"v2/accept/account/commonCouponList" parameters:@{@"statusid":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HIDEHUD"object:nil];
         if (status == 0) {
-            [MBProgressHUD showMessag:msg toView:self.view];
+            if(msg.length > 0)
+            {
+                [MBProgressHUD showMessag:msg toView:self.view];
+            }
             if (_toArr2.count == 0) {
             }
         }else{

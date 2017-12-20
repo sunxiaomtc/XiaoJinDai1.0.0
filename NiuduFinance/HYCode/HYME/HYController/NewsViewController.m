@@ -59,45 +59,46 @@ static NSString *newsType = @"";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
 }
 - (void)editBtnClick:(UIButton *)sender {
+    WS
     sender.selected = !sender.selected;
     if (sender.selected) {
         NSLog(@"下拉框显示");
         NewsPopView *popView = [NewsPopView buttonTag:^(NSInteger buttonTag) {
-            self.page = 1;
+            weakSelf.page = 1;
             if (buttonTag == 100) {
                 NSLog(@"点击了全部");
                 newsType = @"0";
-                [self loadDataNewsList];//请求全部的数据
+                [weakSelf loadDataNewsList];//请求全部的数据
             }
             else if (buttonTag == 101) {
                 newsType = @"1";
-                [self loadDataNewsList];//请求系统消息的数据
+                [weakSelf loadDataNewsList];//请求系统消息的数据
             }
             else if (buttonTag == 102){
                 newsType = @"2";
-                [self loadDataNewsList];//请求用户消息的数据
+                [weakSelf loadDataNewsList];//请求用户消息的数据
             }
-            [self.rightBtn setTitle:@"筛选" forState:UIControlStateNormal];
+            [weakSelf.rightBtn setTitle:@"筛选" forState:UIControlStateNormal];
             sender.selected = !sender.selected;
         }];
-        [self.view addSubview:popView];
-        self.popView = popView;
+        [weakSelf.view addSubview:popView];
+        weakSelf.popView = popView;
     }else {
         NSLog(@"下拉框隐藏");
-        [self.popView closeAction];
+        [weakSelf.popView closeAction];
     }
     [self.rightBtn setTitle:sender.selected ? @"取消":@"筛选" forState:UIControlStateNormal];
 }
 
 #pragma marlk - 请求消息数据
 - (void)loadDataNewsList {
-    NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)self.page];
+    //NSString *pageStr = [NSString stringWithFormat:@"%ld",(long)self.page];
     NSString *url = [__API_HEADER__ stringByAppendingString:@"v2/accept/msg/findALL"];
     
     NSDictionary *dic = @{
                           @"id":newsType,
-                          @"start":[NSString stringWithFormat:@"%ld", (self.page-1)*5],
-                          @"limit":@"5"
+                          @"start":[NSString stringWithFormat:@"%ld", (self.page-1)*10],
+                          @"limit":@"10"
                           };
     [NSObject POST:url parameters:dic progress:^(NSProgress *downloadProgress) {
         
@@ -109,17 +110,16 @@ static NSString *newsType = @"";
                 
                 return @{@"typeId":@"typeid"};
             }];
-            self.dataArray = [NSMutableArray arrayWithArray:[NewsModel mj_objectArrayWithKeyValuesArray:[responseObject objectForKey:@"data"]]];
-            if (self.dataArray.count == 0) {
-                [self.view addSubview:self.noMsgView];
-            }else {
-                [self.noMsgView removeFromSuperview];
-            }
             if (self.page == 1) {
                 self.dataArray = [NSMutableArray arrayWithArray:[NewsModel mj_objectArrayWithKeyValuesArray:[responseObject objectForKey:@"data"]]];
             }else {
                 NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[NewsModel mj_objectArrayWithKeyValuesArray:[responseObject objectForKey:@"data"]]];
                 [self.dataArray addObjectsFromArray:tempArray];
+            }
+            if (self.dataArray.count == 0) {
+                [self.view addSubview:self.noMsgView];
+            }else {
+                [self.noMsgView removeFromSuperview];
             }
             [self.newsTabelView reloadData];
         }
@@ -154,7 +154,7 @@ static NSString *newsType = @"";
 
 - (UITableView *)newsTabelView {
     if (!_newsTabelView) {
-        _newsTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+        _newsTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
         _newsTabelView.delegate = self;
         _newsTabelView.dataSource = self;
         _newsTabelView.showsVerticalScrollIndicator = NO;
