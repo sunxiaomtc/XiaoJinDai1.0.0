@@ -248,7 +248,6 @@
                 weakSelf.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.4f);
             } completion:^(BOOL finished) {
                 weakSelf.progressView.hidden = YES;
-                
             }];
         }
     }else{

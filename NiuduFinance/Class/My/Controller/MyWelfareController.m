@@ -212,8 +212,11 @@
     [self.tableView addSubview:_twoView];
     [_twoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_firstView.mas_bottom).with.offset(10);
-        make.centerX.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 379));
+//        make.centerX.mas_equalTo(0);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 379));
+        make.left.mas_equalTo(self.view.mas_left).offset(0);
+        make.right.mas_equalTo(self.view.mas_right).offset(0);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset(0);
     }];
     
     _whyLabel = [UILabel new];

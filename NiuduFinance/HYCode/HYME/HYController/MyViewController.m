@@ -309,9 +309,8 @@
     NSLog(@"========cell");
     if (indexPath.section == 0) {
         NewsViewController *vc = [[NewsViewController alloc]init];
-        self.hidesBottomBarWhenPushed = YES;
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {//投资记录

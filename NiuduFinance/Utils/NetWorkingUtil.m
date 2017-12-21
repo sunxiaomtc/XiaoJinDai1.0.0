@@ -435,7 +435,7 @@ static AFHTTPSessionManager *manager;
         
         NSInteger stateCode = [[obj valueForKey:@"success"] integerValue]; //查询数据成功状态值：1成功  0 失败
         //        resultMsg = [obj valueForKey:@"msgType"]; //返回提示语
-        NSLog(@"----返回的数据：%@",obj);
+        //NSLog(@"----返回的数据：%@",obj);
         
         id resultArray = [obj valueForKey:@"data"];//返回的参数
         
@@ -511,7 +511,7 @@ static AFHTTPSessionManager *manager;
             id value = IsNilOrNull(key)?resultArray:[resultArray  valueForKey:key];
             
             resultObj=calssName==nil?value:[ReflectUtil reflectDataWithClassName:calssName otherObject:value isList:YES];
-            NSLog(@"%@",resultObj);
+            //NSLog(@"%@",resultObj);
             
         }
         if (statusInt==0) {

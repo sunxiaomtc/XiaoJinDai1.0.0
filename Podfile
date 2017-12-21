@@ -17,4 +17,5 @@ pod 'YYKit', '~> 1.0.9'
 pod 'AFNetworking', '~> 3.1.0'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'WebViewJavascriptBridge', '~> 6.0'
+pod 'JPush'
 end

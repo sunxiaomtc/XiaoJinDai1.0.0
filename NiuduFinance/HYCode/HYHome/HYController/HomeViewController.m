@@ -247,8 +247,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             [weakSelf.navigationController pushViewController:aboutVC animated:YES];
             weakSelf.hidesBottomBarWhenPushed = NO;
             
-            
-            
         }
     }];
     //轮播图的点击事件
@@ -325,7 +323,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         if (buttonTag == 100) {
             MoreWebViewController * moreWebVC = [MoreWebViewController new];
             moreWebVC.titleStr = @"新手指引";
-            moreWebVC.webStr =@"v2/accept/new1";
+            moreWebVC.webStr = @"v2/accept/new1";
             NSLog(@"%@",moreWebVC.webStr);
             self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor blackColor], UITextAttributeFont:[UIFont boldSystemFontOfSize:18]};
             [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
