@@ -5857,7 +5857,6 @@
 			baseConfigurationReference = B03ECD3045F78B4F372159A5 /* Pods-NiuduFinance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_ENTITLEMENTS = NiuduFinance/NiuduFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -5880,7 +5879,6 @@
 			baseConfigurationReference = A399C6AE60839F460700C22C /* Pods-NiuduFinance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_ENTITLEMENTS = NiuduFinance/NiuduFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

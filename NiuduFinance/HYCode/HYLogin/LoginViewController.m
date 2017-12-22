@@ -57,8 +57,13 @@
     
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = [UIColor whiteColor];
-    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 250);
-    [scrollView addSubview:headerView];
+    if(isIPhoneX)
+    {
+        headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 280);
+    }else
+    {
+        headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 250);
+    }    [scrollView addSubview:headerView];
     UIImageView *headerImageView = [[UIImageView alloc] init];
     [headerView addSubview:headerImageView];
     [headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,7 +89,7 @@
     [quit setImage:[UIImage imageNamed:@"OX"] forState:UIControlStateNormal];
     [quit addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchDown];
     [quit mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
+        make.top.mas_equalTo(30);
         make.left.mas_equalTo(10);
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(40);

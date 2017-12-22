@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bZM-0P-pdY">
-                    <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="sectionIndexBackgroundColor" red="0.95296025276184082" green="0.95292448997497559" blue="0.95294880867004395" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <connections>
@@ -29,42 +29,13 @@
                         <outlet property="delegate" destination="-1" id="lfo-d2-Tch"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRT-A3-FFp">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lut-jQ-aF4">
-                            <rect key="frame" x="0.0" y="64" width="375" height="1"/>
-                            <color key="backgroundColor" red="0.75677949190139771" green="0.75691080093383789" blue="0.7567710280418396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="65" id="4hp-fz-nB5"/>
-                        <constraint firstItem="Lut-jQ-aF4" firstAttribute="height" secondItem="KRT-A3-FFp" secondAttribute="height" constant="-64" id="5Q2-qM-ueB"/>
-                        <constraint firstAttribute="bottom" secondItem="Lut-jQ-aF4" secondAttribute="bottom" constant="0.5" id="HsC-V8-q6K"/>
-                        <constraint firstAttribute="trailing" secondItem="Lut-jQ-aF4" secondAttribute="trailing" id="cYj-GT-n9M"/>
-                        <constraint firstItem="Lut-jQ-aF4" firstAttribute="leading" secondItem="KRT-A3-FFp" secondAttribute="leading" id="y4L-LB-h2m"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投资" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEl-ns-aLE">
-                    <rect key="frame" x="168" y="31" width="39" height="23"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="bZM-0P-pdY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="7Ss-d0-FFr"/>
-                <constraint firstAttribute="bottom" secondItem="bZM-0P-pdY" secondAttribute="bottom" id="8pT-FC-w6Y"/>
-                <constraint firstItem="oEl-ns-aLE" firstAttribute="centerY" secondItem="KRT-A3-FFp" secondAttribute="centerY" constant="10" id="Ku5-7w-Jh7"/>
-                <constraint firstItem="KRT-A3-FFp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SE0-N6-ZSm"/>
-                <constraint firstItem="KRT-A3-FFp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VhP-9i-hkQ"/>
-                <constraint firstItem="bZM-0P-pdY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zm3-YZ-9PO"/>
-                <constraint firstAttribute="trailing" secondItem="bZM-0P-pdY" secondAttribute="trailing" id="am9-kl-hQS"/>
-                <constraint firstItem="oEl-ns-aLE" firstAttribute="centerX" secondItem="KRT-A3-FFp" secondAttribute="centerX" id="ci1-rv-maB"/>
-                <constraint firstItem="KRT-A3-FFp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eCc-D4-FMa"/>
-                <constraint firstAttribute="trailing" secondItem="KRT-A3-FFp" secondAttribute="trailing" id="pLh-Ok-DpL"/>
+                <constraint firstAttribute="trailing" secondItem="bZM-0P-pdY" secondAttribute="trailing" id="2aj-Xd-LVR"/>
+                <constraint firstItem="bZM-0P-pdY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J6C-uN-JCB"/>
+                <constraint firstItem="bZM-0P-pdY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N7v-j5-5Ka"/>
+                <constraint firstAttribute="bottom" secondItem="bZM-0P-pdY" secondAttribute="bottom" id="yvK-FO-7Zu"/>
             </constraints>
         </view>
     </objects>

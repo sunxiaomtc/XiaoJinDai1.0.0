@@ -87,7 +87,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT - 49+20) style:UITableViewStyleGrouped];
+    self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - WDTabBarHeight+WDStatusBarHeight) style:UITableViewStyleGrouped];
     self.homeTableView.delegate = self;
     self.homeTableView.dataSource = self;
     self.homeTableView.showsVerticalScrollIndicator = NO;

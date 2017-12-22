@@ -244,7 +244,7 @@
     _responseString = self.request.responseString;
     _responseObject = self.request.responseObject;
     
-    NSLog(@"[%@]-->REQUEST_FINISH:%@", self.class, JSON);
+    //NSLog(@"[%@]-->REQUEST_FINISH:%@", self.class, JSON);
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        

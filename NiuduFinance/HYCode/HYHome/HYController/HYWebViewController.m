@@ -114,6 +114,8 @@
             [self.navigationController pushViewController:invitationVC animated:YES];
         }
     }
+    
+    
 }
 
 //加载完成

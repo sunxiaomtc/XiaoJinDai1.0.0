@@ -68,15 +68,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.hidesBottomBarWhenPushed=NO;
+    self.title = @"投资";
     [self setupTableView];
     [self getXSZX];
     [self getIsNewData];
     //隐藏导航栏
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
-    self.navigationController.navigationBar.titleTextAttributes = mine;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+//    self.navigationController.navigationBar.titleTextAttributes = mine;
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 - (void)setupTableView
@@ -589,10 +589,10 @@
     
 }
 //修改状态栏为黑色
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleDefault;
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    return UIStatusBarStyleDefault;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

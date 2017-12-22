@@ -101,7 +101,7 @@
     flowLayout.minimumLineSpacing = 1;
     flowLayout.minimumInteritemSpacing = 1;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT-46+20) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight+20) collectionViewLayout:flowLayout];
     [self.view addSubview:self.collectionView];
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
     self.collectionView.dataSource = self;
