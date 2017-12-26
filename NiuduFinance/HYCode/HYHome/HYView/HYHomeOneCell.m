@@ -62,7 +62,15 @@
     _addBFBStr = addBFBStr;
     if(![addBFBStr isKindOfClass:[NSNull class]] && ![addBFBStr isEqualToString:@"(null)"] && addBFBStr.length > 0)
     {
-        self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+        float add = [addBFBStr floatValue];
+        if(add > 0)
+        {
+            self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+        }else
+        {
+            self.addBFBLabel.text = @"";
+        }
+        
     }
     
 }

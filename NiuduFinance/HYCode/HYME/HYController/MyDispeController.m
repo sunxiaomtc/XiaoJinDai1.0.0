@@ -10,6 +10,7 @@
 #import "MyDisperCell.h"
 #import "ReturnDetailsViewController.h"
 #import "WebPageVC.h"
+#import "NoMsgView.h"
 @interface MyDispeController ()<UITableViewDelegate ,UITableViewDataSource,MyDisperCellDelegate>
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *myDisperseInvestStateButtons;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -45,7 +46,9 @@
 
 //新未结清
 - (void)getInBiData {
+    [self.noMsgView removeFromSuperview];
     [_tableView.mj_header beginRefreshing];
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(0),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
@@ -63,6 +66,11 @@
             [_touArr addObjectsFromArray:dic];
             [_tableView.mj_footer resetNoMoreData];
         }
+        if(_touArr.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - 68);
+            [weakSelf.tableView addSubview:weakSelf.noMsgView];
+        }
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];
     }];
@@ -70,7 +78,9 @@
 
 //新已结清
 - (void)getBakLendData {
+    [self.noMsgView removeFromSuperview];
     [_tableView.mj_header beginRefreshing];
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(1),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
         if (status == 0) {
@@ -82,12 +92,17 @@
 //                self.noNetWorkView.width = SCREEN_WIDTH;
             }
         }else {
-            self.hideNoNetWork = YES;
+            weakSelf.hideNoNetWork = YES;
             if (_start == 0) {
                 _touArr = [NSMutableArray array];
             }
             [_touArr addObjectsFromArray:dic];
             [_tableView.mj_footer resetNoMoreData];
+        }
+        if(_touArr.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - 68);
+            [weakSelf.tableView addSubview:weakSelf.noMsgView];
         }
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];
@@ -96,7 +111,10 @@
 
 //新全部
 - (void)getAllBdData {
+    self.tableView.backgroundColor = qianhui244Color;
+    [self.noMsgView removeFromSuperview];
     [_tableView.mj_header beginRefreshing];
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/list" parameters:@{@"limit":@(_limit),@"type":@(2),@"start":@(_start)} result:^(id  dic, int status, NSString *msg) {
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
@@ -107,9 +125,14 @@
 //                self.noNetWorkView.width = SCREEN_WIDTH;
             }
         }else {
-            self.hideNoNetWork = YES;
+            weakSelf.hideNoNetWork = YES;
             [_touArr addObjectsFromArray:dic];
             [_tableView.mj_footer resetNoMoreData];
+        }
+        if(_touArr.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - 68);
+            [weakSelf.tableView addSubview:weakSelf.noMsgView];
         }
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];

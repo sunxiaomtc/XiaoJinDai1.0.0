@@ -101,7 +101,8 @@
     flowLayout.minimumLineSpacing = 1;
     flowLayout.minimumInteritemSpacing = 1;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight+20) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight+WDStatusBarHeight) collectionViewLayout:flowLayout];
+    
     [self.view addSubview:self.collectionView];
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
     self.collectionView.dataSource = self;
@@ -279,7 +280,7 @@
 //        return CGSizeMake(SCREEN_WIDTH, 43);
 //    }
     if (indexPath.section == 2) {
-        return CGSizeMake(SCREEN_WIDTH, 200+30);
+        return CGSizeMake(SCREEN_WIDTH, 160);
     }
     return CGSizeZero;
 }
@@ -314,8 +315,11 @@
     }
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {//投资记录
-            MyTouZiViewController *VC = [[MyTouZiViewController alloc] init];
-            VC.hidesBottomBarWhenPushed =YES;
+//            MyTouZiViewController *VC = [[MyTouZiViewController alloc] init];
+//            VC.hidesBottomBarWhenPushed =YES;
+//            [self.navigationController pushViewController:VC animated:YES];
+            MyDispeController *VC = [MyDispeController new];
+            VC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:VC animated:YES];
         }
         if (indexPath.row == 1) {//资金明细

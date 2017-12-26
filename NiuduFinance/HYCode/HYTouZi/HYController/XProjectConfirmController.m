@@ -14,8 +14,9 @@
 #import "WebPageVC.h"
 #import "ZHBPickerView.h"
 #import "AppDelegate.h"
+#import "BankNewTopUpViewController.h"
 
-@interface XProjectConfirmController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHBPickerViewDataSource,ZHBPickerViewDelegate>
+@interface XProjectConfirmController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHBPickerViewDataSource,ZHBPickerViewDelegate,UIAlertViewDelegate>
 {
     NSInteger selectIndex;
 }
@@ -438,16 +439,22 @@
 
 - (void)getDetail
 {
-    
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/project/find" parameters:@{@"projectId":@(_projectId)} result:^(NSDictionary *dic, int status, NSString *msg) {
         NSLog(@"%@",dic);
         if (status == 0) {
         }else{
             _titleLab.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
-             NSString *str = [self formatFloat:([[dic objectForKey:@"rate"] floatValue]-([self.addRate floatValue]))];
+             NSString *str = [weakSelf formatFloat:([[dic objectForKey:@"rate"] floatValue]-([weakSelf.addRate floatValue]))];
             _rateLabe.text = [str stringByAppendingString:@"%"];
+            if([weakSelf.addRate floatValue] > 0)
+            {
+                _addLab.text = [[NSString stringWithFormat:@"+%@",weakSelf.addRate]stringByAppendingString:@"%"];
+            }else
+            {
+                _addLab.text = @"";
+            }
             
-            _addLab.text = [[NSString stringWithFormat:@"+%@",self.addRate]stringByAppendingString:@"%"];
             NSString * perStr = [NSString stringWithFormat:@"%@",[dic objectForKey:@"periodtypeid"]];
             if ([perStr integerValue] == 1) {
                 _timeLabe.text = [NSString stringWithFormat:@"%@天",[dic objectForKey:@"loanperiod"]];
@@ -461,7 +468,7 @@
             
             _syktNumb.text = [NSString stringWithFormat:@"%.2f",[[dic objectForKey:@"remainamount"] floatValue]];
         }
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
         
     }];
 }
@@ -721,42 +728,92 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"123456");
-    NSNumber * projectId = [NSNumber numberWithInt:_projectId ];
-    self.investModel.projectId = projectId;
-    self.investModel.amount = _tzjeAmountStr;
-    self.investModel.sendId = _hongbaoid;
-    NSLog(@"%@",_hongbaoid);
-    
-    WS
-    [self.investModel loadWithCompletion:^(VZModel *model, NSError *error) {
-        if (!error) {
-            WebPageVC *vc = [WebPageVC new];
-            vc.isHtmlString = YES;
-            vc.name = [weakSelf.investModel.form stringByAppendingString:@"<script type=\"text/javascript\">document .getElementById('huifufrom').submit();</script>"];
-            vc.title = @"投资确认";
-            [weakSelf.navigationController pushViewController:vc animated:YES];
-        } else {
-            if([[error localizedDescription] isEqualToString:@"可用余额不足!"])
-            {
-                //[MBProgressHUD showMessag:<#(NSString *)#> toView:<#(UIView *)#>];
-//                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-//                hud.detailsLabelText = [error localizedDescription];
-//                hud.detailsLabelFont = [UIFont systemFontOfSize:14.0f];
-//                // 再设置模式
-//                hud.mode = MBProgressHUDModeCustomView;
-//
-//                // 隐藏时候从父控件中移除
-//                hud.removeFromSuperViewOnHide = YES;
-//                // 1.5秒之后再消失
-//                [hud hide:YES afterDelay:2];
-                [MBProgressHUD showMessag:[error localizedDescription] toView:self.view];
-                //[NSThread sleepForTimeInterval:2.0];
-                [self performSelector:@selector(delayMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
-            }else
-            {
-                [MBProgressHUD showMessag:[error localizedDescription] toView:self.view];
+    if(alertView.tag == 888)
+    {
+        if (buttonIndex == 1) {
+            WebPageVC *vc = [[WebPageVC alloc] init];
+            vc.title = @"开通汇付账户";
+            vc.name = @"huifu/openaccount";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else
+    {
+        NSNumber * projectId = [NSNumber numberWithInt:_projectId ];
+        self.investModel.projectId = projectId;
+        self.investModel.amount = _tzjeAmountStr;
+        self.investModel.sendId = _hongbaoid;
+        //NSLog(@"%@",_hongbaoid);
+        
+        WS
+        [self.investModel loadWithCompletion:^(VZModel *model, NSError *error) {
+            if (!error) {
+                WebPageVC *vc = [WebPageVC new];
+                vc.isHtmlString = YES;
+                vc.name = [weakSelf.investModel.form stringByAppendingString:@"<script type=\"text/javascript\">document .getElementById('huifufrom').submit();</script>"];
+                vc.title = @"投资确认";
+                [weakSelf.navigationController pushViewController:vc animated:YES];
+            } else {
+                if([[error localizedDescription] isEqualToString:@"可用余额不足!"])
+                {
+                    //[MBProgressHUD showMessag:<#(NSString *)#> toView:<#(UIView *)#>];
+                    //                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+                    //                hud.detailsLabelText = [error localizedDescription];
+                    //                hud.detailsLabelFont = [UIFont systemFontOfSize:14.0f];
+                    //                // 再设置模式
+                    //                hud.mode = MBProgressHUDModeCustomView;
+                    //
+                    //                // 隐藏时候从父控件中移除
+                    //                hud.removeFromSuperViewOnHide = YES;
+                    //                // 1.5秒之后再消失
+                    //                [hud hide:YES afterDelay:2];
+                    [MBProgressHUD showMessag:[error localizedDescription] toView:self.view];
+                    [self performSelector:@selector(delayMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+                    //[weakSelf panduanISOpen];
+                }else
+                {
+                    [MBProgressHUD showMessag:[error localizedDescription] toView:self.view];
+                }
             }
+        }];
+    }
+}
+
+-(void)panduanISOpen
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
+    __weak __typeof(self) weakSelf = self;
+    [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (status != 0) {
+            NSLog(@"%@",dic);
+            Boolean open = [[dic objectForKey:@"status"] boolValue];
+            NSLog(@"%hhu",open);
+            if (!open) {
+                //安全退出
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
+                alert.tag = 888;
+                [alert show];
+            }else {
+                [weakSelf panduanChongZhi];
+            }
+        }
+    }];
+}
+
+-(void)panduanChongZhi
+{
+    WS
+    [weakSelf.httpUtil requestDic4MethodNam:@"v2/accept/user/findExpressBankCard" parameters:nil result:^(id dic, int status, NSString *msg) {
+        NSLog(@"%@",dic);
+        if (status == 0) {
+            WebPageVC *vc = [[WebPageVC alloc] init];
+            vc.title = @"充值";
+            vc.name = @"recharge";
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }else {
+            BankNewTopUpViewController * bankVC = [BankNewTopUpViewController new];
+            [weakSelf.navigationController pushViewController:bankVC animated:YES];
         }
     }];
 }
@@ -766,8 +823,8 @@
     WebPageVC *vc = [[WebPageVC alloc] init];
     vc.title = @"充值";
     vc.name = @"recharge";
-    [self.navigationController pushViewController:vc animated:YES];
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.navigationController pushViewController:vc animated: YES];
+    [MBProgressHUD hideAllHUDsForView:self.view animated: YES];
 }
 
 

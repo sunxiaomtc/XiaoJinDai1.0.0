@@ -15,8 +15,9 @@
 #import "SNProjectFindAllInvestorModel.h"
 #import "XProjectConfirmController.h"
 #import "XProjectDetailsNewController.h"
+#import "WebPageVC.h"
 
-@interface XProjectDetailsNewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface XProjectDetailsNewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     float lastContentOffset;
     UITableView *OneTable;
@@ -490,7 +491,7 @@
     }];
     
     _nameLabel = [UILabel new];
-    [_nameLabel setText:@"项目名称：发斯蒂芬违法热个梵蒂冈地方"];
+    [_nameLabel setText:@"项目名称："];
     [_nameLabel setFont:[UIFont systemFontOfSize:12]];
     [_nameLabel setTextColor:[UIColor colorWithHexString:@"#666565"]];
     [_threeView addSubview:_nameLabel];
@@ -559,19 +560,54 @@
     //    [self.tableView setContentOffset:CGPointMake(0, 212+131+83+50) animated:YES];
     
 }
+
+//立即投资
 - (void)btnClick:(UIButton *)btn
 {
-    self.hidesBottomBarWhenPushed=YES;
-    XProjectConfirmController * confirmVC =[XProjectConfirmController new];
-    confirmVC.projectId = _projectId;
-    [self.navigationController pushViewController:confirmVC animated:YES];
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
+    __weak __typeof(self) weakSelf = self;
+    [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (status != 0) {
+            NSLog(@"%@",dic);
+            Boolean open = [[dic objectForKey:@"status"] boolValue];
+            NSLog(@"%hhu",open);
+            if (!open) {
+                //安全退出
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
+                alert.tag = 888;
+                [alert show];
+            }else {
+                XProjectConfirmController * confirmVC =[XProjectConfirmController new];
+                confirmVC.projectId = _projectId;
+                confirmVC.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:confirmVC animated:YES];
+            }
+        }
+    }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag == 888)
+    {
+        if (buttonIndex == 1) {
+            WebPageVC *vc = [[WebPageVC alloc] init];
+            vc.title = @"开通汇付账户";
+            vc.name = @"huifu/openaccount";
+            WS
+            vc.isOpen = ^(BOOL isO) {
+                [weakSelf btnClick:nil];
+            };
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
 
 - (void)backClick
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)getDetail

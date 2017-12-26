@@ -2543,6 +2543,8 @@
 				9DA89EEC1F2080DB0060BA59 /* XProjectConfirmController.h */,
 				9DA89EED1F2080DB0060BA59 /* XProjectConfirmController.m */,
 				9DA89EEE1F2080DB0060BA59 /* XProjectConfirmController.xib */,
+				DFF961981DB0D5010077AB11 /* WebPageVC.h */,
+				DFF961991DB0D5010077AB11 /* WebPageVC.m */,
 			);
 			path = HYController;
 			sourceTree = "<group>";
@@ -4702,8 +4704,6 @@
 		DFF961971DB0D4D30077AB11 /* WebPage */ = {
 			isa = PBXGroup;
 			children = (
-				DFF961981DB0D5010077AB11 /* WebPageVC.h */,
-				DFF961991DB0D5010077AB11 /* WebPageVC.m */,
 			);
 			name = WebPage;
 			sourceTree = "<group>";

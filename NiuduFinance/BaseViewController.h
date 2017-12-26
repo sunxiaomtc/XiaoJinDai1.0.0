@@ -12,6 +12,8 @@
 #import "NoMsgView.h"
 #import "NoNetWorkView.h"
 
+
+
 @interface BaseViewController : UIViewController
 @property (nonatomic,assign) BOOL hideNaviBar;//defult is no viewwillappear
 @property (nonatomic,assign) BOOL hideBottomBar;//defult is no

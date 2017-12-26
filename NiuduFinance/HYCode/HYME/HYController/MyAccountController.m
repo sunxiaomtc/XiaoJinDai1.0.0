@@ -45,12 +45,15 @@
 @end
 
 @implementation MyAccountController
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setTableViewInfo];
     [self getAccountSaftData];
     //隐藏导航栏
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    self.title = @"我的账户";
+    [self setupBarButtomItemWithImageName:@"黑色返回按钮" highLightImageName:@"nav_back_select.png" selectedImageName:nil target:self action:@selector(backClick) leftOrRight:YES];
     [self getAddress];
 }
 
@@ -58,37 +61,49 @@
     [super viewDidLoad];
     _tndBtn = [UIButton new];
     _myAccountDic = [NSDictionary alloc];
-    _dhView = [UIView new];
-    [_dhView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:_dhView];
-    [_dhView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 64));
-    }];
-    
-    _dhTitleLabe = [UILabel new];
-    [_dhTitleLabe setText:@"我的账户"];
-    [_dhTitleLabe setFont:[UIFont systemFontOfSize:17]];
-    [self.dhView addSubview:_dhTitleLabe];
-    [_dhTitleLabe mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(0);
-        make.top.mas_equalTo(34);
-        make.height.mas_equalTo(16);
-    }];
-    
-    _imageVie = [UIImageView new];
-    UIImage * image = [UIImage imageNamed:@"jianq.png"];
-    _imageVie.image = image;
-    [self.dhView addSubview:_imageVie];
-    [_imageVie mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(34);
-        make.left.mas_equalTo(15);
-        make.size.mas_equalTo(CGSizeMake(18, 18));
-    }];
-    
-    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClick)];
-    [_imageVie addGestureRecognizer:labelTapGestureRecognizer];
-    _imageVie.userInteractionEnabled = YES;
+//    _dhView = [UIView new];
+//    [_dhView setBackgroundColor:[UIColor whiteColor]];
+//    [self.view addSubview:_dhView];
+//    [_dhView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(0);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, WDTopHeight));
+//    }];
+//
+//    _dhTitleLabe = [UILabel new];
+//    [_dhTitleLabe setText:@"我的账户"];
+//    [_dhTitleLabe setFont:[UIFont systemFontOfSize:17]];
+//    [self.dhView addSubview:_dhTitleLabe];
+//    [_dhTitleLabe mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.mas_equalTo(0);
+//        if(isIPhoneX)
+//        {
+//            make.top.mas_equalTo(54);
+//        }else
+//        {
+//            make.top.mas_equalTo(34);
+//        }
+//        make.height.mas_equalTo(16);
+//    }];
+//
+//    _imageVie = [UIImageView new];
+//    UIImage * image = [UIImage imageNamed:@"jianq.png"];
+//    _imageVie.image = image;
+//    [self.dhView addSubview:_imageVie];
+//    [_imageVie mas_makeConstraints:^(MASConstraintMaker *make) {
+//        if(isIPhoneX)
+//        {
+//            make.top.mas_equalTo(54);
+//        }else
+//        {
+//            make.top.mas_equalTo(34);
+//        }
+//        make.left.mas_equalTo(15);
+//        make.size.mas_equalTo(CGSizeMake(18, 18));
+//    }];
+//
+//    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClick)];
+//    [_imageVie addGestureRecognizer:labelTapGestureRecognizer];
+//    _imageVie.userInteractionEnabled = YES;
     
 //    _tableView.tableHeaderView.height = 161;
     _firstView = [UIView new];
@@ -161,7 +176,7 @@
     }];
 
 }
-- (void)labelClick
+- (void)backClick
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -213,6 +228,10 @@
             if(![_realnameStr isKindOfClass:[NSNull class]])
             {
                 [[NSUserDefaults standardUserDefaults] setObject:_realnameStr forKey:@"USERINFOREALName"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }else
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"USERINFOREALName"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
             }
             if(![_realMobileStr isKindOfClass:[NSNull class]])

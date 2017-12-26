@@ -10,7 +10,8 @@
 #import "PSBarButtonItem.h"
 #import "UIColor+SNFoundation.h"
 #import "MacroDefine.h"
-
+#import <MJRefresh.h>
+#import "UIScrollView+Refresh.h"
 
 @interface BaseViewController ()<UIGestureRecognizerDelegate>
 
@@ -191,6 +192,7 @@
 
 - (void)setupRefreshWithTableView:(UITableView *)tableView
 {
+    
     [self setupHeaderRefresh:tableView];
     [self setupFooterRefresh:tableView];
 }
@@ -226,6 +228,7 @@
     return _noMsgView;
 //    return nil;
 }
+
 
 - (void)setHideNoNetWork:(BOOL)hideNoNetWork
 {

@@ -82,7 +82,23 @@
 - (void)setupTableView
 {
     //首页下拉刷新
-    [self setupRefreshWithTableView:_tableView];
+    //[self setupRefreshWithTableView:_tableView];
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshloadData)];
+    header.lastUpdatedTimeLabel.font = [UIFont systemFontOfSize:12];
+    header.stateLabel.font = [UIFont systemFontOfSize:12];
+    [header setTitle:@"松开立即刷新财运" forState:MJRefreshStatePulling];
+    [header setTitle:@"松开立即刷新财运" forState:MJRefreshStateIdle];
+    
+    self.tableView.mj_header = header;
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshloadData)];
+    footer.stateLabel.font = [UIFont systemFontOfSize:12];
+    footer.arrowView.alpha = 0.0;
+    [footer setTitle:@"松开立即刷新财运" forState:MJRefreshStatePulling];
+    [footer setTitle:@"松开立即刷新财运" forState:MJRefreshStateIdle];
+    self.tableView.mj_footer = footer;
+    
 }
 
 - (void)getNewAccment
@@ -352,8 +368,7 @@
             }else{
                 [self.noMsgView removeFromSuperview];
             }
-            
-            if (pageIndex > 1 && !weakSelf.noNewCount) {
+            if (pageIndex > 2 && !weakSelf.noNewCount) {
                 [MBProgressHUD showMessag:@"没有更多数据了" toView:self.view];
             }
         } else {
@@ -560,15 +575,14 @@
 {
     
     if (![AppDelegate checkLogin]) return;
-    self.hidesBottomBarWhenPushed=YES;
     XProjectDetailsController *projectDetailsVC = [XProjectDetailsController new];
     //    ProjectDetailsViewController * projectDetailsVC = [ProjectDetailsViewController new];
     SNProjectListItem * projectItem = _noNewMutableArr[indexPath.section];
     projectDetailsVC.projectId = projectItem.projectId.intValue;
     projectDetailsVC.projectItem = projectItem;
 //    projectDetailsVC.addrate = [cell.item.addRate floatValue];
+    projectDetailsVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:projectDetailsVC animated:YES];
-    self.hidesBottomBarWhenPushed=NO;
 }
 
 - (void)headerRefreshloadData

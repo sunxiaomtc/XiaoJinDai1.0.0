@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+
 //处理web页面的类
 @interface WebPageVC : BaseViewController
 
@@ -15,5 +16,7 @@
 
 @property (nonatomic, assign) BOOL isHtmlString;
 @property (nonatomic, strong) NSString * url;
+
+@property (nonatomic, copy) void(^isOpen)(BOOL isO);
 
 @end

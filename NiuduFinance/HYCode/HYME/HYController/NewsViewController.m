@@ -154,7 +154,14 @@ static NSString *newsType = @"";
 
 - (UITableView *)newsTabelView {
     if (!_newsTabelView) {
-        _newsTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+        if(isIPhoneX)
+        {
+            _newsTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight + 34) style:UITableViewStylePlain];
+        }else
+        {
+            _newsTabelView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+        }
+        
         _newsTabelView.delegate = self;
         _newsTabelView.dataSource = self;
         _newsTabelView.showsVerticalScrollIndicator = NO;

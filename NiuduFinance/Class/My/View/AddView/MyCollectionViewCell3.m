@@ -44,7 +44,7 @@
     [self.contentView addSubview:self.backGroundView];
     [self.backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.mas_top).with.offset(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 195+30));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 160));
     }];
     
     self.kfLabel = [UILabel new];

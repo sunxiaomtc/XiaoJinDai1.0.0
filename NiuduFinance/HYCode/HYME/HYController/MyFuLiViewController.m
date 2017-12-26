@@ -19,8 +19,11 @@
 #import "MyFuLiableViewCell.h"
 #import "MyPrivilegeCell.h"
 #import "HYXiaLaView.h"
+#import <objc/runtime.h>
+
 @interface MyFuLiViewController ()<UITableViewDelegate ,UITableViewDataSource,MyDisperseInvestViewCellDelegate,YZPullDownMenuDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomFLLayout;
 @property (nonatomic,assign)NSInteger start;
 @property (nonatomic,assign)NSInteger limit;
 @property (nonatomic,strong) NSMutableArray *touArr;
@@ -94,11 +97,36 @@
 //    HY.dataArr = arr3;
 //    [self.view addSubview:HY];
     
+    if(isIPhoneX)
+    {
+        //self.fundAccountTableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - 64);
+        self.bottomFLLayout.constant = -34;
+    }
+    
 }
+
+//+(BOOL)resolveInstanceMethod:(SEL)sel
+//{
+//    class_addMethod([self class], sel, (IMP)dymemmeIMP, "v@:");
+//    return [super resolveInstanceMethod:sel];
+//}
+//
+//void dymemmeIMP(id self,SEL _cmd)
+//{
+//
+//}
 
 - (void)test:(NSNotification*)notification {
     [_firstAry removeAllObjects];
     _firstAry = [notification object];
+    if(_firstAry.count == 0)
+    {
+        self.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - WDTopHeight - 64);
+        [self.tableView addSubview:self.noMsgView];
+    }else
+    {
+        [self.noMsgView removeFromSuperview];
+    }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
@@ -161,6 +189,7 @@
 }
 
 
+
 // 返回下拉菜单每列对应的控制器
 - (UIViewController *)pullDownMenu:(YZPullDownMenu *)pullDownMenu viewControllerForColAtIndex:(NSInteger)index {
     return self.childViewControllers[index];
@@ -182,6 +211,7 @@
 }
 
 - (void)loadCanHongBaoData {
+    [self.noMsgView removeFromSuperview];
     __weak __typeof(self) weakSelf = self;
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllCoupon" parameters:@{@"status":@(0)} result:^(id  dic, int status, NSString *msg) {
         NSLog(@"%@\n%@",msg,dic);
@@ -201,12 +231,13 @@
             }
             [_firstAry removeAllObjects];
             [_firstAry addObjectsFromArray:dic];
-            if(_firstAry.count == 0)
-            {
-                [MBProgressHUD showMessag:@"暂无优惠券" toView:weakSelf.view];
-            }
-            [_tableView.mj_footer resetNoMoreData];
             
+            [_tableView.mj_footer resetNoMoreData];
+        }
+        if(_firstAry.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - WDTopHeight - 64);
+            [weakSelf.tableView addSubview:weakSelf.noMsgView];
         }
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];
@@ -216,6 +247,7 @@
 //筛选加载
 -(void)sendServerForRequest:(NSInteger )sort URL:(BOOL)isLeft
 {
+    [self.noMsgView removeFromSuperview];
     NSString *url = @"";
     if(isLeft)
     {
@@ -244,11 +276,13 @@
             }
             [_firstAry removeAllObjects];
             [_firstAry addObjectsFromArray:dic];
-            if(_firstAry.count == 0)
-            {
-            }
             [_tableView.mj_footer resetNoMoreData];
             
+        }
+        if(_firstAry.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - WDTopHeight - 64);
+            [weakSelf.tableView addSubview:weakSelf.noMsgView];
         }
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];

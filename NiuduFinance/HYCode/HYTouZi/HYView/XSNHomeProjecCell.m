@@ -72,7 +72,7 @@
         
         
             _txtLabel = [[UILabel alloc] init];
-            _txtLabel.text = @"年化收益率";
+            _txtLabel.text = @"预期年化";
             _txtLabel.font = [UIFont systemFontOfSize:13.f];
             [self.contentView addSubview:_txtLabel];
             [_txtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -192,7 +192,7 @@
         
         //  剩余可投金额
         _remainamountLab = [[UILabel alloc] init];
-        _remainamountLab.font = [UIFont systemFontOfSize:11.f];
+        _remainamountLab.font = [UIFont systemFontOfSize:16.f];
         [self.contentView addSubview:_remainamountLab];
         [_remainamountLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(_loanperiodLab.mas_bottom).with.offset(0);
@@ -201,6 +201,7 @@
         
         _progressLabel = [[UILabel alloc] init];
         _progressLabel.font = [UIFont systemFontOfSize:11.f];
+        [_progressLabel setTextColor:UIcolors];
         [self.contentView addSubview:_progressLabel];
         [_progressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf.progressView.mas_right).with.offset(5);
@@ -243,7 +244,15 @@
         
         NSString *str = [self formatFloat:([item.rate floatValue]-([item.addRate floatValue]))];
            _rateLabel.text = str;
-        _addLab.text = [[NSString stringWithFormat:@"+%@", item.addRate ] stringByAppendingString:@"%"];
+        float add = [item.addRate floatValue];
+        if(add > 0)
+        {
+            _addLab.text = [[NSString stringWithFormat:@"+%@", item.addRate ] stringByAppendingString:@"%"];
+        }else
+        {
+            _addLab.text = @"";
+        }
+        
         _loanperiodLab.text = item.loanperiod.stringValue;
         NSLog(@"%@",_loanperiodLab.text);
 
@@ -251,6 +260,7 @@
         
         _progressLabel.text = ssss;
         NSString * sst = [NSString stringWithFormat:@"%@",item.process];
+        //
         _progressView.progressValue = [sst doubleValue];
         _dayLab.hidden = NO;
         if ([item.periodtypeid integerValue] == 1) {
@@ -269,9 +279,9 @@
         
 //        _minbidamountLab.text = [NSString stringWithFormat:@"%@起投",item.minbidamount];
         _remainamountLab.text = [NSString stringWithFormat:@"%@元", item.remainamount];
-        NSString * muzeStr = [NSString stringWithFormat:@"%@",item.amount];;
-        int muze = [muzeStr intValue]/10000;
-        _mjzeLabel.text = [NSString stringWithFormat:@"募集总额 %d万",muze];
+        NSString * muzeStr = [NSString stringWithFormat:@"%@",item.amount];
+        double all = [muzeStr doubleValue] / 10000.0f;
+        _mjzeLabel.text = [NSString stringWithFormat:@"募集总额 %.1f万",all];
 //        NSString *pdss = [NSString stringWithFormat:@"%@",item.statusid];
         //|| [pdss isEqualToString:@"-1"] || [pdss isEqualToString:@"-2"]
         if (_type == 1) {
@@ -280,14 +290,14 @@
             [_titleLabel setTextColor:[UIColor blackColor]];
             [_rateLabel setTextColor:[UIColor redColor]];
             [_loanperiodLab setTextColor:[UIColor blackColor]];
-            [_syktLabel setTextColor:[UIColor blackColor]];
-            [_labelLoanperiod setTextColor:[UIColor blackColor]];
+            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
             [_mjzeLabel setTextColor:[UIColor blackColor]];
             [_dayLab setTextColor:[UIColor blackColor]];
-            [_progressLabel setTextColor:[UIColor blackColor]];
+            //[_progressLabel setTextColor:[UIColor blackColor]];
             [_remainamountLab setTextColor:[UIColor blackColor]];
             [_symbolLabel setTextColor:[UIColor redColor]];
-            [_txtLabel setTextColor:[UIColor blackColor]];
+            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
 
         }else{
 
@@ -296,14 +306,14 @@
             [_titleLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_rateLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_loanperiodLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
             [_mjzeLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_dayLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_progressLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+            //[_progressLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_remainamountLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_symbolLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
         }
 
 //        _statusButton.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.95];

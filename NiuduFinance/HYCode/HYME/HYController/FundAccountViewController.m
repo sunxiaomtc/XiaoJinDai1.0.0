@@ -15,6 +15,7 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
 
 @interface FundAccountViewController ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UITableView *fundAccountTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomFundLayout;
 
 @property (nonatomic,strong)NSMutableArray *fundAccountArr;
 
@@ -44,12 +45,14 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     //隐藏导航栏
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
     self.navigationController.navigationBar.titleTextAttributes = mine;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setupBarButtomItemWithImageName:@"黑色返回按钮" highLightImageName:@"nav_back_select.png" selectedImageName:nil target:self action:@selector(backClick) leftOrRight:YES];
+
 }
 
 -(void)backClick
@@ -73,6 +76,14 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
     
     [self setupBarButtomItemWithTitle:@"筛选" target:self action:@selector(rightAction) leftOrRight:NO];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];//[UIColor colorWithHexString:@"ffffff"];
+    
+    if(isIPhoneX)
+    {
+        //self.fundAccountTableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - 64);
+        self.bottomFundLayout.constant = -34;
+    }
+    
+    
 }
 
 - (void)rightAction {
@@ -160,6 +171,7 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
 }
 
 - (void)getFundAccountData {
+    [self.noMsgView removeFromSuperview];
     WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllFundSerials" parameters:@{@"type":@(_sortIndex),@"limit":@(_limit),@"start":@(_start)} result:^(id dic, int status, NSString *msg) {
         
@@ -171,17 +183,15 @@ static NSString *FundSortCollectionViewCellID = @"FundCollectionViewCell";
         if (status == 0) {
             if (![dic isKindOfClass:[NSNull class]]) {
                 [_fundAccountArr addObjectsFromArray:dic];
-                if(_fundAccountArr.count == 0)
-                {
-                    [weakSelf.view addSubview:weakSelf.noMsgView];
-                }else
-                {
-                    [weakSelf.noMsgView removeFromSuperview];
-                }
             }
         }else {
             [_fundAccountArr addObjectsFromArray:dic];
             [_fundAccountTableView.mj_footer resetNoMoreData];
+        }
+        if(_fundAccountArr.count == 0)
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight);
+            [weakSelf.fundAccountTableView addSubview:weakSelf.noMsgView];
         }
         [_fundAccountTableView reloadData];
     }];

@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    [self backBarItem];
+    //[self backBarItem];
     
     [self setWebViewInfo];
     
@@ -44,6 +44,10 @@
 //            self.tabBarController.selectedIndex = 2;
             [self.navigationController popToRootViewControllerAnimated:YES];
         } else
+            if(_isOpen)
+            {
+                self.isOpen(YES);
+            }
             [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -64,10 +68,10 @@
 
 - (void)setWebViewInfo
 {
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49)];
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - WDTabBarHeight)];
 
     if ( [_name isEqualToString:@"recharge"] ) {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-20)];
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-WDStatusBarHeight)];
     }
 
     _webView.scrollView.bounces = NO;

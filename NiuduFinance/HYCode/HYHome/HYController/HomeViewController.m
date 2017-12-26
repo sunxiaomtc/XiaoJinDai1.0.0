@@ -111,6 +111,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 #pragma mark - 请求轮播图数据以及广播文字的数组
 - (void)loadDataScrollView {
+    WS
     NSString *url = [__API_HEADER__ stringByAppendingString:@"v2/open/ad/findAll"];
     [NSObject POST:url parameters:nil progress:^(NSProgress *downloadProgress) {
         
@@ -125,7 +126,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     NSString *titleUrl = [__API_HEADER__ stringByAppendingString:@"v2/open/affiche/findAll"];
     NSDictionary *dic = @{
                           @"start":@(0),
-                          @"limit":@(1)
+                          @"limit":@(3)
                           };
     [NSObject POST:titleUrl parameters:dic progress:^(NSProgress *downloadProgress) {
         
@@ -133,7 +134,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         if (error) {
         }else {
             NSArray *array = responseObject[@"data"];
-            self.headerView.titleArray = array;
+            weakSelf.headerView.titleArray = array;
         }
     }];
 }

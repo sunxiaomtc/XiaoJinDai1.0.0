@@ -55,8 +55,8 @@
     [_dhView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView addSubview:_dhView];
     [_dhView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(-20);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 64));
+        make.top.mas_equalTo(-WDStatusBarHeight);
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, WDTopHeight));
     }];
     
     _dhTitleLabe = [UILabel new];
@@ -65,7 +65,13 @@
     [self.dhView addSubview:_dhTitleLabe];
     [_dhTitleLabe mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(0);
-        make.top.mas_equalTo(34);
+        if(isIPhoneX)
+        {
+            make.top.mas_equalTo(54);
+        }else
+        {
+            make.top.mas_equalTo(34);
+        }
         make.height.mas_equalTo(16);
     }];
     
@@ -74,7 +80,13 @@
     _imageVie.image = image;
     [self.dhView addSubview:_imageVie];
     [_imageVie mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(34);
+        if(isIPhoneX)
+        {
+            make.top.mas_equalTo(54);
+        }else
+        {
+            make.top.mas_equalTo(34);
+        }
         make.left.mas_equalTo(15);
 //        make.size.mas_equalTo(CGSizeMake(18, 18));
     }];

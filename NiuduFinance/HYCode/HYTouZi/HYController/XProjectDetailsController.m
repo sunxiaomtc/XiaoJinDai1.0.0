@@ -15,8 +15,9 @@
 #import "XProjectConfirmController.h"
 #import "XProjectDetailsNewController.h"
 #import "MoreWebViewController.h"
+#import "WebPageVC.h"
 
-@interface XProjectDetailsController ()<UITableViewDelegate,UITableViewDataSource>
+@interface XProjectDetailsController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     float lastContentOffset;
     UITableView *OneTable;
@@ -668,12 +669,47 @@
 }
 
 - (void)btnClick:(UIButton *)btn {
-    self.hidesBottomBarWhenPushed=YES;
-    XProjectConfirmController * confirmVC =[XProjectConfirmController new];
-    confirmVC.projectId = _projectId;
-    confirmVC.addRate = self.addrate;
-    [self.navigationController pushViewController:confirmVC animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
+    __weak __typeof(self) weakSelf = self;
+    [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (status != 0) {
+            NSLog(@"%@",dic);
+            Boolean open = [[dic objectForKey:@"status"] boolValue];
+            NSLog(@"%hhu",open);
+            if (!open) {
+                //安全退出
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
+                alert.tag = 888;
+                [alert show];
+            }else {
+                XProjectConfirmController * confirmVC =[XProjectConfirmController new];
+                confirmVC.projectId = _projectId;
+                confirmVC.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:confirmVC animated:YES];
+            }
+        }
+    }];
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag == 888)
+    {
+        if (buttonIndex == 1) {
+            WebPageVC *vc = [[WebPageVC alloc] init];
+            vc.title = @"开通汇付账户";
+            vc.name = @"huifu/openaccount";
+            WS
+            vc.isOpen = ^(BOOL isO) {
+                [weakSelf btnClick:nil];
+            };
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
 
 - (void)backClick {
@@ -802,7 +838,14 @@
     
      NSString *str = [self formatFloat:([projectItem.rate floatValue]-([projectItem.addRate floatValue]))];
     _nhsylNumber.text = str;
-    _addLab.text = [[NSString stringWithFormat:@"+%@",projectItem.addRate] stringByAppendingString:@"%"];
+    if([projectItem.addRate floatValue] > 0)
+    {
+        _addLab.text = [[NSString stringWithFormat:@"+%@",projectItem.addRate] stringByAppendingString:@"%"];
+    }else
+    {
+        _addLab.text = @"";
+    }
+    
     self.addrate = [NSString stringWithFormat:@"%@",projectItem.addRate];
     if ([projectItem.periodtypeid integerValue] == 1) {
         _xmqxNumber.text = [NSString stringWithFormat:@"%@天", projectItem.loanperiod];
