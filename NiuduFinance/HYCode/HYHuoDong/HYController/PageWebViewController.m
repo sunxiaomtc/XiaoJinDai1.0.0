@@ -81,6 +81,9 @@
     }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"])//跳投资详情
     {
         [self gotoTouZiDetails];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
+    {
+        [self gotoTouZi];
     }
 }
 
@@ -99,6 +102,9 @@
     }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
     {
         [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
+    {
+        [self.webView goBack];
     }
 }
 
@@ -115,6 +121,9 @@
     {
         [self.webView goBack];
     }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffVes.html"]) //跳邀请
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
     {
         [self.webView goBack];
     }

@@ -325,7 +325,7 @@
     
     
     _nhsylLabel = [UILabel new];
-    [_nhsylLabel setText:@"预期年化收益"];
+    [_nhsylLabel setText:@"预期年化"];
     [_nhsylLabel setTextColor:[UIColor whiteColor]];
 //    _nhsylLabel.alpha =0.5;
     [_nhsylLabel setFont:[UIFont systemFontOfSize:14]];

@@ -204,7 +204,7 @@
     }];
     
     _nhsylLab = [UILabel new];
-    [_nhsylLab setText:@"预期年化收益"];
+    [_nhsylLab setText:@"预期年化"];
     [_nhsylLab setFont:[UIFont systemFontOfSize:15]];
     [_nhsylLab setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_nhsylLab];

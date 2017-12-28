@@ -18,6 +18,8 @@
 #import "BaseNavigationController.h"
 #import "CheckLoginViewController.h"
 #import "TabBarController.h"
+#import "MoreWebViewController.h"
+#import "BankNewTopUpViewController.h"
 @interface MyAccountController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIView * dhView;
@@ -42,6 +44,8 @@
 
 @property (nonatomic, copy) NSString *emailStr;
 @property (nonatomic, copy) NSString *addressStr;
+
+@property (nonatomic, strong) UIButton *bankBtn;
 @end
 
 @implementation MyAccountController
@@ -108,17 +112,18 @@
 //    _tableView.tableHeaderView.height = 161;
     _firstView = [UIView new];
     [_firstView setBackgroundColor:[UIColor whiteColor]];
-//    _tableView.tableHeaderView = _firstView;
-    [self.tableView addSubview:_firstView];
-    [_firstView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(1);
-        make.centerX.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 161));
-    }];
+    _firstView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 161);
+    _tableView.tableHeaderView = _firstView;
+    //[self.tableView addSubview:_firstView];
+//    [_firstView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(1);
+//        make.centerX.mas_equalTo(0);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 161));
+//    }];
     
     
-    UITapGestureRecognizer * firstViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstViewClick)];
-    [_tableView.tableHeaderView addGestureRecognizer:firstViewTap];
+//    UITapGestureRecognizer * firstViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstViewClick)];
+//    [_firstView addGestureRecognizer:firstViewTap];
     
     
     _imageView1 = [UIImageView new];
@@ -174,15 +179,65 @@
         make.bottom.mas_equalTo(-23);
         make.height.mas_equalTo(10);
     }];
+    
+    self.bankBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.bankBtn.backgroundColor = [UIColor clearColor];
+    [self.bankBtn addTarget:self action:@selector(bankClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_firstView addSubview:self.bankBtn];
+    [self.bankBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_imageView1.mas_top);
+        make.left.mas_equalTo(_imageView1.mas_left);
+        make.bottom.mas_equalTo(_imageView1.mas_bottom);
+        make.right.mas_equalTo(_imageView1.mas_right);
+    }];
 
 }
 - (void)backClick
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+-(void)bankClick:(UIButton *)btn
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
+    __weak __typeof(self) weakSelf = self;
+    [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        if (status != 0) {
+            NSLog(@"%@",dic);
+            Boolean open = [[dic objectForKey:@"status"] boolValue];
+            NSLog(@"%hhu",open);
+            if (!open) {
+                //安全退出
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
+                [alert show];
+            }else {
+                if ( [User userFromFile].bankCardCount == 0) {
+                    WebPageVC *vc = [[WebPageVC alloc] init];
+                    vc.title = @"充值";
+                    vc.name = @"recharge";
+                    [weakSelf.navigationController pushViewController:vc animated:YES];
+                }
+            }
+        }
+    }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        WebPageVC *vc = [[WebPageVC alloc] init];
+        vc.title = @"开通汇付账户";
+        vc.name = @"huifu/openaccount";
+        [self.navigationController pushViewController:vc animated:YES];
+    }else {
+    }
+}
+
 - (void)firstViewClick
 {
     if ( [User userFromFile].bankCardCount == 0) {
+        NSLog(@"sss");
         return;
         
     }else{
@@ -239,7 +294,6 @@
                 [[NSUserDefaults standardUserDefaults] setObject:_realMobileStr forKey:@"USERINFOREALPhone"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
             }
-            
         }
         [self.tableView reloadData];
     }];
@@ -307,15 +361,15 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 161+18+21;
-    }else
-    return 18;
+//    if (section == 0) {
+//        return 161+18+21;
+//    }else
+    return 35;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 0;
+    return 0.01;
 }
 
 

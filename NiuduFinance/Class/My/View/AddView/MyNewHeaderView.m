@@ -272,11 +272,12 @@
     [self.button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.button2.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     [self addSubview:self.button2];
+    WS
     [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.messageImageView.mas_left);
-        make.top.mas_equalTo(self.messageLabel.mas_top);
-        make.bottom.mas_equalTo(self.messageImageView.mas_bottom);
-        make.right.mas_equalTo(self.messageLabel.mas_right);
+        make.left.mas_equalTo(weakSelf.messageImageView.mas_left);
+        make.top.mas_equalTo(weakSelf.messageLabel.mas_top);
+        make.bottom.mas_equalTo(weakSelf.messageImageView.mas_bottom);
+        make.right.mas_equalTo(weakSelf.nameLabel.mas_right);
     }];
     [self.button2 addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //button3
@@ -310,9 +311,9 @@
 -(void)buttonAction:(UIButton *)button
 {
     if (button == self.button1) {
-//        if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
-//            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:1];
-//        }
+        if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
+            [self.myNewHeaderViewDelegate myNewHeaderViewButtonAction:1];
+        }
     }
     if (button == self.button2) {
         if ([self.myNewHeaderViewDelegate respondsToSelector:@selector(myNewHeaderViewButtonAction:)]) {
@@ -334,8 +335,17 @@
 -(void)setModel:(MyNewModel *)model
 {
     _model = model;
-    self.nameLabel.text = model.user.mobile;
-    self.shouYiNumLabel.text = model.income;
+    if(model.user.mobile.length > 10)
+    {
+        NSString *qb = [model.user.mobile substringToIndex:3];
+        NSString *ho = [model.user.mobile substringFromIndex:7];
+        NSString *all = [NSString stringWithFormat:@"%@****%@",qb,ho];
+        self.nameLabel.text = all;
+    }else
+    {
+        self.nameLabel.text = model.user.mobile;
+    }
+    self.shouYiNumLabel.text = [NSString stringWithFormat:@"%.2f",[model.income doubleValue]];
     self.yuENumLabel.text = model.mayUseBalance;
     self.ziChanNumLabel.text = model.balance;
 }

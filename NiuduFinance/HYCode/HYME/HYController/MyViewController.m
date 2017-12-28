@@ -485,8 +485,6 @@
                             WebPageVC *vc = [[WebPageVC alloc] init];
                             vc.title = @"充值";
                             vc.name = @"recharge";
-                            self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor blackColor], UITextAttributeFont:[UIFont boldSystemFontOfSize:18]};
-                            [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
                             [self.navigationController pushViewController:vc animated:YES];
                         }else {
                             BankNewTopUpViewController * bankVC = [BankNewTopUpViewController new];

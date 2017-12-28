@@ -255,7 +255,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         if (![scrollViewID isEqualToString:@""]) {//如果为空则不进行跳转
             PageWebViewController *pageWebVC = [PageWebViewController new];
             //pageWebVC.urlStr = [NSString stringWithFormat:@"%@%@",__API_HEADER__,bannerID];
-            if([scrollViewID isEqualToString:@"http://plus.xiaojindai888.com/newdebt.php"] || index == 0)
+            if([scrollViewID isEqualToString:@"http://plus.xiaojindai888.com/newdebt.php"])
             {
                 pageWebVC.urlStr = @"http://plus.xiaojindai888.com/banner1fu.php";
             }else

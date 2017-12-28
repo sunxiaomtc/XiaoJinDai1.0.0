@@ -239,7 +239,7 @@
     _item = item;
     
     if ([item isKindOfClass:[SNProjectListItem class]]) {
-        _txtLabel.text = @"年化收益率";
+        _txtLabel.text = @"预期年化";
         _titleLabel.text = item.title;
         
         NSString *str = [self formatFloat:([item.rate floatValue]-([item.addRate floatValue]))];
@@ -290,14 +290,14 @@
             [_titleLabel setTextColor:[UIColor blackColor]];
             [_rateLabel setTextColor:[UIColor redColor]];
             [_loanperiodLab setTextColor:[UIColor blackColor]];
-            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
-            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
+            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_mjzeLabel setTextColor:[UIColor blackColor]];
             [_dayLab setTextColor:[UIColor blackColor]];
             //[_progressLabel setTextColor:[UIColor blackColor]];
             [_remainamountLab setTextColor:[UIColor blackColor]];
             [_symbolLabel setTextColor:[UIColor redColor]];
-            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
 
         }else{
 
@@ -306,14 +306,14 @@
             [_titleLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_rateLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_loanperiodLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
-            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_syktLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
+            [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_mjzeLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_dayLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             //[_progressLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_remainamountLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_symbolLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#E1E1E1"]];
+            [_txtLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
         }
 
 //        _statusButton.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.95];

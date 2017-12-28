@@ -161,6 +161,9 @@
             invitationVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:invitationVC animated:YES];
         }
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
+    {
+        [self gotoTouZi];
     }
 }
 
@@ -189,6 +192,9 @@
     {
         [self.webView goBack];
     }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
     {
         [self.webView goBack];
     }
@@ -223,6 +229,9 @@
     {
         [self.webView goBack];
     }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffInv.html"])
+    {
+        [self.webView goBack];
+    }else if ([webView.URL.absoluteString isEqualToString:@"http://www.xiaojindai888.com/fff/fffchrist.html"])
     {
         [self.webView goBack];
     }

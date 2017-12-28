@@ -59,7 +59,7 @@
     [_bgImageVie mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(0);
         make.centerY.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 157));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 93 + WDTopHeight));
     }];
     
     _dhTitleLabe = [UILabel new];
@@ -69,7 +69,13 @@
     [self.bgImageVie addSubview:_dhTitleLabe];
     [_dhTitleLabe mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(0);
-        make.top.mas_equalTo(34);
+        if(isIPhoneX)
+        {
+            make.top.mas_equalTo(54);
+        }else
+        {
+            make.top.mas_equalTo(34);
+        }
         make.height.mas_equalTo(16);
     }];
     
@@ -136,7 +142,8 @@
 
 - (void)getFundAccountData
 {
-    
+    [self.noMsgView removeFromSuperview];
+    WS
     [self.httpUtil requestDic4MethodNam:@"v2/accept/account/findAllFundSerials" parameters:@{@"limit":@(_limit),@"start":@(_start),@"type":@(1)} result:^(id dic, int status, NSString *msg) {
         
         NSLog(@"%d",status);
@@ -218,7 +225,11 @@
 //            [_tableView.mj_footer resetNoMoreData];
             
         }
-        
+        if(_arrayall.count == 0 || (_arrayall.count == 1 && [_arrayall[0] count] == 0))
+        {
+            weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 93 - WDTopHeight);
+            [_tableView addSubview:weakSelf.noMsgView];
+        }
         [_tableView reloadData];
         
     }];
@@ -246,7 +257,7 @@
     if (_arrayall.count == 0) {
         return 1;
     }
-    return [[_arrayall objectAtIndex:section+1]count];
+    return [[_arrayall objectAtIndex:section+1] count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
