@@ -59,7 +59,7 @@
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(27);
-        make.top.mas_equalTo(45);
+        make.top.mas_equalTo(WDStatusBarHeight + 10);
         make.size.mas_equalTo(CGSizeMake(33, 33));
     }];
 //    self.headerImageView.backgroundColor = [UIColor redColor];
@@ -108,7 +108,7 @@
     [self addSubview:self.ziChanLabel];
     [self.ziChanLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(80);
+        make.top.mas_equalTo(60 + WDStatusBarHeight);
         make.centerX.mas_equalTo(0);
     }];
     self.ziChanLabel.font = [UIFont systemFontOfSize:11];
@@ -275,8 +275,8 @@
     WS
     [self.button2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(weakSelf.messageImageView.mas_left);
-        make.top.mas_equalTo(weakSelf.messageLabel.mas_top);
-        make.bottom.mas_equalTo(weakSelf.messageImageView.mas_bottom);
+        make.top.mas_equalTo(weakSelf.nameLabel.mas_top);
+        make.bottom.mas_equalTo(weakSelf.nameLabel.mas_bottom);
         make.right.mas_equalTo(weakSelf.nameLabel.mas_right);
     }];
     [self.button2 addTarget:self action:@selector(buttonAction:) forControlEvents:(UIControlEventTouchUpInside)];

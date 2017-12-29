@@ -189,7 +189,7 @@
 }
 //当滚动时调用scrollView的代理方法
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.ccpScrollView.contentOffset.y == self.ccpScrollView.frame.size.height*(self.titleArray.count )) {
+    if (self.ccpScrollView.contentOffset.y >= self.ccpScrollView.frame.size.height*(self.titleArray.count )) {
         [self.ccpScrollView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
 }

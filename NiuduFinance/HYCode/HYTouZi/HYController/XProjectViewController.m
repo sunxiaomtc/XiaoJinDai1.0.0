@@ -53,6 +53,7 @@
     }
     return _newLenderProjectModel;
 }
+
 - (SNProjectListModel *)projectModel
 {
     if (!_projectModel) {
@@ -366,18 +367,18 @@
 //                self.noMsgView.width = SCREEN_WIDTH;
 //                [_tableView addSubview:self.noMsgView];
             }else{
-                [self.noMsgView removeFromSuperview];
+                [weakSelf.noMsgView removeFromSuperview];
             }
             if (pageIndex > 2 && !weakSelf.noNewCount) {
-                [MBProgressHUD showMessag:@"没有更多数据了" toView:self.view];
+                [MBProgressHUD showMessag:@"没有更多数据了" toView:weakSelf.view];
             }
         } else {
             if (![[error localizedDescription] isEqual:@"尝试除以零。"]) {
-                [MBProgressHUD showError:[error localizedDescription] toView:self.view];
+                [MBProgressHUD showError:[error localizedDescription] toView:weakSelf.view];
             }
             
-            self.noNetWorkView.width = SCREEN_WIDTH;
-            [_tableView addSubview:self.noNetWorkView];
+            weakSelf.noNetWorkView.width = SCREEN_WIDTH;
+            [_tableView addSubview:weakSelf.noNetWorkView];
         }
         [_tableView reloadData];
     }];
@@ -498,7 +499,7 @@
             make.left.mas_equalTo(15);
             make.centerY.mas_equalTo(aView.centerY);
         }];
-        title.text =@"查看已售磬标的";
+        title.text = @"查看已售罄标的";
         title.textColor =[UIColor colorWithHexString:@"000000"];
         title.font = [UIFont systemFontOfSize:14];
         
@@ -543,7 +544,7 @@
             make.left.mas_equalTo(15);
             make.centerY.mas_equalTo(aView.centerY);
         }];
-        title.text =@"查看已售磬标的";
+        title.text =@"查看已售罄标的";
         title.textColor =[UIColor colorWithHexString:@"000000"];
         title.font = [UIFont systemFontOfSize:14];
         
@@ -558,6 +559,8 @@
         }];
         
         return bgView;
+        
+        
     }else{
         return nil;
     }

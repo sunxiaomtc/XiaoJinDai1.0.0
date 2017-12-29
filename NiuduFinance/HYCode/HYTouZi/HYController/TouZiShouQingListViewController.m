@@ -263,7 +263,7 @@
     
     WS
     [self.projectModel loadWithCompletion:^(VZModel *model, NSError *error) {
-        [self.noNetWorkView removeFromSuperview];
+        [weakSelf.noNetWorkView removeFromSuperview];
         
         if (!error) {
             if (_noNewPageIndex == 1) {
@@ -280,22 +280,23 @@
             
             if (_noNewMutableArr.count == 0) {
                 
-                self.noMsgView.width = SCREEN_WIDTH;
-                [_tableView addSubview:self.noMsgView];
+                weakSelf.noMsgView.width = SCREEN_WIDTH;
+                [_tableView addSubview:weakSelf.noMsgView];
             }else{
-                [self.noMsgView removeFromSuperview];
+                [weakSelf.noMsgView removeFromSuperview];
             }
             
             if (pageIndex > 1 && !weakSelf.noNewCount) {
-                [MBProgressHUD showMessag:@"没有更多数据了" toView:self.view];
+                [MBProgressHUD showMessag:@"没有更多数据了" toView:weakSelf.view];
             }
         } else {
             if (![[error localizedDescription] isEqual:@"尝试除以零。"]) {
-                [MBProgressHUD showError:[error localizedDescription] toView:self.view];
+                NSLog(@"%@",error.localizedDescription);
+                [MBProgressHUD showError:[error localizedDescription] toView:weakSelf.view];
             }
             
-            self.noNetWorkView.width = SCREEN_WIDTH;
-            [_tableView addSubview:self.noNetWorkView];
+            weakSelf.noNetWorkView.width = SCREEN_WIDTH;
+            [_tableView addSubview:weakSelf.noNetWorkView];
         }
         [_tableView reloadData];
     }];
@@ -407,11 +408,6 @@
     [_tableView.mj_footer endRefreshing];
     
 }
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

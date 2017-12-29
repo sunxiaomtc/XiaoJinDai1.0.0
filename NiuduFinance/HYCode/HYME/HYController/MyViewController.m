@@ -107,14 +107,14 @@
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.contentInset = UIEdgeInsetsMake(250, 0, 0, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(230 + WDStatusBarHeight, 0, 0, 0);
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerClass:[MyCollectionViewCell1 class] forCellWithReuseIdentifier:@"cell1"];
     [self.collectionView registerClass:[MyCollectionViewCell2 class] forCellWithReuseIdentifier:@"cell2"];
     [self.collectionView registerClass:[MyCollectionViewCell3 class] forCellWithReuseIdentifier:@"cell3"];
     
     /**  头部页面设置 */
-    self.headerView = [[MyNewHeaderView alloc] initWithFrame:CGRectMake(0, -250, SCREEN_WIDTH, 250)];
+    self.headerView = [[MyNewHeaderView alloc] initWithFrame:CGRectMake(0, - 230 - WDStatusBarHeight, SCREEN_WIDTH, 230 + WDStatusBarHeight)];
     self.headerView.myNewHeaderViewDelegate = self;
     [self.collectionView addSubview:self.headerView];
     self.headerView.backgroundColor = [UIColor whiteColor];

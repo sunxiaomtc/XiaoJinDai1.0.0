@@ -140,6 +140,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
     /** 底层view*/
 //    UIScrollView * mainScrollView = [[UIScrollView alloc] init];
 //    mainScrollView.scrollEnabled = NO;
@@ -228,7 +229,7 @@
     _invesBtn = [UIButton new];
     [_invesBtn setTitle:@"立即投资" forState:UIControlStateNormal];
     [_invesBtn setBackgroundColor:UIcolors];
-    _invesBtn.layer.cornerRadius =22;
+    _invesBtn.layer.cornerRadius = 22;
     [_invesBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:_invesBtn];
     [_invesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -336,7 +337,6 @@
         make.height.mas_equalTo(14);
     }];
     
-    
     _xmqxNumber = [UILabel new];
     [_xmqxNumber setText:@"0"];
     [_xmqxNumber setFont:[UIFont systemFontOfSize:14]];
@@ -366,9 +366,7 @@
     [_qtjeNumber setTextColor:[UIColor whiteColor]];
     [_firstView addSubview:_qtjeNumber];
     [_qtjeNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_nhsylLabel.mas_bottom).with.offset(30);
-        
-        make.height.mas_equalTo(13);
+        make.top.equalTo(_nhsylLabel.mas_bottom).with.offset(30); make.height.mas_equalTo(13);
         make.centerX.mas_equalTo(0);
     }];
     
@@ -896,10 +894,10 @@
     CGFloat height;
     if([tableView isEqual:OneTable])
     {
-        height = 10;
+        height = 0.01;
     }else
     {
-        return 10;
+        return 0.01;
     }
     return height;
 }
@@ -911,7 +909,7 @@
     UITableViewCell *cell = (UITableViewCell*)[tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.backgroundColor =[UIColor colorWithHexString:@"#ededed"];
+        //cell.backgroundColor =[UIColor colorWithHexString:@"#ededed"];
     }
     //    OneTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     

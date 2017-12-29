@@ -76,6 +76,9 @@
 		188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */; };
 		188E7E671FE8B44700A0C586 /* HYNewActivtyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E651FE8B44700A0C586 /* HYNewActivtyCell.xib */; };
 		188E7E6B1FE8EC9300A0C586 /* HYLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E6A1FE8EC9300A0C586 /* HYLoading.m */; };
+		188E7E711FF4CBB300A0C586 /* HYJDTCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E701FF4CBB300A0C586 /* HYJDTCustomView.m */; };
+		188E7E741FF5E11F00A0C586 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E721FF5E11E00A0C586 /* UICountingLabel.m */; };
+		188E7E761FF6403400A0C586 /* ydj-Launch23.png in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E751FF6403300A0C586 /* ydj-Launch23.png */; };
 		18B802B91FDE355D00ED3AD6 /* HYHomeTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */; };
 		18B802BA1FDE355D00ED3AD6 /* HYHomeOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */; };
 		18B802BB1FDE355D00ED3AD6 /* HYHomeTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B41FDE355D00ED3AD6 /* HYHomeTwoCell.xib */; };
@@ -931,6 +934,11 @@
 		188E7E651FE8B44700A0C586 /* HYNewActivtyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYNewActivtyCell.xib; sourceTree = "<group>"; };
 		188E7E691FE8EC9300A0C586 /* HYLoading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLoading.h; sourceTree = "<group>"; };
 		188E7E6A1FE8EC9300A0C586 /* HYLoading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLoading.m; sourceTree = "<group>"; };
+		188E7E6F1FF4CBB300A0C586 /* HYJDTCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYJDTCustomView.h; sourceTree = "<group>"; };
+		188E7E701FF4CBB300A0C586 /* HYJDTCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYJDTCustomView.m; sourceTree = "<group>"; };
+		188E7E721FF5E11E00A0C586 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		188E7E731FF5E11E00A0C586 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		188E7E751FF6403300A0C586 /* ydj-Launch23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ydj-Launch23.png"; sourceTree = "<group>"; };
 		18B802B11FDE355C00ED3AD6 /* HYHomeOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHomeOneCell.h; sourceTree = "<group>"; };
 		18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHomeTwoCell.m; sourceTree = "<group>"; };
 		18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHomeOneCell.xib; sourceTree = "<group>"; };
@@ -2562,6 +2570,10 @@
 				9D3AD50C1F1DD5F800A9F091 /* XSNHomeProjecCell.h */,
 				9D3AD50D1F1DD5F800A9F091 /* XSNHomeProjecCell.m */,
 				9D3AD50E1F1DD5F800A9F091 /* XSNHomeProjecCell.xib */,
+				188E7E6F1FF4CBB300A0C586 /* HYJDTCustomView.h */,
+				188E7E701FF4CBB300A0C586 /* HYJDTCustomView.m */,
+				188E7E731FF5E11E00A0C586 /* UICountingLabel.h */,
+				188E7E721FF5E11E00A0C586 /* UICountingLabel.m */,
 			);
 			path = HYView;
 			sourceTree = "<group>";
@@ -3513,6 +3525,7 @@
 				2D719E071C7D500C008AE30C /* AppDelegate.m */,
 				2D719E091C7D500C008AE30C /* ViewController.h */,
 				2D719E0A1C7D500C008AE30C /* ViewController.m */,
+				188E7E751FF6403300A0C586 /* ydj-Launch23.png */,
 				2D719E0F1C7D500C008AE30C /* Assets.xcassets */,
 				2D719E0C1C7D500C008AE30C /* Main.storyboard */,
 				2D719E111C7D500C008AE30C /* LaunchScreen.storyboard */,
@@ -4911,6 +4924,7 @@
 				9D66B5771F34598700DC56D8 /* abc@3x.png in Resources */,
 				DF38D3781DAF90BF00492DEE /* TreasureStatuVC.xib in Resources */,
 				9D8F95571E2F66F90067A80D /* zijinjilu.png in Resources */,
+				188E7E761FF6403400A0C586 /* ydj-Launch23.png in Resources */,
 				DF52249E1D90D2BB00581504 /* NJCB.png in Resources */,
 				DF5511EB1D8E66C7000B21BD /* IntegralLogTableViewCell.xib in Resources */,
 				9D06A7231F15F5F8001260EF /* hj@2x.png in Resources */,
@@ -5482,6 +5496,7 @@
 				CF182A281F7F697400511563 /* MyTouZiViewController.m in Sources */,
 				2D8F717C1C9FFC9500B58F1E /* MessageCenterTableViewCell.m in Sources */,
 				9D0F21B81E9B241400C2C8FF /* YZSortCell.m in Sources */,
+				188E7E711FF4CBB300A0C586 /* HYJDTCustomView.m in Sources */,
 				2D51A5081C7D746000AF71A2 /* PSActionSheet.m in Sources */,
 				B08912BB1F94845000E4EB14 /* NewsDetailViewController.m in Sources */,
 				9D567F401F300EEC0069F6F6 /* UIView+MLMBorderPath.m in Sources */,
@@ -5693,6 +5708,7 @@
 				2D0F6EE21C968165006A36BD /* CitysViewController.m in Sources */,
 				DFDF14471D8D6C8300CEE491 /* ModifyMailViewController.m in Sources */,
 				9DE0B6D01E66BADC0016B229 /* withdrawalViewController.m in Sources */,
+				188E7E741FF5E11F00A0C586 /* UICountingLabel.m in Sources */,
 				A34F56FB1E5404D900266C5A /* VZModel.m in Sources */,
 				ABD170BE1F9DEEC8002472D4 /* AboutNViewController.m in Sources */,
 				B090D2BB1F7CF39B008DA53C /* NewsPopView.m in Sources */,
