@@ -20,6 +20,11 @@
     
     self.bgView.layer.cornerRadius = 5.0f;
     self.bgView.layer.masksToBounds = YES;
+    
+    if(iPhone5)
+    {
+        self.bfbLeftLayout.constant = 57;
+    }
 }
 
 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated {

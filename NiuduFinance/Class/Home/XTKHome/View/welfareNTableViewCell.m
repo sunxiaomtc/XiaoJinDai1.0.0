@@ -113,7 +113,7 @@
     if (_titleLabTwo == nil) {
         _titleLabTwo = [UILabel new];
         [self.titleBackGroundView addSubview:_titleLabTwo];
-        _titleLabTwo.text = @"预期年化";
+        _titleLabTwo.text = @"历史年化利率";
         _titleLabTwo.font = [UIFont systemFontOfSize:12];
         _titleLabTwo.textColor = [UIColor lightGrayColor];
         [_titleLabTwo mas_makeConstraints:^(MASConstraintMaker *make) {

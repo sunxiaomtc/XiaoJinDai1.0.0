@@ -79,6 +79,14 @@
 		188E7E711FF4CBB300A0C586 /* HYJDTCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E701FF4CBB300A0C586 /* HYJDTCustomView.m */; };
 		188E7E741FF5E11F00A0C586 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E721FF5E11E00A0C586 /* UICountingLabel.m */; };
 		188E7E761FF6403400A0C586 /* ydj-Launch23.png in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E751FF6403300A0C586 /* ydj-Launch23.png */; };
+		188E7E791FFC6D4900A0C586 /* HYProjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E781FFC6D4900A0C586 /* HYProjectDetailsViewController.m */; };
+		188E7E7C1FFC770300A0C586 /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E7B1FFC770300A0C586 /* ColorButton.m */; };
+		188E7E7F1FFC7B4900A0C586 /* HYPDHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E7E1FFC7B4900A0C586 /* HYPDHeaderView.m */; };
+		188E7E811FFC7D5200A0C586 /* HYPDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E801FFC7D5200A0C586 /* HYPDHeaderView.xib */; };
+		188E7E851FFCA1E800A0C586 /* HYPDOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E831FFCA1E800A0C586 /* HYPDOneCell.m */; };
+		188E7E861FFCA1E800A0C586 /* HYPDOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E841FFCA1E800A0C586 /* HYPDOneCell.xib */; };
+		188E7E8A1FFCB02600A0C586 /* HYPDTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E881FFCB02600A0C586 /* HYPDTwoCell.m */; };
+		188E7E8B1FFCB02600A0C586 /* HYPDTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188E7E891FFCB02600A0C586 /* HYPDTwoCell.xib */; };
 		18B802B91FDE355D00ED3AD6 /* HYHomeTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */; };
 		18B802BA1FDE355D00ED3AD6 /* HYHomeOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */; };
 		18B802BB1FDE355D00ED3AD6 /* HYHomeTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B802B41FDE355D00ED3AD6 /* HYHomeTwoCell.xib */; };
@@ -939,6 +947,19 @@
 		188E7E721FF5E11E00A0C586 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		188E7E731FF5E11E00A0C586 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
 		188E7E751FF6403300A0C586 /* ydj-Launch23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ydj-Launch23.png"; sourceTree = "<group>"; };
+		188E7E771FFC6D4900A0C586 /* HYProjectDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYProjectDetailsViewController.h; sourceTree = "<group>"; };
+		188E7E781FFC6D4900A0C586 /* HYProjectDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYProjectDetailsViewController.m; sourceTree = "<group>"; };
+		188E7E7A1FFC770300A0C586 /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
+		188E7E7B1FFC770300A0C586 /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
+		188E7E7D1FFC7B4900A0C586 /* HYPDHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPDHeaderView.h; sourceTree = "<group>"; };
+		188E7E7E1FFC7B4900A0C586 /* HYPDHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPDHeaderView.m; sourceTree = "<group>"; };
+		188E7E801FFC7D5200A0C586 /* HYPDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYPDHeaderView.xib; sourceTree = "<group>"; };
+		188E7E821FFCA1E800A0C586 /* HYPDOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPDOneCell.h; sourceTree = "<group>"; };
+		188E7E831FFCA1E800A0C586 /* HYPDOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPDOneCell.m; sourceTree = "<group>"; };
+		188E7E841FFCA1E800A0C586 /* HYPDOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYPDOneCell.xib; sourceTree = "<group>"; };
+		188E7E871FFCB02600A0C586 /* HYPDTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPDTwoCell.h; sourceTree = "<group>"; };
+		188E7E881FFCB02600A0C586 /* HYPDTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPDTwoCell.m; sourceTree = "<group>"; };
+		188E7E891FFCB02600A0C586 /* HYPDTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HYPDTwoCell.xib; sourceTree = "<group>"; };
 		18B802B11FDE355C00ED3AD6 /* HYHomeOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHomeOneCell.h; sourceTree = "<group>"; };
 		18B802B21FDE355C00ED3AD6 /* HYHomeTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHomeTwoCell.m; sourceTree = "<group>"; };
 		18B802B31FDE355C00ED3AD6 /* HYHomeOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHomeOneCell.xib; sourceTree = "<group>"; };
@@ -2541,6 +2562,8 @@
 				9D018B5B1F1F10A200BF17AD /* XProjectDetailsController.h */,
 				9D018B5C1F1F10A200BF17AD /* XProjectDetailsController.m */,
 				9D018B5D1F1F10A200BF17AD /* XProjectDetailsController.xib */,
+				188E7E771FFC6D4900A0C586 /* HYProjectDetailsViewController.h */,
+				188E7E781FFC6D4900A0C586 /* HYProjectDetailsViewController.m */,
 				CFE4592A1F7A635A00E0065C /* TouZiShouQingListViewController.h */,
 				CFE4592B1F7A635A00E0065C /* TouZiShouQingListViewController.m */,
 				9D62B2C51F2EC80500CB4213 /* WelfareViewController.h */,
@@ -2574,6 +2597,17 @@
 				188E7E701FF4CBB300A0C586 /* HYJDTCustomView.m */,
 				188E7E731FF5E11E00A0C586 /* UICountingLabel.h */,
 				188E7E721FF5E11E00A0C586 /* UICountingLabel.m */,
+				188E7E7A1FFC770300A0C586 /* ColorButton.h */,
+				188E7E7B1FFC770300A0C586 /* ColorButton.m */,
+				188E7E7D1FFC7B4900A0C586 /* HYPDHeaderView.h */,
+				188E7E7E1FFC7B4900A0C586 /* HYPDHeaderView.m */,
+				188E7E801FFC7D5200A0C586 /* HYPDHeaderView.xib */,
+				188E7E821FFCA1E800A0C586 /* HYPDOneCell.h */,
+				188E7E831FFCA1E800A0C586 /* HYPDOneCell.m */,
+				188E7E841FFCA1E800A0C586 /* HYPDOneCell.xib */,
+				188E7E871FFCB02600A0C586 /* HYPDTwoCell.h */,
+				188E7E881FFCB02600A0C586 /* HYPDTwoCell.m */,
+				188E7E891FFCB02600A0C586 /* HYPDTwoCell.xib */,
 			);
 			path = HYView;
 			sourceTree = "<group>";
@@ -4857,6 +4891,7 @@
 				9D567F391F300EEC0069F6F6 /* brightDot.png in Resources */,
 				9D18C2B31F316CE000AD769F /* tup@2x.png in Resources */,
 				9D26ABEF1F21DFA400150CC3 /* d@2x.png in Resources */,
+				188E7E8B1FFCB02600A0C586 /* HYPDTwoCell.xib in Resources */,
 				9D51B73E1F32C31F00734C59 /* hju@2x.png in Resources */,
 				DF5224A21D90D2BB00581504 /* SZPAB.png in Resources */,
 				9D9F43B01E49E3CB0056F777 /* WebAnnouncementViewController.xib in Resources */,
@@ -4992,6 +5027,7 @@
 				9D018B681F1F511A00BF17AD /* jd2@3x.png in Resources */,
 				0E3F753C1C8E8353008C9F0E /* FeedbackViewController.xib in Resources */,
 				DF5224911D90D2BB00581504 /* CEB.png in Resources */,
+				188E7E861FFCA1E800A0C586 /* HYPDOneCell.xib in Resources */,
 				9D52C69F1F27434800A329FF /* MyDisperCell.xib in Resources */,
 				9D1885971E247C7400E98FBC /* 0.6.png in Resources */,
 				2D0F6ECF1C9657BF006A36BD /* FundAccountViewController.xib in Resources */,
@@ -5266,6 +5302,7 @@
 				DF52249B1D90D2BB00581504 /* HXB.png in Resources */,
 				18B802DE1FDE7B3500ED3AD6 /* 9999_054.png in Resources */,
 				DF52249C1D90D2BB00581504 /* ICBC.png in Resources */,
+				188E7E811FFC7D5200A0C586 /* HYPDHeaderView.xib in Resources */,
 				DF52248C1D90D2BB00581504 /* BCCB.png in Resources */,
 				9DF5FA2B1E46C40200B8B0B9 /* AccountSafCell.xib in Resources */,
 				2D0F6EE51C968165006A36BD /* DistrictViewController.xib in Resources */,
@@ -5530,6 +5567,7 @@
 				9D2820F21E80CA7B003523A2 /* ApplyrRorReward.m in Sources */,
 				9DF5FA391E470E2300B8B0B9 /* RegisterCell.m in Sources */,
 				2D51A5551C7D89CF00AF71A2 /* iCarousel.m in Sources */,
+				188E7E7C1FFC770300A0C586 /* ColorButton.m in Sources */,
 				7310FBE21E58547B00FC61DC /* SNProjectInvestModel.m in Sources */,
 				2D2CE4881C98F404009CADE6 /* ReturnDetailsViewController.m in Sources */,
 				9D9F43AF1E49E3CB0056F777 /* WebAnnouncementViewController.m in Sources */,
@@ -5545,10 +5583,12 @@
 				9DB2BA1E1E30877C00AC4C9C /* MyWeiBuView.m in Sources */,
 				A34F56F41E5404D900266C5A /* VZTuple.m in Sources */,
 				9D52C69E1F27434800A329FF /* MyDisperCell.m in Sources */,
+				188E7E8A1FFCB02600A0C586 /* HYPDTwoCell.m in Sources */,
 				DF55121C1D8FC5A1000B21BD /* MyCreditorActionViewControllerBackViewController.m in Sources */,
 				0EB192261C8E5D7E009C3B90 /* IdentityTestViewController.m in Sources */,
 				2D8F71761C9FFB8400B58F1E /* MessageCenterViewController.m in Sources */,
 				2D811E511C8042E7003188F4 /* DebtNewsTableViewCell.m in Sources */,
+				188E7E791FFC6D4900A0C586 /* HYProjectDetailsViewController.m in Sources */,
 				2D51A4C81C7D58D300AF71A2 /* UIViewController+DismissKeyboard.m in Sources */,
 				18581D371FD5133F003A1FAD /* HYXiaLaView.m in Sources */,
 				2DCAA63E1C83E1BB00FDD6A5 /* InvestCommitViewController.m in Sources */,
@@ -5641,6 +5681,7 @@
 				B090D2BE1F7CF6BE008DA53C /* HomeFooterView.m in Sources */,
 				9D34E8E71F5F9BDE00634C19 /* QLTurntableView.m in Sources */,
 				9D567F371F300EEC0069F6F6 /* UIView+TapAction.m in Sources */,
+				188E7E7F1FFC7B4900A0C586 /* HYPDHeaderView.m in Sources */,
 				0E29AC0B1C8E6141003E957F /* SettingPayPasswordViewController.m in Sources */,
 				18B802BC1FDE355D00ED3AD6 /* HYHomeOneCell.m in Sources */,
 				18B802BD1FDE355D00ED3AD6 /* UILabel+ShuLabel.m in Sources */,
@@ -5690,6 +5731,7 @@
 				A34F57081E544A2800266C5A /* WKHTTPRequest.m in Sources */,
 				2D51A52E1C7D78E400AF71A2 /* InvestViewController.m in Sources */,
 				9D2405F21E820D1700241ABC /* ApplyrRewardMiddleCell.m in Sources */,
+				188E7E851FFCA1E800A0C586 /* HYPDOneCell.m in Sources */,
 				0E21C21B1C902A3F006403C0 /* FinancialProductViewController.m in Sources */,
 				2D51A5431C7D89C700AF71A2 /* NSMutableAttributedString+CTFrameRef.m in Sources */,
 				CF32670B1F7CB16F00711298 /* YinDaoViewController.m in Sources */,

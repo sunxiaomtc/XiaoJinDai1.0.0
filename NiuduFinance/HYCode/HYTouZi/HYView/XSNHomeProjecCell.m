@@ -72,7 +72,7 @@
         
         
             _txtLabel = [[UILabel alloc] init];
-            _txtLabel.text = @"预期年化";
+            _txtLabel.text = @"历史年化利率";
             _txtLabel.font = [UIFont systemFontOfSize:13.f];
             [self.contentView addSubview:_txtLabel];
             [_txtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,7 +92,7 @@
         _addLab = [[UILabel alloc]init];
         _addLab.textColor = [UIColor redColor];
         _addLab.text = @"(+1.1%)";
-        _addLab.font = [UIFont systemFontOfSize:18];
+        _addLab.font = [UIFont systemFontOfSize:14.0f];
         [self.contentView addSubview:_addLab];
         [_addLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(_rateLabel.mas_right).offset(5);
@@ -239,7 +239,7 @@
     _item = item;
     
     if ([item isKindOfClass:[SNProjectListItem class]]) {
-        _txtLabel.text = @"预期年化";
+        _txtLabel.text = @"历史年化利率";
         _titleLabel.text = item.title;
         
         NSString *str = [self formatFloat:([item.rate floatValue]-([item.addRate floatValue]))];

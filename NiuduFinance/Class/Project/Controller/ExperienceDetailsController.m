@@ -93,7 +93,7 @@
     }];
     
     _annualTitle = [UILabel new];
-    [_annualTitle setText:@"预期年化"];
+    [_annualTitle setText:@"历史年化利率"];
     [_annualTitle setFont:[UIFont systemFontOfSize:13]];
     [_annualTitle setTextColor:[UIColor whiteColor]];
     [self.headerView addSubview:_annualTitle];

@@ -56,7 +56,7 @@
                                         <color key="textColor" red="0.94347852468490601" green="0.24317258596420288" blue="0.20266702771186829" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预期年化" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khO-h0-cna">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史年化利率" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khO-h0-cna">
                                         <rect key="frame" x="4" y="8" width="202" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="zUM-I6-bXY"/>
@@ -75,11 +75,11 @@
                                         <color key="textColor" red="0.94347852470000004" green="0.243172586" blue="0.2026670277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+0%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYJ-hp-mUa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYJ-hp-mUa">
                                         <rect key="frame" x="110" y="51" width="46" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="VDb-lj-1uT"/>
-                                            <constraint firstAttribute="width" constant="46" id="phH-GO-sLZ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="phH-GO-sLZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.94347852470000004" green="0.243172586" blue="0.2026670277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,6 +125,7 @@
             <connections>
                 <outlet property="addBFBLabel" destination="zYJ-hp-mUa" id="H7I-iv-Kop"/>
                 <outlet property="bfbLabel" destination="yiR-iC-RkJ" id="uYJ-Xa-vwE"/>
+                <outlet property="bfbLeftLayout" destination="YLU-yX-6dy" id="u09-xt-T2Y"/>
                 <outlet property="bgView" destination="dHM-s7-F5R" id="UGd-v0-zuX"/>
                 <outlet property="buyBtn" destination="L7Q-Kh-2xt" id="Kgz-fj-7hc"/>
                 <outlet property="xszxLabel" destination="kzP-JJ-vJ4" id="2jL-XC-Uyd"/>

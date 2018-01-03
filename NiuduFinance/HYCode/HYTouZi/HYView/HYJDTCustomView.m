@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if(self)
     {
-        self.backgroundColor = qianhui(247, 126, 2);
+        //self.backgroundColor = qianhui(247, 126, 2);
         
         UILabel *bgView = [[UILabel alloc] init];
         bgView.backgroundColor = qianhui(255, 178, 86);
@@ -78,32 +78,34 @@
 //
 //    }];
     
-    [UIView animateKeyframesWithDuration:2.0 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        float bfb = [bfbStr floatValue];
-        CGFloat labelX = (SCREEN_WIDTH - 50) * bfb;
-        self.showLabel.frame = CGRectMake(0, 0, labelX, 5);
-        self.pointLabel.frame = CGRectMake(labelX + 25, 12, 12, 12);
-        self.numLabel.frame = CGRectMake(labelX + 25 - 20 + 6, 28, 40, 15);
-        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-        gradientLayer.colors = @[(__bridge id)qianhui(255, 178, 87).CGColor, (__bridge id)[UIColor whiteColor].CGColor];
-        gradientLayer.startPoint = CGPointMake(0, 0);
-        gradientLayer.endPoint = CGPointMake(1.0, 0);
-        gradientLayer.frame = CGRectMake(0, 0, labelX, 5);
-        [self.showLabel.layer addSublayer:gradientLayer];
-        
-//        double time = 0;
-//        double f = 2.0 / 20;
-//        for(int i = 0; i < 20;i ++)
-//        {
-//            [UIView addKeyframeWithRelativeStartTime:time relativeDuration:f animations:^{
-//                self.numLabel.text = [NSString stringWithFormat:@"%.2f%%",time];
-//            }];
-//            time = time + f;
-//        }
-        //[self.numLabel countFrom:0 to:[bfbStr floatValue]];
-        [self.numLabel countFrom:0 to:[bfbStr floatValue] * 100 withDuration:2];
-    } completion:^(BOOL finished) {
-    }];
+    float bfb = [bfbStr floatValue];
+    CGFloat labelX = (SCREEN_WIDTH - 50) * bfb;
+    self.showLabel.frame = CGRectMake(0, 0, labelX, 5);
+    self.pointLabel.frame = CGRectMake(labelX + 25, 12, 12, 12);
+    self.numLabel.frame = CGRectMake(labelX + 25 - 20 + 6, 28, 40, 15);
+    self.numLabel.text = [NSString stringWithFormat:@"%.0f%%",[bfbStr floatValue] * 100];
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = @[(__bridge id)qianhui(255, 178, 87).CGColor, (__bridge id)[UIColor whiteColor].CGColor];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1.0, 0);
+    gradientLayer.frame = CGRectMake(0, 0, labelX, 5);
+    [self.showLabel.layer addSublayer:gradientLayer];
+    
+//    [UIView animateKeyframesWithDuration:2.0 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+//        float bfb = [bfbStr floatValue];
+//        CGFloat labelX = (SCREEN_WIDTH - 50) * bfb;
+//        self.showLabel.frame = CGRectMake(0, 0, labelX, 5);
+//        self.pointLabel.frame = CGRectMake(labelX + 25, 12, 12, 12);
+//        self.numLabel.frame = CGRectMake(labelX + 25 - 20 + 6, 28, 40, 15);
+//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//        gradientLayer.colors = @[(__bridge id)qianhui(255, 178, 87).CGColor, (__bridge id)[UIColor whiteColor].CGColor];
+//        gradientLayer.startPoint = CGPointMake(0, 0);
+//        gradientLayer.endPoint = CGPointMake(1.0, 0);
+//        gradientLayer.frame = CGRectMake(0, 0, labelX, 5);
+//        [self.showLabel.layer addSublayer:gradientLayer];
+//        [self.numLabel countFrom:0 to:[bfbStr floatValue] * 100 withDuration:2];
+//    } completion:^(BOOL finished) {
+//    }];
 }
 
 //-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

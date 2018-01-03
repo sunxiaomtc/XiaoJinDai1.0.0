@@ -61,7 +61,7 @@
         if (SCREEN_WIDTH == 320) {
             
             _txtLabel = [[UILabel alloc] init];
-            _txtLabel.text = @"预期年化";
+            _txtLabel.text = @"历史年化利率";
             _txtLabel.font = [UIFont systemFontOfSize:11.f];
             [self.contentView addSubview:_txtLabel];
             [_txtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -157,7 +157,7 @@
         }else{
             
             _txtLabel = [[UILabel alloc] init];
-            _txtLabel.text = @"预期年化";
+            _txtLabel.text = @"历史年化利率";
             _txtLabel.font = [UIFont systemFontOfSize:13.f];
             [self.contentView addSubview:_txtLabel];
             [_txtLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -277,7 +277,7 @@
     _item = item;
     
     if ([item isKindOfClass:[SNProjectListItem class]]) {
-        _txtLabel.text = @"预期年化";
+        _txtLabel.text = @"历史年化利率";
         _titleLabel.text = item.title;
         _rateLabel.text = [NSString stringWithFormat:@"%.2f", [item.rate floatValue]];
         

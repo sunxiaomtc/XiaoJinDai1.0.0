@@ -30,6 +30,7 @@
 #import "GestureVerifyViewController.h"
 #import "HYJDTCustomView.h"
 #import "XSNHomeProjecCell.h"
+#import "HYProjectDetailsViewController.h"
 
 static NSString *HomeNewExclusiveCellID = @"HomeNewExclusiveCell";
 static NSString *homeBullSharingCellID = @"homeBullSharingCell";
@@ -107,6 +108,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             }
         }];
     }
+    [self getTwoTuiJianBiao];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -156,7 +158,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //    [btn addTarget:self action:@selector(btnCLick:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:btn];
     
-    [self getTwoTuiJianBiao];
+    
 }
 
 -(void)btnCLick:(UIButton *)btn
@@ -174,11 +176,11 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 {
     WS
     [self.projectModel loadWithCompletion:^(VZModel *model, NSError *error) {
-        
         if (!error) {
+            [weakSelf.twoTJArrays removeAllObjects];
             for (SNProjectListItem *item in weakSelf.projectModel.objects) {
-                NSLog(@"%@ -----  %@",item.title,item.projectId);
-                if([item.projectId isEqualToNumber:@(1708100154)]  || [item.projectId isEqualToNumber:@(1708100151)])
+                //NSLog(@"%@ -----  %@",item.title,item.projectId);
+                if(([item.periodtypeid integerValue] == 1 && [item.loanperiod isEqualToNumber:@(45)]) || ([item.periodtypeid integerValue] == 2 && [item.loanperiod isEqualToNumber:@(2)]))
                 {
                     [weakSelf.twoTJArrays addObject:item];
                 }
@@ -251,7 +253,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         
     } completionHandler:^(id responseObject, NSError *error) {
         if (error) {
-            
         }else {
             self.experienceDic = responseObject[@"data"];
         }
@@ -278,7 +279,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 {
     if (fmodf(f, 1)==0) {//如果有一位小数点
         return [NSString stringWithFormat:@"%.0f",f];
-    } else if (fmodf(f*10, 1)==0) {//如果有两位小数点
+    } else if (fmodf(f * 10, 1)==0) {//如果有两位小数点
         return [NSString stringWithFormat:@"%.1f",f];
     } else {
         return [NSString stringWithFormat:@"%.2f",f];
@@ -289,7 +290,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 #pragma mark - 创建头部和尾部试图
 - (void)createHeaderAndFooter {
-    
     __weak __typeof(self) weakSelf = self;
     HomeHeaderView *headerView = [[HomeHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [HomeHeaderView homeHeaderHight])];
 //    首页的三个按钮的点击事件
@@ -443,11 +443,12 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2 + self.twoTJArrays.count;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.section == 0) {
         [self.homeTableView registerNib:[UINib nibWithNibName:@"HYHomeOneCell" bundle:nil] forCellReuseIdentifier:@"HYHomeOneCells"];
         
@@ -471,7 +472,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.item = self.twoTJArrays[indexPath.section - 1];
         cell.type = _projectModel.avative;
-        
         return cell;
     }else
     {
@@ -495,14 +495,19 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //        [self.navigationController pushViewController:vc animated:YES];
 //        self.hidesBottomBarWhenPushed = NO;
         if (![AppDelegate checkLogin]) return;
-        XProjectDetailsController *projectDetailsVC = [XProjectDetailsController new];
-        //    ProjectDetailsViewController * projectDetailsVC = [ProjectDetailsViewController new];
+//        XProjectDetailsController *projectDetailsVC = [XProjectDetailsController new];
+//        //    ProjectDetailsViewController * projectDetailsVC = [ProjectDetailsViewController new];
+//        SNProjectListItem * projectItem = self.twoTJArrays[indexPath.section - 1];
+//        projectDetailsVC.projectId = projectItem.projectId.intValue;
+//        projectDetailsVC.projectItem = projectItem;
+//        //    projectDetailsVC.addrate = [cell.item.addRate floatValue];
+//        projectDetailsVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:projectDetailsVC animated:YES];
+        HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
         SNProjectListItem * projectItem = self.twoTJArrays[indexPath.section - 1];
-        projectDetailsVC.projectId = projectItem.projectId.intValue;
-        projectDetailsVC.projectItem = projectItem;
-        //    projectDetailsVC.addrate = [cell.item.addRate floatValue];
-        projectDetailsVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:projectDetailsVC animated:YES];
+        pro.projectId = projectItem.projectId.intValue;
+        pro.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pro animated:YES];
     }
 }
 
@@ -561,6 +566,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     }
     return nil;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 1) {
         //UIView *sharingView = [[UIView alloc]init];
@@ -572,7 +578,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //        }];
 //        [imageView setImage:[UIImage imageNamed:@"platform"]];
         
-//        UILabel *sharLabel = [[UILabel alloc]init];
+//        UILabel *sharLabel = [[UILabel alloc] init];
 //        [sharingView addSubview:sharLabel];
 //        [sharLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.mas_equalTo(0);

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UILabel *bfbLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addBFBLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bfbLeftLayout;
 
 @property (nonatomic, copy) NSString *bfbStr;
 

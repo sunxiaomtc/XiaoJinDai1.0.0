@@ -204,7 +204,7 @@
     }];
     
     _nhsylLab = [UILabel new];
-    [_nhsylLab setText:@"预期年化"];
+    [_nhsylLab setText:@"历史年化利率"];
     [_nhsylLab setFont:[UIFont systemFontOfSize:15]];
     [_nhsylLab setTextColor:[UIColor whiteColor]];
     [self.firstView addSubview:_nhsylLab];
@@ -445,11 +445,12 @@
         if (status == 0) {
         }else{
             _titleLab.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
-             NSString *str = [weakSelf formatFloat:([[dic objectForKey:@"rate"] floatValue]-([weakSelf.addRate floatValue]))];
+             NSString *str = [weakSelf formatFloat:([[dic objectForKey:@"rate"] floatValue]-([[dic objectForKey:@"addRate"] floatValue]))];
             _rateLabe.text = [str stringByAppendingString:@"%"];
-            if([weakSelf.addRate floatValue] > 0)
+            NSString *addrate = [NSString stringWithFormat:@"%@",[dic objectForKey:@"addRate"]];
+            if([addrate floatValue] > 0)
             {
-                _addLab.text = [[NSString stringWithFormat:@"+%@",weakSelf.addRate]stringByAppendingString:@"%"];
+                _addLab.text = [[NSString stringWithFormat:@"+%@",addrate]stringByAppendingString:@"%"];
             }else
             {
                 _addLab.text = @"";

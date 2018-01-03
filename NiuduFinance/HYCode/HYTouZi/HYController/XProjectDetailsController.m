@@ -326,7 +326,7 @@
     
     
     _nhsylLabel = [UILabel new];
-    [_nhsylLabel setText:@"预期年化"];
+    [_nhsylLabel setText:@"历史年化利率"];
     [_nhsylLabel setTextColor:[UIColor whiteColor]];
 //    _nhsylLabel.alpha =0.5;
     [_nhsylLabel setFont:[UIFont systemFontOfSize:14]];
@@ -904,7 +904,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = (UITableViewCell*)[tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
