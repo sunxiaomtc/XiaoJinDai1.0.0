@@ -133,7 +133,7 @@
         
         WS
         NSArray * nameArr = @[@"项目描述", @"项目图片", @"投资记录"];
-        for (NSInteger i = 0; i < 3; i++) {
+        for (NSInteger i = 0; i < 2; i++) {
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = 100 + i;
             button.backgroundColor = [UIColor whiteColor];
@@ -143,9 +143,9 @@
             [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:button];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(weakSelf.mas_left).with.offset(SCREEN_WIDTH / 3.f * i);
+                make.left.equalTo(weakSelf.mas_left).with.offset(SCREEN_WIDTH / 2.f * i);
                 make.top.equalTo(weakSelf.mas_top).with.offset(5);
-                make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 3.f, 35));
+                make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2.f, 35));
             }];
             
             if (i == 0)
@@ -162,7 +162,7 @@
         [_line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf.mas_left);
             make.bottom.equalTo(weakSelf.mas_top).with.offset(40);
-            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 3.f, 2));
+            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH / 2.f, 2));
         }];
         
         //  项目描述
@@ -496,7 +496,7 @@
 {
     WS
     [_line mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(weakSelf.mas_left).with.offset(SCREEN_WIDTH / 3.f * (button.tag - 100));
+        make.left.equalTo(weakSelf.mas_left).with.offset(SCREEN_WIDTH / 2.f * (button.tag - 100));
     }];
     
     for (NSInteger i = 100; i < 103; i++) {

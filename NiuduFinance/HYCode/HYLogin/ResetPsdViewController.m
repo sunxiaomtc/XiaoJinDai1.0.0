@@ -10,7 +10,7 @@
 #import "ValidateUtil.h"
 #import "LoginViewController.h"
 
-@interface ResetPsdViewController ()
+@interface ResetPsdViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *finishBtn;
 @property (weak, nonatomic) IBOutlet UITextField *firstPsdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *secondPsdTextField;
@@ -34,6 +34,9 @@
     _finishBtn.layer.cornerRadius = 5.0f;
     _finishBtn.userInteractionEnabled = NO;
     
+    _firstPsdTextField.delegate = self;
+    _secondPsdTextField.delegate = self;
+    
     [_firstPsdTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     [_secondPsdTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
 }
@@ -51,6 +54,17 @@
         _finishBtn.backgroundColor = UIcolors;
     }
 }
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(textField.text.length == 16)
+    {
+        [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)finishClickEvent:(id)sender {
     if (![_firstPsdTextField.text isEqual:_secondPsdTextField.text]) {
         [MBProgressHUD showError:@"两次输入的密码不一致，请重新输入" toView:self.view];

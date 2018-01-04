@@ -16,6 +16,7 @@
 #import "MoreWebViewController.h"
 #import "XProjectConfirmController.h"
 #import "WebPageVC.h"
+#import "TouZiJiLuViewController.h"
 
 @interface HYProjectDetailsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
@@ -262,17 +263,21 @@
             XProjectDetailsNewController *projectDetailsVC = [XProjectDetailsNewController new];
             projectDetailsVC.projectId = self.models.projectId.intValue;
             projectDetailsVC.projectItem = self.models;
-            self.hidesBottomBarWhenPushed=YES;
+            projectDetailsVC.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:projectDetailsVC animated:YES];
         }else if (indexPath.row == 1)
         {
             MoreWebViewController * moreWebVC = [MoreWebViewController new];
             moreWebVC.titleStr = @"安全保障";
             moreWebVC.webStr =@"v2/accept/new2";
-            self.hidesBottomBarWhenPushed = YES;
+            moreWebVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:moreWebVC animated:YES];
         }else
         {
+            TouZiJiLuViewController *tzjl = [TouZiJiLuViewController new];
+            tzjl.projectId = self.models.projectId.intValue;
+            tzjl.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:tzjl animated:YES];
         }
     }
 }

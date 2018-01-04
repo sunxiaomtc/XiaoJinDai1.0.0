@@ -71,6 +71,9 @@
 		0EF7BA251C911FA1008E8FE6 /* MyCreditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EF7BA231C911FA1008E8FE6 /* MyCreditorViewController.xib */; };
 		13F2E9494C98A2C166FDF7B0 /* libPods-NiuduFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349B4DE5AAC6E624588B55C2 /* libPods-NiuduFinance.a */; };
 		171AD84E1DE80A060009F9FE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 171AD84C1DE80A060009F9FE /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1833CE0B1FFDC09B00046FCA /* TouZiJiLuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE0A1FFDC09B00046FCA /* TouZiJiLuViewController.m */; };
+		1833CE0E1FFDFE7A00046FCA /* HYTZJLOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */; };
+		1833CE111FFE13EF00046FCA /* HYTZJLTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */; };
 		18581D371FD5133F003A1FAD /* HYXiaLaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18581D361FD5133F003A1FAD /* HYXiaLaView.m */; };
 		188E7E621FE8B15300A0C586 /* HYNewActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */; };
 		188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */; };
@@ -933,6 +936,12 @@
 		0EF7BA231C911FA1008E8FE6 /* MyCreditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCreditorViewController.xib; sourceTree = "<group>"; };
 		171AD84B1DE80A060009F9FE /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		171AD84C1DE80A060009F9FE /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		1833CE091FFDC09B00046FCA /* TouZiJiLuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouZiJiLuViewController.h; sourceTree = "<group>"; };
+		1833CE0A1FFDC09B00046FCA /* TouZiJiLuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouZiJiLuViewController.m; sourceTree = "<group>"; };
+		1833CE0C1FFDFE7A00046FCA /* HYTZJLOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTZJLOneCell.h; sourceTree = "<group>"; };
+		1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTZJLOneCell.m; sourceTree = "<group>"; };
+		1833CE0F1FFE13EF00046FCA /* HYTZJLTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTZJLTwoCell.h; sourceTree = "<group>"; };
+		1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTZJLTwoCell.m; sourceTree = "<group>"; };
 		18581D351FD5133F003A1FAD /* HYXiaLaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYXiaLaView.h; sourceTree = "<group>"; };
 		18581D361FD5133F003A1FAD /* HYXiaLaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXiaLaView.m; sourceTree = "<group>"; };
 		188E7E601FE8B15300A0C586 /* HYNewActivtyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNewActivtyViewController.h; sourceTree = "<group>"; };
@@ -2566,6 +2575,8 @@
 				188E7E781FFC6D4900A0C586 /* HYProjectDetailsViewController.m */,
 				CFE4592A1F7A635A00E0065C /* TouZiShouQingListViewController.h */,
 				CFE4592B1F7A635A00E0065C /* TouZiShouQingListViewController.m */,
+				1833CE091FFDC09B00046FCA /* TouZiJiLuViewController.h */,
+				1833CE0A1FFDC09B00046FCA /* TouZiJiLuViewController.m */,
 				9D62B2C51F2EC80500CB4213 /* WelfareViewController.h */,
 				9D62B2C61F2EC80500CB4213 /* WelfareViewController.m */,
 				9D62B2C71F2EC80500CB4213 /* WelfareViewController.xib */,
@@ -2608,6 +2619,10 @@
 				188E7E871FFCB02600A0C586 /* HYPDTwoCell.h */,
 				188E7E881FFCB02600A0C586 /* HYPDTwoCell.m */,
 				188E7E891FFCB02600A0C586 /* HYPDTwoCell.xib */,
+				1833CE0C1FFDFE7A00046FCA /* HYTZJLOneCell.h */,
+				1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */,
+				1833CE0F1FFE13EF00046FCA /* HYTZJLTwoCell.h */,
+				1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */,
 			);
 			path = HYView;
 			sourceTree = "<group>";
@@ -5489,6 +5504,7 @@
 				2D719E0B1C7D500C008AE30C /* ViewController.m in Sources */,
 				9DD7D7051E3445ED004F5C2D /* MyCreditoCell.m in Sources */,
 				2D719E081C7D500C008AE30C /* AppDelegate.m in Sources */,
+				1833CE111FFE13EF00046FCA /* HYTZJLTwoCell.m in Sources */,
 				DF6B14DE1D992748008605A0 /* MyViewTableViewCell.m in Sources */,
 				188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */,
 				A34F57051E543F6000266C5A /* SNProjectListModel.m in Sources */,
@@ -5621,6 +5637,7 @@
 				0E75A92D1C89333A004B833A /* MyViewController.m in Sources */,
 				0E75A9351C895F80004B833A /* FundManagerController.m in Sources */,
 				9D567F3F1F300EEC0069F6F6 /* MLMWaveWaterView.m in Sources */,
+				1833CE0E1FFDFE7A00046FCA /* HYTZJLOneCell.m in Sources */,
 				2D0F6ED41C965814006A36BD /* FundAccountTableViewCell.m in Sources */,
 				9D36C7EC1F2977F20022DAE0 /* XShareProjectController.m in Sources */,
 				ABBEACE31F9DBC090084CDFF /* newInvestNTableViewCell.m in Sources */,
@@ -5663,6 +5680,7 @@
 				DF38D37E1DAF9BEE00492DEE /* ProjectDetailImageCell.m in Sources */,
 				0E75A9251C893319004B833A /* MyHeaderView.m in Sources */,
 				9D0F219F1E9B231A00C2C8FF /* YZCover.m in Sources */,
+				1833CE0B1FFDC09B00046FCA /* TouZiJiLuViewController.m in Sources */,
 				DFE330D81DCB119600DF1000 /* MessageCellTableViewCell.m in Sources */,
 				CF2F17DC1F7E7878007961BF /* NewsModel.m in Sources */,
 				2D0F6EEF1C96819A006A36BD /* District.m in Sources */,

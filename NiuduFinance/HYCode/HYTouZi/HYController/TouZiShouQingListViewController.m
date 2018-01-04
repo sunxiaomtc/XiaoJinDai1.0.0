@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "XProjectDetailsController.h"
 #import "MoreWebViewController.h"
+#import "TouZiJiLuViewController.h"
 
 
 @interface TouZiShouQingListViewController ()<UITableViewDelegate, UITableViewDataSource>

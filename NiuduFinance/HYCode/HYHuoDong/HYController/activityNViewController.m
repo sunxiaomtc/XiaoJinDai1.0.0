@@ -17,6 +17,7 @@
 
 #import "SNProjectListItem.h"
 #import "SNProjectListModel.h"
+#import "HYProjectDetailsViewController.h"
 
 @interface activityNViewController ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic ,strong) UIView *firstView;
@@ -280,14 +281,21 @@
 
 -(void)gotoTouZiDetails
 {
-    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
     if (self.recProductArr.count > 0) {
+        HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
         SNProjectListItem * projectItem = self.recProductArr[0];
-        projectDetailsVC.projectId = [projectItem.projectId intValue];
-        projectDetailsVC.projectItem = projectItem;
+        pro.projectId = projectItem.projectId.intValue;
+        pro.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pro animated:YES];
     }
-    projectDetailsVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:projectDetailsVC animated:YES];
+//    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+//    if (self.recProductArr.count > 0) {
+//        SNProjectListItem * projectItem = self.recProductArr[0];
+//        projectDetailsVC.projectId = [projectItem.projectId intValue];
+//        projectDetailsVC.projectItem = projectItem;
+//    }
+//    projectDetailsVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:projectDetailsVC animated:YES];
 }
 
 -(void)backAction

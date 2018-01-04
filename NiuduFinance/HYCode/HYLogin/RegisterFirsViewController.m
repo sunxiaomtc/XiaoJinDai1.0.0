@@ -125,6 +125,7 @@
     _pwsTextField.placeholder = @"8-16位数字字母组合";
     _pwsTextField.secureTextEntry = YES;
     _pwsTextField.font = [UIFont systemFontOfSize:14];
+    _pwsTextField.delegate = self;
     [_pwsTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     
     // 输入右侧删除按钮
@@ -298,7 +299,6 @@
 //        _yanBtn.backgroundColor = NaviColor;
     }
 }
-
 
 
 - (void)verifiBtn:(UIButton *)btn{
@@ -795,7 +795,7 @@
 //
 //        // 1.5秒之后再消失
 //        [hud hide:YES afterDelay:1];
-
+        [MBProgressHUD showError:@"请输入最小为8个字符的密码" toView:self.view];
         return;
     }else if (_pwsTextField.text.length < 8)
 
@@ -849,38 +849,50 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-   //321敲删除键
-    if ([string length]==0) {
+    if(textField == _pwsTextField)
+    {
+        if(_pwsTextField.text.length == 16)
+        {
+            [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
+            return NO;
+        }
+        return YES;
+    }else
+    {
+        //321敲删除键
+        if ([string length]==0) {
+            return YES;
+        }
+        //当输入框当前的字符个数大于11的时候，就不让更改了（不能等于11，因为如果等于11，在输入框字符个数等于11的情况下就不能进行粘贴替换内容了）
+        
+        int num;
+        if ([textField isEqual:_phoneTextField]) {
+            NSLog(@"手机");
+            num = 11;
+        }else if ([textField isEqual:_verificationTextField]){
+            NSLog(@"验证码");
+            num = 6;
+        }else {
+            NSLog(@"邀请码");
+            num = 8;
+        }
+        
+        if ([textField.text length]>num){
+            return NO;
+        }
+        //获得当前输入框内的字符串
+        NSMutableString *fieldText=[NSMutableString stringWithString:textField.text];
+        //完成输入动作，包括输入字符，粘贴替换字符
+        [fieldText replaceCharactersInRange:range withString:string];
+        NSString *finalText=[fieldText copy];
+        //如果字符个数大于11就要进行截取前边11个字符
+        if ([finalText length]>num) {
+            textField.text=[finalText substringToIndex:num];
+            return NO;
+        }
         return YES;
     }
-    //当输入框当前的字符个数大于11的时候，就不让更改了（不能等于11，因为如果等于11，在输入框字符个数等于11的情况下就不能进行粘贴替换内容了）
-    
-    int num;
-    if ([textField isEqual:_phoneTextField]) {
-        NSLog(@"手机");
-        num = 11;
-    }else if ([textField isEqual:_verificationTextField]){
-        NSLog(@"验证码");
-        num = 6;
-    }else {
-        NSLog(@"邀请码");
-        num = 8;
-    }
-    
-    if ([textField.text length]>num){
-        return NO;
-    }
-    //获得当前输入框内的字符串
-    NSMutableString *fieldText=[NSMutableString stringWithString:textField.text];
-    //完成输入动作，包括输入字符，粘贴替换字符
-    [fieldText replaceCharactersInRange:range withString:string];
-    NSString *finalText=[fieldText copy];
-    //如果字符个数大于11就要进行截取前边11个字符
-    if ([finalText length]>num) {
-        textField.text=[finalText substringToIndex:num];
-        return NO;
-    }
-    return YES;
+   
 }
 /**
  * 当键盘隐藏的时候
