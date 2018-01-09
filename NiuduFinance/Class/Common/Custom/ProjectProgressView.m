@@ -61,6 +61,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     _isShowProgressText = YES;
     _isLineCapRound = YES;
     _yellowColor = BlueColor;
@@ -96,10 +97,8 @@
     
     CGContextSetLineWidth(ctx, kLineWidth);
 //    NSLog(@"%d",self.progressValue);
-    if (self.progressValue  == 100 & self.progressValue ==0)
+    if (self.progressValue  == 100 || self.progressValue ==0)
     {
-
-        
         [_backColor setStroke];
         CGContextMoveToPoint(ctx, startLineX, startLineY);
         CGContextAddLineToPoint(ctx, lineEndX, startLineY);
@@ -185,11 +184,17 @@
     
     if (_isShowProgressText)
     {
-        NSString * progressStr = [NSString stringWithFormat:@"%.2f%%",self.progress];
+        NSString * progressStr = [NSString stringWithFormat:@"%.2f%%",self.progressValue];
         CGRect strRect = CGRectMake(rect.size.width - kTextWidth, startLineY - kLineWidth-3, kTextWidth, rect.size.height);
-        
-        NSDictionary *sttrbiutes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:kStrFont],NSFontAttributeName,_yellowColor,NSForegroundColorAttributeName, nil];
-        [progressStr drawInRect:strRect withAttributes:sttrbiutes];
+        if(self.progressValue == 100)
+        {
+            NSDictionary *sttrbiutes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:kStrFont],NSFontAttributeName,_yellowColor,NSForegroundColorAttributeName, nil];
+            [progressStr drawInRect:strRect withAttributes:sttrbiutes];
+        }else
+        {
+            NSDictionary *sttrbiutes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:kStrFont],NSFontAttributeName,_yellowColor,NSForegroundColorAttributeName, nil];
+            [progressStr drawInRect:strRect withAttributes:sttrbiutes];
+        }
     }
 }
 

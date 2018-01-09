@@ -348,7 +348,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
-     NSLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo]);
+    NSLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo]);
     completionHandler(UIBackgroundFetchResultNewData);
 }
 

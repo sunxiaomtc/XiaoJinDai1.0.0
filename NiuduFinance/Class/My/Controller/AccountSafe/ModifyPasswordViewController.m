@@ -9,7 +9,7 @@
 #import "ModifyPasswordViewController.h"
 #import "ValidateUtil.h"
 
-@interface ModifyPasswordViewController ()
+@interface ModifyPasswordViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *oldPsdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *newsPsdTextField;
 @property (weak, nonatomic) IBOutlet UITextField *commitPsdTextField;
@@ -25,7 +25,9 @@
     [self backBarItem];
     
     _commitBtn.layer.cornerRadius = 5.0f;
-    
+    _oldPsdTextField.delegate = self;
+    _newsPsdTextField.delegate = self;
+    _commitPsdTextField.delegate = self;
     [_oldPsdTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     [_newsPsdTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     [_commitPsdTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
@@ -75,6 +77,22 @@
             [hud dismissErrorStatusString:msg hideAfterDelay:1.0];
         }
     }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if(textField.text.length == 16)
+    {
+        if(string.length > 0)
+        {
+            [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
+            return NO;
+        }else
+        {
+            return YES;
+        }
+    }
+    return YES;
 }
 
 - (void)delayMethod

@@ -16,6 +16,7 @@
 #import "XProjectDetailsController.h"
 #import "MoreWebViewController.h"
 #import "TouZiJiLuViewController.h"
+#import "HYProjectDetailsViewController.h"
 
 
 @interface TouZiShouQingListViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -382,14 +383,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (![AppDelegate checkLogin]) return;
-    self.hidesBottomBarWhenPushed=YES;
-    XProjectDetailsController *projectDetailsVC = [XProjectDetailsController new];
-    //    ProjectDetailsViewController * projectDetailsVC = [ProjectDetailsViewController new];
+//    self.hidesBottomBarWhenPushed=YES;
+//    XProjectDetailsController *projectDetailsVC = [XProjectDetailsController new];
+//    //    ProjectDetailsViewController * projectDetailsVC = [ProjectDetailsViewController new];
+//    SNProjectListItem * projectItem = _noNewMutableArr[indexPath.section];
+//    projectDetailsVC.projectId = projectItem.projectId.intValue;
+//    projectDetailsVC.projectItem = projectItem;
+//    [self.navigationController pushViewController:projectDetailsVC animated:YES];
+//    self.hidesBottomBarWhenPushed=NO;
+    
+    HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
     SNProjectListItem * projectItem = _noNewMutableArr[indexPath.section];
-    projectDetailsVC.projectId = projectItem.projectId.intValue;
-    projectDetailsVC.projectItem = projectItem;
-    [self.navigationController pushViewController:projectDetailsVC animated:YES];
-    self.hidesBottomBarWhenPushed=NO;
+    pro.projectId = projectItem.projectId.intValue;
+    pro.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:pro animated:YES];
+    
 }
 
 - (void)headerRefreshloadData

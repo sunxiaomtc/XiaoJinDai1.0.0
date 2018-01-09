@@ -58,7 +58,8 @@
         self.dayLabel.text = [NSString stringWithFormat:@"%@年", models.loanperiod];
     }
     self.syPriceLabel.text = [NSString stringWithFormat:@"%@元",models.remainamount];
-    self.customView.bfbStr = [NSString stringWithFormat:@"%.2f",[models.process floatValue] / 100.0];
+    double bf = ([models.amount doubleValue] - [models.remainamount doubleValue]) / [models.amount doubleValue];
+    self.customView.bfbStr = [NSString stringWithFormat:@"%f",bf];
 }
 
 //小数点问题

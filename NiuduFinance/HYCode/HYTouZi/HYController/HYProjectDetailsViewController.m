@@ -42,6 +42,12 @@
     [self sendServerForRequest];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -170,7 +176,7 @@
 
 -(void)setBtnStatus
 {
-    NSMutableArray *colorArray1 = [@[qianhui140Color,qianhui140Color] mutableCopy];
+    NSMutableArray *colorArray1 = [@[qianhui220Color,qianhui220Color] mutableCopy];
     self.buyBtn.userInteractionEnabled = NO;
     [self.buyBtn setCustomColorArray:colorArray1 byType:leftToRight];
 }
@@ -235,7 +241,7 @@
                 cell.detailsLabel.text = self.models.title;
             }else if (indexPath.row == 1)
             {
-                cell.detailsLabel.text = [self compareTwoTime:[self.models.creationdate longLongValue] time2:[self.models.collectDate longLongValue]];
+                cell.detailsLabel.text = [self compareTwoTime:[self.models.bidstartdate longLongValue] time2:[self.models.collectDate longLongValue]];
             }else if (indexPath.row == 2)
             {
                 cell.detailsLabel.text = [NSString stringWithFormat:@"%@起投", self.models.minbidamount];
@@ -322,7 +328,7 @@
     
     NSInteger hour = timeInt / 60;
     
-    NSInteger mint = timeInt % 60;
+    //NSInteger mint = timeInt % 60;
     
     NSInteger day = hour / 24;
     
@@ -330,22 +336,26 @@
     {
         timeString = [NSString stringWithFormat:@"%ld天",(long)day];
         return timeString;
-    }
-    if(hour ==0)
-    {
-        timeString = [NSString stringWithFormat:@"%ld分钟",(long)mint];
     }else
     {
-        if(mint ==0)
-        {
-            timeString = [NSString stringWithFormat:@"%ld小时",(long)hour];
-        }
-        else
-        {
-            timeString = [NSString stringWithFormat:@"%ld小时%ld分钟",(long)hour,(long)mint];
-        }
+        timeString = [NSString stringWithFormat:@"1天"];
+        return timeString;
     }
-    return timeString;
+//    if(hour ==0)
+//    {
+//        timeString = [NSString stringWithFormat:@"%ld分钟",(long)mint];
+//    }else
+//    {
+//        if(mint ==0)
+//        {
+//            timeString = [NSString stringWithFormat:@"%ld小时",(long)hour];
+//        }
+//        else
+//        {
+//            timeString = [NSString stringWithFormat:@"%ld小时%ld分钟",(long)hour,(long)mint];
+//        }
+//    }
+//    return timeString;
     
 }
 

@@ -185,7 +185,7 @@
 
 - (void)setTextValue:(CGFloat)value
 {
-    if (self.attributedFormatBlock != nil) {
+    if (self.attributedFormatBlock != nil){
         self.attributedText = self.attributedFormatBlock(value);
     }
     else if(self.formatBlock != nil)
@@ -195,7 +195,7 @@
     else
     {
         // check if counting with ints - cast to int
-        if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound )
+        if([self.format rangeOfString:@"%(.*)d" options:NSRegularExpressionSearch].location != NSNotFound || [self.format rangeOfString:@"%(.*)i"].location != NSNotFound)
         {
             self.text = [NSString stringWithFormat:self.format,(int)value];
         }

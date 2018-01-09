@@ -233,6 +233,18 @@
     }
 }
 
+//小数点问题2
+- (NSString *)xiaoshudianFloat:(float)f
+{
+    if (fmodf(f, 1)==0) {//如果有一位小数点
+        return [NSString stringWithFormat:@"%.0f",f];
+    } else if (fmodf(f*10, 1)==0) {//如果有两位小数点
+        return [NSString stringWithFormat:@"%.1f",f];
+    } else {
+        return [NSString stringWithFormat:@"%.1f",f];
+    }
+}
+
 
 - (void)setItem:(SNProjectListItem *)item
 {
@@ -255,11 +267,12 @@
         
         _loanperiodLab.text = item.loanperiod.stringValue;
         NSLog(@"%@",_loanperiodLab.text);
-
-        NSString *ssss = [[NSString stringWithFormat:@"%@",item.process] stringByAppendingString:@"%"];
+        
+        double bf = ([item.amount doubleValue] - [item.remainamount doubleValue]) / [item.amount doubleValue] * 100;
+        NSString *ssss = [[NSString stringWithFormat:@"%@",[self xiaoshudianFloat:bf]] stringByAppendingString:@"%"];
         
         _progressLabel.text = ssss;
-        NSString * sst = [NSString stringWithFormat:@"%@",item.process];
+        NSString * sst = [NSString stringWithFormat:@"%.1f",bf * 100];
         //
         _progressView.progressValue = [sst doubleValue];
         _dayLab.hidden = NO;
@@ -288,13 +301,14 @@
 //            UIImage * image = [UIImage imageNamed:@"tjdd.png"];
 //            _image.image = image;
             [_titleLabel setTextColor:[UIColor blackColor]];
+            [_addLab setTextColor:[UIColor redColor]];
             [_rateLabel setTextColor:[UIColor redColor]];
             [_loanperiodLab setTextColor:[UIColor blackColor]];
             [_syktLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_mjzeLabel setTextColor:[UIColor blackColor]];
             [_dayLab setTextColor:[UIColor blackColor]];
-            //[_progressLabel setTextColor:[UIColor blackColor]];
+            [_progressLabel setTextColor:UIcolors];
             [_remainamountLab setTextColor:[UIColor blackColor]];
             [_symbolLabel setTextColor:[UIColor redColor]];
             [_txtLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
@@ -305,12 +319,13 @@
             _image.image = image;
             [_titleLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_rateLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+            [_addLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_loanperiodLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_syktLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_labelLoanperiod setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];
             [_mjzeLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_dayLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-            //[_progressLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+            [_progressLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_remainamountLab setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_symbolLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
             [_txtLabel setTextColor:[UIColor colorWithHexString:@"#CCCCCC"]];

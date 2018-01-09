@@ -83,7 +83,7 @@
     self.showLabel.frame = CGRectMake(0, 0, labelX, 5);
     self.pointLabel.frame = CGRectMake(labelX + 25, 12, 12, 12);
     self.numLabel.frame = CGRectMake(labelX + 25 - 20 + 6, 28, 40, 15);
-    self.numLabel.text = [NSString stringWithFormat:@"%.0f%%",[bfbStr floatValue] * 100];
+    self.numLabel.text = [NSString stringWithFormat:@"%@%%",[self formatFloat:[bfbStr floatValue] * 100]];
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.colors = @[(__bridge id)qianhui(255, 178, 87).CGColor, (__bridge id)[UIColor whiteColor].CGColor];
     gradientLayer.startPoint = CGPointMake(0, 0);
@@ -106,6 +106,17 @@
 //        [self.numLabel countFrom:0 to:[bfbStr floatValue] * 100 withDuration:2];
 //    } completion:^(BOOL finished) {
 //    }];
+}
+
+- (NSString *)formatFloat:(float)f
+{
+    if (fmodf(f, 1)==0) {//如果有一位小数点
+        return [NSString stringWithFormat:@"%.0f",f];
+    } else if (fmodf(f*10, 1)==0) {//如果有两位小数点
+        return [NSString stringWithFormat:@"%.1f",f];
+    } else {
+        return [NSString stringWithFormat:@"%.1f",f];
+    }
 }
 
 //-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context

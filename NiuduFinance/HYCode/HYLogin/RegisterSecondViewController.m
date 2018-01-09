@@ -120,7 +120,6 @@
 #pragma mark GestureViewControllerDelegate
 - (void)createLockSuccess:(NSString *)lockPwd
 {
-    
     MBProgressHUD *hud = [MBProgressHUD showStatus:nil toView:self.view];
     [self.httpUtil requestDic4MethodName:@"user/register" parameters:@{@"UserName":_accountTextField.text,@"Password":_setPsdTextField.text,@"Mobile":[NSString stringWithFormat:@"%@",_iphoneStr],@"GesturePwd":[NSString stringWithFormat:@"%@",lockPwd],@"TypeId":@(1),@"InvitationCode":[NSString stringWithFormat:@"%@",_inviteCode]} result:^(NSDictionary *dic, int status, NSString *msg) {
         if (status == 1 || status == 2) {

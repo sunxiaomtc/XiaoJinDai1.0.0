@@ -46,8 +46,15 @@
 {
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:
-     [UIImage imageNamed:@"dhl-bgImage"] forBarMetrics:UIBarMetricsDefault];
+    if(isIPhoneX)
+    {
+        [self.navigationController.navigationBar setBackgroundImage:
+         [UIImage imageNamed:@"iXdhl-bgImage"] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:
+         [UIImage imageNamed:@"dhl-bgImage"] forBarMetrics:UIBarMetricsDefault];
+    }
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:17]};
     
@@ -150,6 +157,7 @@
     if(indexPath.row < 3)
     {
         HYTZJLOneCell *cell = [HYTZJLOneCell hyTZJLOneCellForTableView:tableView];
+        cell.indexPath = indexPath;
         cell.dic = self.dataArray[indexPath.row];
         return cell;
     }else

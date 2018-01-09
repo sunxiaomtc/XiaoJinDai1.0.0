@@ -98,10 +98,12 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     _recProductArr = [NSMutableArray array];
     if (_newLenderProjectModel.objects.count) {
         [self.recProductArr addObject:self.newLenderProjectModel.objects[0]];
+        NSLog(@"%@",self.newLenderProjectModel.objects);
     }else {
         WS
         [self.newLenderProjectModel loadWithCompletion:^(VZModel *model, NSError *error) {
             if (!error && weakSelf.newLenderProjectModel.objects.count) {
+                NSLog(@"%@",weakSelf.newLenderProjectModel.objects);
                 [weakSelf.recProductArr addObject:weakSelf.newLenderProjectModel.objects[0]];
                 [weakSelf.homeTableView reloadData];
             }else {
@@ -180,15 +182,41 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
             [weakSelf.twoTJArrays removeAllObjects];
             for (SNProjectListItem *item in weakSelf.projectModel.objects) {
                 //NSLog(@"%@ -----  %@",item.title,item.projectId);
-                if(([item.periodtypeid integerValue] == 1 && [item.loanperiod isEqualToNumber:@(45)]) || ([item.periodtypeid integerValue] == 2 && [item.loanperiod isEqualToNumber:@(2)]))
+//                NSInteger all = [weakSelf itemType:[item.periodtypeid integerValue] date:[item.loanperiod integerValue]];
+//                item.allDays = [NSNumber numberWithInteger:all];
+                if(([item.title rangeOfString:@"月月盈"].location != NSNotFound) || ([item.title rangeOfString:@"巨惠盈"].location != NSNotFound))
                 {
                     [weakSelf.twoTJArrays addObject:item];
                 }
             }
+            
+            //排序
+//            weakSelf.twoTJArrays = [NSMutableArray arrayWithArray:[weakSelf.twoTJArrays sortedArrayUsingComparator:^NSComparisonResult(SNProjectListItem *personA, SNProjectListItem *personB) {
+//                return [personA.allDays compare:personB.allDays];
+//            }]];
+//
+//            if(weakSelf.twoTJArrays.count > 2)
+//            {
+//                [weakSelf.twoTJArrays removeObjectsInRange:NSMakeRange(2, weakSelf.twoTJArrays.count - 2)];
+//            }
             [weakSelf.projectModel.objects removeAllObjects];
         }
         [weakSelf.homeTableView reloadData];
     }];
+}
+
+-(NSInteger)itemType:(NSInteger)type date:(NSInteger)date
+{
+    if(type == 1)
+    {
+        return date;
+    }else if (type == 2)
+    {
+        return date * 31;
+    }else
+    {
+        return date * 365;
+    }
 }
 
 #pragma mark - 请求轮播图数据以及广播文字的数组
@@ -300,9 +328,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 return;
             }else {
                 IntegralViewController * integralVC = [IntegralViewController new];
-                weakSelf.hidesBottomBarWhenPushed = YES;
+                integralVC.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:integralVC animated:YES];
-                weakSelf.hidesBottomBarWhenPushed = NO;
             }
         }
         else if (buttonTag == 1) {//邀请有奖
@@ -311,9 +338,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 return;
             }else {
                 InvitationFriendsController * invitationVC = [InvitationFriendsController new];
-                weakSelf.hidesBottomBarWhenPushed = YES;
+                invitationVC.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:invitationVC animated:YES];
-                weakSelf.hidesBottomBarWhenPushed = NO;
             }
         }
         else if (buttonTag == 2) {
@@ -349,9 +375,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 pageWebVC.recProductArr = [_recProductArr copy];
                 pageWebVC.resultsRatess = self.rateStr;
             }
-            weakSelf.hidesBottomBarWhenPushed = YES;
+            pageWebVC.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:pageWebVC animated:YES];
-            weakSelf.hidesBottomBarWhenPushed = NO;
         }
     }];
     headerView.btnClickBlock = ^(NSInteger tags) {
@@ -384,9 +409,8 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         PageWebViewController *pageWebVC = [PageWebViewController new];
         pageWebVC.urlStr = [NSString stringWithFormat:@"%@v2/open/appAfficheDetail.jsp?id=%@",__API_HEADER__,titleID];
         pageWebVC.title = @"最新公告";
-        weakSelf.hidesBottomBarWhenPushed = YES;
+        pageWebVC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:pageWebVC animated:YES];
-        weakSelf.hidesBottomBarWhenPushed = NO;
     }];
     //[self.view addSubview:headerView];
     [self.homeTableView setTableHeaderView:headerView];
@@ -441,7 +465,13 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2 + self.twoTJArrays.count;
+    if(self.twoTJArrays.count > 2)
+    {
+        return 2 + 2;
+    }else
+    {
+        return 2 + self.twoTJArrays.count;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -517,17 +547,26 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         [MBProgressHUD showMessag:@"未登录" toView:self.view];
         return;
     }
-    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
-    projectDetailsVC.addrate = self.addRate;
+    
+    HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
     if (_recProductArr.count > 0) {
-        //NSLog(@"%@",_recProductArr);
         SNProjectListItem * projectItem = _recProductArr[indexPath.section];
-        projectDetailsVC.projectId = [projectItem.projectId intValue];
-        projectDetailsVC.projectItem = projectItem;
-        projectDetailsVC.resultsRate = [self.rateStr floatValue];
+        pro.projectId = projectItem.projectId.intValue;
     }
-    projectDetailsVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:projectDetailsVC animated:YES];
+    pro.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:pro animated:YES];
+    
+//    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
+//    projectDetailsVC.addrate = self.addRate;
+//    if (_recProductArr.count > 0) {
+//        //NSLog(@"%@",_recProductArr);
+//        SNProjectListItem * projectItem = _recProductArr[indexPath.section];
+//        projectDetailsVC.projectId = [projectItem.projectId intValue];
+//        projectDetailsVC.projectItem = projectItem;
+//        projectDetailsVC.resultsRate = [self.rateStr floatValue];
+//    }
+//    projectDetailsVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:projectDetailsVC animated:YES];
     
 //    HYWebViewController *web = [HYWebViewController new];
 //    web.urlStr = @"http://www.xiaojindai888.com/fff/safeapp.jsp";
@@ -627,6 +666,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 - (void)headerRefreshloadData {
     [_homeTableView.mj_header endRefreshing];
+    [self loadDataScrollView];
     [self loadDataHomeList];
 }
 
@@ -706,7 +746,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     return NO;
 }
 
-//Test
+//TestGCD
 -(void)laoSunTest
 {
     dispatch_queue_t queue = dispatch_queue_create("TEST.queue", DISPATCH_QUEUE_SERIAL);
@@ -748,7 +788,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     [super didReceiveMemoryWarning];
 }
 
-
+/*************************  以前代码 *******************************/
 //         static NSString *newInvest = @"newInvest";
 //        newInvestNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
 //                                 newInvest];

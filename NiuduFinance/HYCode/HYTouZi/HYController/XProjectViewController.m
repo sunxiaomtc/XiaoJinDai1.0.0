@@ -73,7 +73,7 @@
     self.title = @"投资";
     [self setupTableView];
     [self getXSZX];
-    [self getIsNewData];
+    
     //隐藏导航栏
 //    [self.navigationController setNavigationBarHidden:YES animated:NO];
 //    NSDictionary *mine = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
@@ -109,7 +109,6 @@
         
         if (status == 0) {
 //            [MBProgressHUD showMessag:msg toView:self.view];
-            
         }else{
             [_data addObjectsFromArray:dic];
             
@@ -134,6 +133,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _noNewPageIndex = 1;
     _noNewPageSize = 10;
     _noNewCount = 0;
@@ -142,6 +142,7 @@
     _noNewMutableArr = [NSMutableArray array];
     _data = [NSMutableArray array];
     self.tableView.showsVerticalScrollIndicator = NO;
+    [self getIsNewData];
 
     WS
     [self.newLenderProjectModel loadWithCompletion:^(VZModel *model, NSError *error) {
@@ -569,10 +570,9 @@
 
 -(void)footerButtonAction
 {
-    self.hidesBottomBarWhenPushed=YES;
     TouZiShouQingListViewController *VC = [[TouZiShouQingListViewController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:VC animated:YES];
-    self.hidesBottomBarWhenPushed=NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -212,71 +212,71 @@
     
     _isNewMutableArr = [NSMutableArray array];
     
-    UIView *bottomView = [[UIView alloc]init];
-    [self.view addSubview:bottomView];
-    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(0);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 70));
-        make.centerX.mas_equalTo(0);
-    }];
-    bottomView.backgroundColor = [UIColor whiteColor];
-    
-    _invesBtn = [UIButton new];
-    [_invesBtn setTitle:@"立即投资" forState:UIControlStateNormal];
-    _invesBtn.layer.cornerRadius = 20;
-    _invesBtn.layer.masksToBounds = YES;
-    [_invesBtn setBackgroundColor:UIcolors];
-    [_invesBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_invesBtn];
-    [_invesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-15);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-50, 40));
-        make.centerX.mas_equalTo(0);
-    }];
-    
-    _syktView = [UIView new];
-    [_syktView setBackgroundColor:[UIColor whiteColor]];
-    [self.view addSubview:_syktView];
-    [_syktView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(_invesBtn.mas_top);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 50));
-    }];
-    _syktLabel = [UILabel new];
-    [_syktLabel setText:@"剩余可投"];
-    [_syktLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
-    _syktLabel.textAlignment = NSTextAlignmentCenter;
-    [_syktLabel setBackgroundColor:[UIColor whiteColor]];
-    [_syktLabel setFont:[UIFont systemFontOfSize:13]];
-    [_syktView addSubview:_syktLabel];
-    [_syktLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(_syktView.mas_left).with.offset(SCREEN_WIDTH/6*2);
-        make.centerY.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-    }];
-    _syktNum = [UILabel new];
-    [_syktNum setText:@"0.00"];
-    [_syktNum setTextColor:[UIColor colorWithHexString:@"#FF0000"]];
-    _syktNum.textAlignment = NSTextAlignmentCenter;
-    [_syktNum setBackgroundColor:[UIColor whiteColor]];
-    [_syktNum setFont:[UIFont systemFontOfSize:13]];
-    [_syktView addSubview:_syktNum];
-    [_syktNum mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_syktLabel.mas_right).with.offset(10);
-        make.centerY.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-    }];
-    _syktNumber = [UILabel new];
-    [_syktNumber setText:@"0.00"];
-    [_syktNumber setTextColor:[UIColor colorWithHexString:@"#0096FF"]];
-    _syktNumber.textAlignment = NSTextAlignmentCenter;
-    [_syktNumber setBackgroundColor:[UIColor whiteColor]];
-    [_syktNumber setFont:[UIFont systemFontOfSize:13]];
-    [_syktView addSubview:_syktNumber];
-    [_syktNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_syktNum.mas_right);
-        make.centerY.mas_equalTo(0);
-        make.height.mas_equalTo(13);
-    }];
+//    UIView *bottomView = [[UIView alloc]init];
+//    [self.view addSubview:bottomView];
+//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(0);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 70));
+//        make.centerX.mas_equalTo(0);
+//    }];
+//    bottomView.backgroundColor = [UIColor whiteColor];
+//    
+//    _invesBtn = [UIButton new];
+//    [_invesBtn setTitle:@"立即投资" forState:UIControlStateNormal];
+//    _invesBtn.layer.cornerRadius = 20;
+//    _invesBtn.layer.masksToBounds = YES;
+//    [_invesBtn setBackgroundColor:UIcolors];
+//    [_invesBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:_invesBtn];
+//    [_invesBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-15);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH-50, 40));
+//        make.centerX.mas_equalTo(0);
+//    }];
+//    
+//    _syktView = [UIView new];
+//    [_syktView setBackgroundColor:[UIColor whiteColor]];
+//    [self.view addSubview:_syktView];
+//    [_syktView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(_invesBtn.mas_top);
+//        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, 50));
+//    }];
+//    _syktLabel = [UILabel new];
+//    [_syktLabel setText:@"剩余可投"];
+//    [_syktLabel setTextColor:[UIColor colorWithHexString:@"#9A9A9A"]];
+//    _syktLabel.textAlignment = NSTextAlignmentCenter;
+//    [_syktLabel setBackgroundColor:[UIColor whiteColor]];
+//    [_syktLabel setFont:[UIFont systemFontOfSize:13]];
+//    [_syktView addSubview:_syktLabel];
+//    [_syktLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(_syktView.mas_left).with.offset(SCREEN_WIDTH/6*2);
+//        make.centerY.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//    }];
+//    _syktNum = [UILabel new];
+//    [_syktNum setText:@"0.00"];
+//    [_syktNum setTextColor:[UIColor colorWithHexString:@"#FF0000"]];
+//    _syktNum.textAlignment = NSTextAlignmentCenter;
+//    [_syktNum setBackgroundColor:[UIColor whiteColor]];
+//    [_syktNum setFont:[UIFont systemFontOfSize:13]];
+//    [_syktView addSubview:_syktNum];
+//    [_syktNum mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(_syktLabel.mas_right).with.offset(10);
+//        make.centerY.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//    }];
+//    _syktNumber = [UILabel new];
+//    [_syktNumber setText:@"0.00"];
+//    [_syktNumber setTextColor:[UIColor colorWithHexString:@"#0096FF"]];
+//    _syktNumber.textAlignment = NSTextAlignmentCenter;
+//    [_syktNumber setBackgroundColor:[UIColor whiteColor]];
+//    [_syktNumber setFont:[UIFont systemFontOfSize:13]];
+//    [_syktView addSubview:_syktNumber];
+//    [_syktNumber mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(_syktNum.mas_right);
+//        make.centerY.mas_equalTo(0);
+//        make.height.mas_equalTo(13);
+//    }];
     
     
     _firstView = [UIView new];

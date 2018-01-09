@@ -74,6 +74,7 @@
 		1833CE0B1FFDC09B00046FCA /* TouZiJiLuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE0A1FFDC09B00046FCA /* TouZiJiLuViewController.m */; };
 		1833CE0E1FFDFE7A00046FCA /* HYTZJLOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */; };
 		1833CE111FFE13EF00046FCA /* HYTZJLTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */; };
+		184FEC6220036330004F2F24 /* xrzcLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 184FEC612003632F004F2F24 /* xrzcLaunch.png */; };
 		18581D371FD5133F003A1FAD /* HYXiaLaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18581D361FD5133F003A1FAD /* HYXiaLaView.m */; };
 		188E7E621FE8B15300A0C586 /* HYNewActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */; };
 		188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */; };
@@ -942,6 +943,7 @@
 		1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTZJLOneCell.m; sourceTree = "<group>"; };
 		1833CE0F1FFE13EF00046FCA /* HYTZJLTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTZJLTwoCell.h; sourceTree = "<group>"; };
 		1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTZJLTwoCell.m; sourceTree = "<group>"; };
+		184FEC612003632F004F2F24 /* xrzcLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xrzcLaunch.png; sourceTree = "<group>"; };
 		18581D351FD5133F003A1FAD /* HYXiaLaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYXiaLaView.h; sourceTree = "<group>"; };
 		18581D361FD5133F003A1FAD /* HYXiaLaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXiaLaView.m; sourceTree = "<group>"; };
 		188E7E601FE8B15300A0C586 /* HYNewActivtyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNewActivtyViewController.h; sourceTree = "<group>"; };
@@ -3575,6 +3577,7 @@
 				2D719E091C7D500C008AE30C /* ViewController.h */,
 				2D719E0A1C7D500C008AE30C /* ViewController.m */,
 				188E7E751FF6403300A0C586 /* ydj-Launch23.png */,
+				184FEC612003632F004F2F24 /* xrzcLaunch.png */,
 				2D719E0F1C7D500C008AE30C /* Assets.xcassets */,
 				2D719E0C1C7D500C008AE30C /* Main.storyboard */,
 				2D719E111C7D500C008AE30C /* LaunchScreen.storyboard */,
@@ -4977,6 +4980,7 @@
 				188E7E761FF6403400A0C586 /* ydj-Launch23.png in Resources */,
 				DF52249E1D90D2BB00581504 /* NJCB.png in Resources */,
 				DF5511EB1D8E66C7000B21BD /* IntegralLogTableViewCell.xib in Resources */,
+				184FEC6220036330004F2F24 /* xrzcLaunch.png in Resources */,
 				9D06A7231F15F5F8001260EF /* hj@2x.png in Resources */,
 				DF52246F1D90D12F00581504 /* ChoseBankCardCell.xib in Resources */,
 				9D18C2AF1F3168B100AD769F /* MyAccountController.xib in Resources */,
@@ -5942,7 +5946,7 @@
 				INFOPLIST_FILE = NiuduFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HuaiYu.XiaoJinDai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HuaiYuData.XiaoJinDai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5964,7 +5968,7 @@
 				INFOPLIST_FILE = NiuduFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HuaiYu.XiaoJinDai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HuaiYuData.XiaoJinDai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

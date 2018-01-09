@@ -552,6 +552,15 @@ NSString * const ID = @"cycleCell";
     if (!self.onlyDisplayText && [imagePath isKindOfClass:[NSString class]]) {
         if ([imagePath hasPrefix:@"http"]) {
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:[UIImage imageNamed:@"project-默认"]];//self.placeholderImage
+//            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:[UIImage imageNamed:@"project-默认"] options:SDWebImageAvoidAutoSetImage completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//                CGFloat h = image.size.height;
+//                CGFloat w = image.size.width;
+//                //后台线程裁剪图片
+//              dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//
+//                });
+//
+//            }];
         } else {
             UIImage *image = [UIImage imageNamed:imagePath];
             if (!image) {

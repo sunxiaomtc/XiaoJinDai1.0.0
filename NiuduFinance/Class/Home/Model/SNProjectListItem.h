@@ -59,4 +59,6 @@
 @property (nonatomic, strong) NSNumber * securityguarantee;
 
 @property (nonatomic, strong) NSNumber *addRate;
+
+@property (nonatomic, strong) NSNumber *allDays;
 @end

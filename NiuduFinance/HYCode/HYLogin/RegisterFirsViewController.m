@@ -131,7 +131,6 @@
     // 输入右侧删除按钮
     _pwsTextField.clearButtonMode = UITextFieldViewModeAlways;
     
-    
     _surePwsLabel = [UILabel new];
     _surePwsLabel.text = @"确认密码:";
     _surePwsLabel.font = [UIFont systemFontOfSize:15];
@@ -157,7 +156,7 @@
     
     _verificationTextField = [UITextField new];
     _verificationTextField.delegate = self;
-    _verificationTextField.keyboardType =UIKeyboardTypeNumberPad;
+    _verificationTextField.keyboardType = UIKeyboardTypeNumberPad;
     _verificationTextField.placeholder = @"请输入验证码";
     _verificationTextField.font = [UIFont systemFontOfSize:14];
     [_verificationTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
@@ -545,7 +544,6 @@
         
         [userView addSubview:self.passwordShowImageView];
         [self.passwordShowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            
             make.centerY.mas_equalTo(0);
             make.right.mas_equalTo(-20);
         }];
@@ -819,9 +817,10 @@
         [MBProgressHUD showError:@"验证码错误" toView:self.view];
         return;
     }
-
+    
+    NSLog(@"inv- %@",_codeField.text);
     //注册请求
-    [self.httpUtil requestDic4MethodNam:@"v2/open/user/register" parameters:@{@"verifyCode":_verificationTextField.text,@"mobile":_phoneTextField.text,@"username":_nameTextField.text,@"password":_pwsTextField.text,@"inviter":_invitationTextField.text} result:^(NSDictionary *dic, int status, NSString *msg) {
+    [self.httpUtil requestDic4MethodNam:@"v2/open/user/register" parameters:@{@"verifyCode":_verificationTextField.text,@"mobile":_phoneTextField.text,@"username":_nameTextField.text,@"password":_pwsTextField.text,@"inviter":_codeField.text} result:^(NSDictionary *dic, int status, NSString *msg) {
         if (status == 1 || status == 2) {
 //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您已注册成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //            [alert show];
@@ -853,8 +852,14 @@
     {
         if(_pwsTextField.text.length == 16)
         {
-            [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
-            return NO;
+            if(string.length > 0)
+            {
+                [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
+                return NO;
+            }else
+            {
+                return YES;
+            }
         }
         return YES;
     }else

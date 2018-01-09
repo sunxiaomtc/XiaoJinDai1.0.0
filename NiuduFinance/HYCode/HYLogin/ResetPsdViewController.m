@@ -59,8 +59,14 @@
 {
     if(textField.text.length == 16)
     {
-        [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
-        return NO;
+        if(string.length > 0)
+        {
+            [MBProgressHUD showMessag:@"密码最多16位" toView:self.view];
+            return NO;
+        }else
+        {
+            return YES;
+        }
     }
     return YES;
 }

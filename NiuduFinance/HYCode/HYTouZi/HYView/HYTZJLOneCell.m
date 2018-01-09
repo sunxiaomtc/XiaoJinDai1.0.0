@@ -85,7 +85,13 @@
         //timeLab.text = [[NSDate date] getDateValue:[listArray[i][@"creationdate"] stringValue] andFormatter:@"yyyy-MM-dd"];
         //        timeLab.textColor = Black464646;
         timeLab.textColor = [UIColor whiteColor];
-        timeLab.font = [UIFont systemFontOfSize:12.f];
+        if(iPhone5)
+        {
+            timeLab.font = [UIFont systemFontOfSize:10.f];
+        }else
+        {
+            timeLab.font = [UIFont systemFontOfSize:12.f];
+        }
         self.dateLabel = timeLab;
         [self.contentView addSubview:timeLab];
         [timeLab mas_makeConstraints:^(MASConstraintMaker *make) {

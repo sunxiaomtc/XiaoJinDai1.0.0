@@ -70,7 +70,7 @@
         float add = [addBFBStr floatValue];
         if(add > 0)
         {
-            self.addBFBLabel.text = [NSString stringWithFormat:@"(+%@%%)",addBFBStr];
+            self.addBFBLabel.text = [NSString stringWithFormat:@"+%@%%",addBFBStr];
         }else
         {
             self.addBFBLabel.text = @"";
