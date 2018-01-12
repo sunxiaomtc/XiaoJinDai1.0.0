@@ -70,7 +70,6 @@
 - (void)setupImageView
 {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView = imageView;
     [self.contentView addSubview:imageView];
 }
@@ -101,6 +100,7 @@
         _titleLabel.frame = self.bounds;
     } else {
         _imageView.frame = self.bounds;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         CGFloat titleLabelW = self.sd_width;
         CGFloat titleLabelH = _titleLabelHeight;
         CGFloat titleLabelX = 0;

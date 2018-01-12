@@ -46,7 +46,7 @@
         //numLabel.frame = CGRectMake(pointLabel.frame.origin.x + 25 - 20, 25, 40, 15);
         numLabel.textColor = [UIColor whiteColor];
         numLabel.text = @"0%";
-        numLabel.font = [UIFont systemFontOfSize:15.0f];
+        numLabel.font = [UIFont systemFontOfSize:13.0f];
         numLabel.textAlignment = NSTextAlignmentCenter;
         numLabel.format = @"%.0f%%";
         self.numLabel = numLabel;

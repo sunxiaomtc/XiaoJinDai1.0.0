@@ -55,7 +55,13 @@
     [_dhView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView addSubview:_dhView];
     [_dhView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(-WDStatusBarHeight);
+        if(isIPhoneX)
+        {
+            make.top.mas_equalTo(-WDStatusBarHeight);
+        }else
+        {
+            make.top.mas_equalTo(0);
+        }
         make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH, WDTopHeight));
     }];
     

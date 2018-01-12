@@ -187,7 +187,14 @@
 {
     if(_mainTV == nil)
     {
-        _mainTV = [[UITableView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50 + WDStatusBarHeight) style:UITableViewStyleGrouped];
+        if(isIOS11)
+        {
+            _mainTV = [[UITableView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50 + WDStatusBarHeight) style:UITableViewStyleGrouped];
+        }else
+        {
+            _mainTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
+        }
+         
         _mainTV.delegate = self;
         _mainTV.dataSource = self;
         _mainTV.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -275,7 +282,7 @@
         {
             MoreWebViewController * moreWebVC = [MoreWebViewController new];
             moreWebVC.titleStr = @"安全保障";
-            moreWebVC.webStr =@"v2/accept/new2";
+            moreWebVC.webStr = @"v2/accept/new2";
             moreWebVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:moreWebVC animated:YES];
         }else

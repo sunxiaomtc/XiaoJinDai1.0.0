@@ -195,11 +195,16 @@
     
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = [UIColor whiteColor];
-    headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 250);
+    if(isIPhoneX)
+    {
+        headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 280);
+    }else
+    {
+        headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 250);
+    }
     UIImageView *headerImageView = [[UIImageView alloc] init];
     [headerView addSubview:headerImageView];
     [headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.top.mas_equalTo(0);
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
@@ -222,14 +227,21 @@
     [quit setImage:[UIImage imageNamed:@"OX"] forState:UIControlStateNormal];
     [quit addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchDown];
     [quit mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
+        make.top.mas_equalTo(25);
         make.left.mas_equalTo(10);
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(44);
+        make.height.mas_equalTo(44);
     }];
     
 
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -20, SCREEN_WIDTH, SCREEN_HEIGHT + 20) style:(UITableViewStyleGrouped)];
+    if(isIOS11)
+    {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT + WDStatusBarHeight) style:(UITableViewStyleGrouped)];
+    }else
+    {
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:(UITableViewStyleGrouped)];
+    }
+    
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

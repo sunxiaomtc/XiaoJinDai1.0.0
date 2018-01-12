@@ -508,37 +508,25 @@
     _hongBaoCount = 0;
     
     if (!IsStrEmpty(_tzjeAmountStr)) {
-        
         for (int i = 0; i < _hongBaoArray.count; i ++) {
-            
             _hongBaoCount ++;
         }
     }
-    
-
     [self.tableView reloadData];
-
 }
 
 - (void)yeqtBtnClick {
-    NSInteger keYong = [_keYongStr integerValue];
+    NSInteger keYong = ([_keYongStr integerValue] / 10) * 10;
     NSInteger sykt = [_syktNumb.text integerValue];
     if (keYong == 0) {
         [MBProgressHUD showMessag:@"余额不足" toView:self.view];
     }
     if (keYong > 0 && keYong <= sykt) {
         //截取字符串末尾改为0
-        NSString * newString = [NSString stringWithFormat:@"%ld",(long)keYong];
-        NSString *b = [newString substringFromIndex:newString.length-1];
-        NSString *str3 = [newString stringByReplacingOccurrencesOfString:b withString:@"0"];
-        _tzjeTextField.text = str3;
+        _tzjeTextField.text = [NSString stringWithFormat:@"%ld",keYong];
     }
     if (keYong > 0 && keYong >= sykt) {
-        NSString * newString = [NSString stringWithFormat:@"%ld",(long)sykt];
-        NSString *b = [newString substringFromIndex:newString.length];
-        NSString *str3 = [newString stringByReplacingOccurrencesOfString:b withString:@"0"];
-        NSInteger ssp = [str3 integerValue];
-        _tzjeTextField.text = [NSString stringWithFormat:@"%ld",ssp];
+        _tzjeTextField.text = [NSString stringWithFormat:@"%ld",sykt];
     }
     _tzjeAmountStr = _tzjeTextField.text;
     [self getXianJinData];

@@ -119,7 +119,14 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - WDTabBarHeight+WDStatusBarHeight) style:UITableViewStyleGrouped];
+    if(isIOS11)
+    {
+        self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - WDTabBarHeight+WDStatusBarHeight) style:UITableViewStyleGrouped];
+    }else
+    {
+        self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - WDTabBarHeight) style:UITableViewStyleGrouped];
+    }
+    
     //self.homeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, [HomeHeaderView homeHeaderHight], SCREEN_WIDTH, SCREEN_HEIGHT - [HomeHeaderView homeHeaderHight] - WDTabBarHeight) style:UITableViewStyleGrouped];
     self.homeTableView.delegate = self;
     self.homeTableView.dataSource = self;
@@ -184,10 +191,20 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
                 //NSLog(@"%@ -----  %@",item.title,item.projectId);
 //                NSInteger all = [weakSelf itemType:[item.periodtypeid integerValue] date:[item.loanperiod integerValue]];
 //                item.allDays = [NSNumber numberWithInteger:all];
-                if(([item.title rangeOfString:@"月月盈"].location != NSNotFound) || ([item.title rangeOfString:@"巨惠盈"].location != NSNotFound))
+                if([item.title rangeOfString:@"月月盈"].location != NSNotFound)
+                {
+                    if(weakSelf.twoTJArrays.count > 0)
+                    {
+                        //[weakSelf.twoTJArrays addObject:item];
+                        [weakSelf.twoTJArrays insertObject:item atIndex:0];
+                    }
+                }
+                
+                if([item.title rangeOfString:@"巨惠盈"].location != NSNotFound)
                 {
                     [weakSelf.twoTJArrays addObject:item];
                 }
+                
             }
             
             //排序
@@ -251,6 +268,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 
 #pragma mark - 请求首页新手标的数据
 - (void)loadDataHomeList{
+    
     NSString *url = [__API_HEADER__ stringByAppendingString:@"v2/open/project/list"];
     NSDictionary *xsDic = @{
                             @"start":@(0),
@@ -275,6 +293,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }
         [weakSelf.homeTableView reloadData];
     }];
+    
 //    牛气分享标
     NSString *nqUrl = [__API_HEADER__ stringByAppendingString:@"v2/open/project/welfareFind"];
     [NSObject POST:nqUrl parameters:nil progress:^(NSProgress *downloadProgress) {
@@ -298,8 +317,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         }
         [self.homeTableView reloadData];
     }];
-    
-    
 }
 
 //小数点问题
@@ -313,7 +330,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
         return [NSString stringWithFormat:@"%.2f",f];
     }
 }
-
 
 
 #pragma mark - 创建头部和尾部试图
@@ -415,6 +431,7 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     //[self.view addSubview:headerView];
     [self.homeTableView setTableHeaderView:headerView];
     self.headerView = headerView;
+    
 //    更多按钮的点击事件
     [headerView setHomeMachButtonBlock:^{
         AnnouncementViewController *vc = [[AnnouncementViewController alloc]init];
@@ -587,8 +604,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
 //            make.left.mas_equalTo(sharingView).mas_offset(15);
 //        }];
 //        [imageView setImage:[UIImage imageNamed:@"share_Money"]];
-//
-//
 //
         UILabel *sharLabel = [[UILabel alloc]init];
         [sharingView addSubview:sharLabel];
@@ -781,7 +796,6 @@ static NSString *homeBullSharingCellID = @"homeBullSharingCell";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSLog(@"DDDDDD");
     });
-    
 }
 
 - (void)didReceiveMemoryWarning {

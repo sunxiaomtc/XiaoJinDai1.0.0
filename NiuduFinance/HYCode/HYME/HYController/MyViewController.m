@@ -33,6 +33,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "HYWebViewController.h"
+#import <MJExtension.h>
 
 @interface MyViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MyCollectionViewCell3Delegate,MyNewHeaderViewDelegate,UIAlertViewDelegate>
 
@@ -101,7 +102,13 @@
     flowLayout.minimumLineSpacing = 1;
     flowLayout.minimumInteritemSpacing = 1;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 0, 0);
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight+WDStatusBarHeight) collectionViewLayout:flowLayout];
+    if(isIOS11)
+    {
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, -WDStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight+WDStatusBarHeight) collectionViewLayout:flowLayout];
+    }else
+    {
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-WDTabBarHeight) collectionViewLayout:flowLayout];
+    }
     
     [self.view addSubview:self.collectionView];
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
@@ -362,6 +369,7 @@
 //            
 //        }
 //    }
+    
 }
 
 #pragma mark -- qq  拨打电话

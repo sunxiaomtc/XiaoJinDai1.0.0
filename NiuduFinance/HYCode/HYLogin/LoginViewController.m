@@ -89,7 +89,7 @@
     [quit setImage:[UIImage imageNamed:@"OX"] forState:UIControlStateNormal];
     [quit addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchDown];
     [quit mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(30);
+        make.top.mas_equalTo(25);
         make.left.mas_equalTo(10);
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(40);

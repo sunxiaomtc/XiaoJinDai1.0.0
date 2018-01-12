@@ -870,6 +870,7 @@
     _syktNum.text = [NSString stringWithFormat:@"%@",projectItem.remainamount];
     _syktNumber.text = [NSString stringWithFormat:@"/%@",projectItem.amount];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -883,6 +884,7 @@
 {
     return _firstView.height+_twoView.height+_threeView.height+_fourView.height+20;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 0;

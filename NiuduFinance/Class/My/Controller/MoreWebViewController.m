@@ -38,7 +38,7 @@
     if ([_webStr isEqualToString:@"/aboutus.jsp"]) {
         _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, -43, SCREEN_WIDTH, SCREEN_HEIGHT - 43)];
     }else {
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
         UIScrollView *tempView = (UIScrollView *)[_webView.subviews objectAtIndex:0];
          tempView.scrollEnabled = YES;
     }

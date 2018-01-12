@@ -154,7 +154,6 @@
             }else{
                 [weakSelf.recProductAr  addObjectsFromArray:[weakSelf.newLenderProjectModel.objects subarrayWithRange:NSMakeRange(0, 1)]];
             }
-
             [weakSelf.tableView reloadData];
         }
     }];
@@ -457,10 +456,10 @@
     
     @try {
         cell.item = _noNewMutableArr[indexPath.section];
-        cell.type =_projectModel.avative;
+        cell.type = _projectModel.avative;
 //        cell.addRate = []
     } @catch (NSException *exception) {
-        if (_noNewMutableArr.count-1 <= indexPath.section ) {
+        if (_noNewMutableArr.count-1 <= indexPath.section) {
             NSLog(@"滑动太快啦吧");
         }
     } @finally {

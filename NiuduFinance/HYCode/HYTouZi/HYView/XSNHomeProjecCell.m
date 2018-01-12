@@ -272,7 +272,7 @@
         NSString *ssss = [[NSString stringWithFormat:@"%@",[self xiaoshudianFloat:bf]] stringByAppendingString:@"%"];
         
         _progressLabel.text = ssss;
-        NSString * sst = [NSString stringWithFormat:@"%.1f",bf * 100];
+        NSString * sst = [NSString stringWithFormat:@"%.1f",bf];
         //
         _progressView.progressValue = [sst doubleValue];
         _dayLab.hidden = NO;

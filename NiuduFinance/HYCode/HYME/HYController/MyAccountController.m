@@ -199,29 +199,32 @@
 
 -(void)bankClick:(UIButton *)btn
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
-    __weak __typeof(self) weakSelf = self;
-    [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-        if (status != 0) {
-            NSLog(@"%@",dic);
-            Boolean open = [[dic objectForKey:@"status"] boolValue];
-            NSLog(@"%hhu",open);
-            if (!open) {
-                //安全退出
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
-                [alert show];
-            }else {
-                if ( [User userFromFile].bankCardCount == 0) {
-                    WebPageVC *vc = [[WebPageVC alloc] init];
-                    vc.title = @"充值";
-                    vc.name = @"recharge";
-                    [weakSelf.navigationController pushViewController:vc animated:YES];
+    if([_cardNumLabel.text isEqualToString:@"未设置"] && [_cardNameLabel.text isEqualToString:@"未设置"])
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        NetWorkingUtil *util = [NetWorkingUtil netWorkingUtil];
+        __weak __typeof(self) weakSelf = self;
+        [util requestDic4MethodNam:@"v2/accept/user/openHuifuStatus" parameters:nil result:^(NSDictionary *dic, int status, NSString *msg) {
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            if (status != 0) {
+                NSLog(@"%@",dic);
+                Boolean open = [[dic objectForKey:@"status"] boolValue];
+                NSLog(@"%hhu",open);
+                if (!open) {
+                    //安全退出
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请先开通汇付" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"马上开通", nil];
+                    [alert show];
+                }else {
+                    if ( [User userFromFile].bankCardCount == 0) {
+                        WebPageVC *vc = [[WebPageVC alloc] init];
+                        vc.title = @"充值";
+                        vc.name = @"recharge";
+                        [weakSelf.navigationController pushViewController:vc animated:YES];
+                    }
                 }
             }
-        }
-    }];
+        }];
+    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

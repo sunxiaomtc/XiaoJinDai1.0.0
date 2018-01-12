@@ -75,6 +75,7 @@
 		1833CE0E1FFDFE7A00046FCA /* HYTZJLOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE0D1FFDFE7A00046FCA /* HYTZJLOneCell.m */; };
 		1833CE111FFE13EF00046FCA /* HYTZJLTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */; };
 		184FEC6220036330004F2F24 /* xrzcLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 184FEC612003632F004F2F24 /* xrzcLaunch.png */; };
+		184FEC652007091C004F2F24 /* HYHuoDongTCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184FEC642007091C004F2F24 /* HYHuoDongTCView.m */; };
 		18581D371FD5133F003A1FAD /* HYXiaLaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18581D361FD5133F003A1FAD /* HYXiaLaView.m */; };
 		188E7E621FE8B15300A0C586 /* HYNewActivtyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E611FE8B15300A0C586 /* HYNewActivtyViewController.m */; };
 		188E7E661FE8B44700A0C586 /* HYNewActivtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188E7E641FE8B44700A0C586 /* HYNewActivtyCell.m */; };
@@ -944,6 +945,8 @@
 		1833CE0F1FFE13EF00046FCA /* HYTZJLTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTZJLTwoCell.h; sourceTree = "<group>"; };
 		1833CE101FFE13EF00046FCA /* HYTZJLTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTZJLTwoCell.m; sourceTree = "<group>"; };
 		184FEC612003632F004F2F24 /* xrzcLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xrzcLaunch.png; sourceTree = "<group>"; };
+		184FEC632007091C004F2F24 /* HYHuoDongTCView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYHuoDongTCView.h; sourceTree = "<group>"; };
+		184FEC642007091C004F2F24 /* HYHuoDongTCView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYHuoDongTCView.m; sourceTree = "<group>"; };
 		18581D351FD5133F003A1FAD /* HYXiaLaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYXiaLaView.h; sourceTree = "<group>"; };
 		18581D361FD5133F003A1FAD /* HYXiaLaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXiaLaView.m; sourceTree = "<group>"; };
 		188E7E601FE8B15300A0C586 /* HYNewActivtyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNewActivtyViewController.h; sourceTree = "<group>"; };
@@ -2560,6 +2563,8 @@
 				18B802B41FDE355D00ED3AD6 /* HYHomeTwoCell.xib */,
 				18B802B51FDE355D00ED3AD6 /* UILabel+ShuLabel.h */,
 				18B802B81FDE355D00ED3AD6 /* UILabel+ShuLabel.m */,
+				184FEC632007091C004F2F24 /* HYHuoDongTCView.h */,
+				184FEC642007091C004F2F24 /* HYHuoDongTCView.m */,
 			);
 			path = HYView;
 			sourceTree = "<group>";
@@ -5496,6 +5501,7 @@
 				9D2405F71E82153700241ABC /* RewardRetailsVC.m in Sources */,
 				A34F56FC1E5404D900266C5A /* VZFooterViewFactory.m in Sources */,
 				9DED1D261FB990DF00551F73 /* LoginViewController.m in Sources */,
+				184FEC652007091C004F2F24 /* HYHuoDongTCView.m in Sources */,
 				0E3F753B1C8E8353008C9F0E /* FeedbackViewController.m in Sources */,
 				DF5511EA1D8E66C7000B21BD /* IntegralLogTableViewCell.m in Sources */,
 				0E065BF91C896D60009C132D /* FundManagerCell.m in Sources */,

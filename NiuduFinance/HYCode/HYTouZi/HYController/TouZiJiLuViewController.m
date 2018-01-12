@@ -92,7 +92,7 @@
     
     self.mainTV.rowHeight = 62;
     
-    
+    [self setupHeaderRefresh:self.mainTV];
 }
 
 -(void)setHeaderUI
@@ -114,12 +114,19 @@
 //请求数据
 -(void)sendServerForRequest
 {
+    [self.noMsgView removeFromSuperview];
     WS
     self.findAllModel.projectId = [NSString stringWithFormat:@"%d",self.projectId];
     [self.findAllModel loadWithCompletion:^(VZModel *model, NSError *error) {
+        [weakSelf.mainTV.mj_header endRefreshing];
         if (!error) {
             weakSelf.dataArray = [weakSelf.findAllModel.listArray mutableCopy];
             NSLog(@"%@",weakSelf.dataArray);
+            if(weakSelf.dataArray.count == 0)
+            {
+                weakSelf.noMsgView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - WDTopHeight);
+                [weakSelf.mainTV addSubview:weakSelf.noMsgView];
+            }
             [weakSelf.mainTV reloadData];
         }
     }];
@@ -168,6 +175,11 @@
         return cell;
     }
     
+}
+
+-(void)headerRefreshloadData
+{
+    [self sendServerForRequest];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

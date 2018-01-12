@@ -350,11 +350,11 @@
 }
 
 -(void)scanBigImageClick1:(UITapGestureRecognizer *)tap{
-    NSLog(@"点击图片");
-    UIImageView *clickedImageView = (UIImageView *)tap.view;
-    if (clickedImageView != nil) {
-       [ShowBigImage scanBigImageWithImageView:clickedImageView];
-    }
+    //NSLog(@"点击图片");
+//    UIImageView *clickedImageView = (UIImageView *)tap.view;
+//    if (clickedImageView != nil) {
+//       [ShowBigImage scanBigImageWithImageView:clickedImageView];
+//    }
 }
 
 - (void)setListArray:(NSArray *)listArray

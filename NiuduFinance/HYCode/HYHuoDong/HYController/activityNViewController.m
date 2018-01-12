@@ -281,12 +281,20 @@
 
 -(void)gotoTouZiDetails
 {
-    if (self.recProductArr.count > 0) {
-        HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
-        SNProjectListItem * projectItem = self.recProductArr[0];
-        pro.projectId = projectItem.projectId.intValue;
-        pro.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:pro animated:YES];
+    if (![[User shareUser] checkIsLogin]) {
+        
+        [MBProgressHUD showMessag:@"未登录" toView:self.view];
+        [self loginMethod];
+        //[self performSelector:@selector(loginMethod) withObject:nil/*可传任意类型参数*/ afterDelay:2.0];
+    }else
+    {
+        if (self.recProductArr.count > 0) {
+            HYProjectDetailsViewController *pro = [HYProjectDetailsViewController new];
+            SNProjectListItem * projectItem = self.recProductArr[0];
+            pro.projectId = projectItem.projectId.intValue;
+            pro.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:pro animated:YES];
+        }
     }
 //    XProjectDetailsController * projectDetailsVC = [XProjectDetailsController new];
 //    if (self.recProductArr.count > 0) {

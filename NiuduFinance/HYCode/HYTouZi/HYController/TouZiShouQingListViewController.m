@@ -75,9 +75,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.hidesBottomBarWhenPushed=NO;
-    [self getXSZX];
-    [self getIsNewData];
+    
 }
 
 - (void)viewDidLoad {
@@ -102,6 +100,9 @@
     //首页下拉刷新
     [self setupRefreshWithTableView:_tableView];
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F4"];
+    
+    [self getXSZX];
+    [self getIsNewData];
     
     WS
     [self.newLenderProjectModel loadWithCompletion:^(VZModel *model, NSError *error) {

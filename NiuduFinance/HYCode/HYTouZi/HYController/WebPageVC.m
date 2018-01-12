@@ -68,7 +68,8 @@
 
 - (void)setWebViewInfo
 {
-    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight - WDTabBarHeight)];
+    //NSLog(@"%lf,%lf",SCREEN_HEIGHT,WDTopHeight);
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT - WDTopHeight)];
 
     if ( [_name isEqualToString:@"recharge"] ) {
         _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-WDStatusBarHeight)];
